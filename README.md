@@ -5,7 +5,7 @@
 
 # 😉约定
 
-在Unity里有[**Shader Forge (SF)**](https://www.acegikmo.com/shaderforge/)、[**Amplify Shader Editor (ASE)**](http://amplify.pt/unity/amplify-shader-editor/)、[**Shader Graph (SG)**](https://docs.unity3d.com/cn/Packages/com.unity.shadergraph@10.5/manual/index.html) 三种连连看，代码虽然都是**[ShaderLab](https://docs.unity3d.com/cn/current/Manual/SL-Reference.html)**语法但也主要分了**[CG](https://en.wikipedia.org/wiki/Cg_%28programming_language%29)**和**[HLSL](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl)**两种，故在此假定我个人的使用规范。
+在Unity里有[**Shader Forge (SF)**](https://www.acegikmo.com/shaderforge/)、[**Amplify Shader Editor (ASE)**](http://amplify.pt/unity/amplify-shader-editor/)、[**Shader Graph (SG)**](https://docs.unity3d.com/cn/Packages/com.unity.shadergraph@10.5/manual/index.html) 三种连连看，代码虽然都是[**ShaderLab**](https://docs.unity3d.com/cn/current/Manual/SL-Reference.html)语法但也主要分了[**CG**](https://en.wikipedia.org/wiki/Cg_%28programming_language%29)和[**HLSL**](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl)两种，故在此假定我个人的使用规范。
 
 因为CG语言NVIDIA不再更新，Unity也逐渐放弃，手机成为主流，故大多Shader使用[**URP**](https://docs.unity3d.com/cn/Packages/com.unity.render-pipelines.universal@12.1/manual/index.html)管线编写，该工程以[**2021.3.0f1c1以上URP**](https://unity.cn/releases/lts)为基准，我主张向上升级，不赞同向下兼容，不要再乘坐旧时代的大船了，如果说新的东西不好，那么为什么大家费时费力费钱的去更新这么些的东西。
 
