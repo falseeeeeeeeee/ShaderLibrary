@@ -101,6 +101,12 @@
       "dependencies": {},
       "url": "https://packages.unity.cn"
     },
+    "com.unity.shaderanalysis": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.shadergraph": {
       "version": "12.1.10",
       "depth": 1,
