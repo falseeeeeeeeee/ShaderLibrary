@@ -59,6 +59,11 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# 忽略掉个人测试目录
+# 忽略掉个人测试&购买的付费插件目录
 */Assets/Test
 */Assets/Test.meta
+*/Assets/Plugins/MulliganRenamer
+*/Assets/Plugins/MulliganRenamer.meta
+
+# 忽略GPT的API密钥
+*/UserSettings/AIShaderSettings.asset
