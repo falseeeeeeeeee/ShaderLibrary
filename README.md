@@ -70,19 +70,12 @@
 
 ### Effect_HexagonDiffusion
 
-<center>
-<img style="width: 100%;" 
-src="./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png">
-<br>
-<div style="color: #999; padding: 10px;">HexagonDiffusion</div>
-</center>
+<center>markdown居中文本< /center>
 
-<center>
-<img style="width: 100%;" 
-src="./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.gif">
-<br>
-<div style="color: #999; padding: 10px;">HexagonDiffusion</div>
-</center>
+![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
+
+![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.gif)
+
 
 ## FX
 
