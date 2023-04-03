@@ -66,6 +66,14 @@
 
 ## Effect
 
+
+
+### Effect_HexagonDiffusion
+
+![Effect_HexagonDiffusion](.\ShaderLib_2021\Recordings\Effect_HexagonDiffusion\Effect_HexagonDiffusion.png)
+
+<video id="video" controls="" preload="none">     <source id="mp4" src=".\ShaderLib_2021\Recordings\Effect_HexagonDiffusion\Effect_HexagonDiffusion.mp4" type="video/mp4"> </video>
+
 ## FX
 
 ## Vertex
