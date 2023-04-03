@@ -54,12 +54,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _DEBUGSINTIME: 1
-    - _DiffusionSwitch: 0.46
+    - _DiffusionSwitch: 0
     - _HexagonScale: 16
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffusionCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _DiffusionCenter: {r: 0.55, g: 0.5, b: 0, a: 0}
     - _ShapeColor: {r: 0.8941177, g: 0.36862746, b: 0.37647057, a: 1}
   m_BuildTextureStacks: []
