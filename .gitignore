@@ -64,6 +64,10 @@ crashlytics-build.properties
 */Assets/Test.meta
 */Assets/Plugins/MulliganRenamer
 */Assets/Plugins/MulliganRenamer.meta
+*/Assets/Plugins/QHierarchy
+*/Assets/Plugins/QHierarchy.meta
+*/Assets/Plugins/RainbowFolders
+*/Assets/Plugins/RainbowFolders.meta
 
 # 忽略GPT的API密钥
 */UserSettings/AIShaderSettings.asset
