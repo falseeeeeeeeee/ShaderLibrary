@@ -64,6 +64,14 @@
 
 ## Base
 
+### Base_Unlit
+
+![](./ShaderLib_2021/Recordings/Base_Unlit/Base_Unlit.png)
+
+![](./ShaderLib_2021/Recordings/Base_Unlit/Base_Unlit.gif)
+
+------
+
 ## Effect
 
 ### Effect_HexagonDiffusion
@@ -72,6 +80,15 @@
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.gif)
 
+------
+
+### Effect_TextureDiffusion
+
+![](./ShaderLib_2021/Recordings/Effect_TextureDiffusion/Effect_TextureDiffusion.png)
+
+![](./ShaderLib_2021/Recordings/Effect_TextureDiffusion/Effect_TextureDiffusion.gif)
+
+------
 
 ## FX
 
