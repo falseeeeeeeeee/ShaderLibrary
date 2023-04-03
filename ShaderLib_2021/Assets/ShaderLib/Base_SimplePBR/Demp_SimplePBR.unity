@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 701c87d888c84ab4dbac5762d9546fcd,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b79a81ac5ffc4d64b993409031e38721,
     type: 2}
 --- !u!196 &4
@@ -191,6 +192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MS_Sci-Fi_Helmet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37ee9460d58c5894e82cf09fe8fd5be0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4447661907441539757, guid: 37ee9460d58c5894e82cf09fe8fd5be0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -218,7 +224,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 37ee9460d58c5894e82cf09fe8fd5be0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37ee9460d58c5894e82cf09fe8fd5be0,
         type: 3}
@@ -338,6 +344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PR_ShaderCalibration
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935277081502535650, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb86bca96f97444899e1457ff5c046e, type: 3}

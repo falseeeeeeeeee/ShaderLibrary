@@ -64,6 +64,12 @@
 
 ## Base
 
+### Base_SimplePBR
+
+![](./ShaderLib_2021/Recordings/Base_SimplePBR/Base_SimplePBR.png)
+
+![](./ShaderLib_2021/Recordings/Base_SimplePBR/Base_SimplePBR.gif)
+
 ### Base_Unlit
 
 ![](./ShaderLib_2021/Recordings/Base_Unlit/Base_Unlit.png)
