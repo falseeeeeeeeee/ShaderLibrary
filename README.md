@@ -66,11 +66,7 @@
 
 ## Effect
 
-
-
 ### Effect_HexagonDiffusion
-
-<center>markdown居中文本< /center>
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
 
