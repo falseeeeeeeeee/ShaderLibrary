@@ -340,6 +340,27 @@ Shader "URP/Base/S_Unlit"
             }
             ENDHLSL
         }
+        
+        Pass
+        {
+            Name "Meta"
+            Tags{"LightMode" = "Meta"}
+
+            Cull Off
+
+            HLSLPROGRAM
+            #pragma only_renderers gles gles3 glcore d3d11
+            #pragma target 2.0
+
+            #pragma vertex UniversalVertexMeta
+            #pragma fragment UniversalFragmentMetaUnlit
+            #pragma shader_feature EDITOR_VISUALIZATION
+
+            //#include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitMetaPass.hlsl"
+
+            ENDHLSL
+        }
     }
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }

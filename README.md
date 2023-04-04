@@ -111,6 +111,8 @@
 
 # 🥰巨人的肩膀
 
+## 函数相关
+
 [Cg Toolkit | NVIDIA Developer](https://developer.nvidia.com/cg-toolkit)
 
 [Cg标准函数库 - 简书 (jianshu.com)](https://www.jianshu.com/p/c789aff2d6e9)
@@ -119,3 +121,6 @@
 
 [Unity Shader目录-中级篇 - 简书 (jianshu.com)](https://www.jianshu.com/p/8c3f1b363768)
 
+## 光照相关
+
+[Unity URP GI，Meta Pass，脚本切换Light Map学习 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/606484690)
