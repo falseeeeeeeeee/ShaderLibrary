@@ -9,6 +9,8 @@ Shader "URP/Base/S_SimplePBR"
         [NoScaleOffset] _MetallicGlossMap ("Metallic Smoothness Map", 2D) = "white" {}
         _BumpScale ("Normal Scale", Float) = 1.0
         [Normal] [NoScaleOffset] _BumpMap ("Normal Map", 2D) = "bump" {}
+        _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
+        [NoScaleOffset] _OcclusionMap("Occlusion", 2D) = "white" {}
         [HDR] _EmissionColor ("Emission Color", Color) = (0, 0, 0)
         [NoScaleOffset] _EmissionMap ("Emission Map", 2D) = "white" {}
         // [ToggleUI] _AlphaTest("Use Alpha Cutoff", Int) = 0.0
@@ -39,17 +41,19 @@ Shader "URP/Base/S_SimplePBR"
         CBUFFER_START(UnityPerMaterial)
         half4 _BaseColor;
         float4 _BaseMap_ST;
-        float _BumpScale;
         float _Metallic;
         float _Smoothness;
+        float _BumpScale;
+        float _OcclusionStrength;
         float3 _EmissionColor;
         half _Cutoff;
         CBUFFER_END
 
         TEXTURE2D(_BaseMap);	        SAMPLER(sampler_BaseMap);
-        TEXTURE2D(_BumpMap);          SAMPLER(sampler_BumpMap);
+        TEXTURE2D(_BumpMap);            SAMPLER(sampler_BumpMap);
         TEXTURE2D(_MetallicGlossMap);	SAMPLER(sampler_MetallicGlossMap);
         TEXTURE2D(_EmissionMap);	    SAMPLER(sampler_EmissionMap);
+        TEXTURE2D(_OcclusionMap);	    SAMPLER(sampler_OcclusionMap);
         ENDHLSL
 
         Pass
@@ -173,11 +177,13 @@ Shader "URP/Base/S_SimplePBR"
                 half4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv) * _BaseColor;
                 half4 metallicGlossMap = SAMPLE_TEXTURE2D(_MetallicGlossMap, sampler_MetallicGlossMap, input.uv);
                 half3 emissionMap = SAMPLE_TEXTURE2D(_EmissionMap, sampler_EmissionMap, input.uv).rgb * _EmissionColor;
+                half occlusionMap = LerpWhiteTo(SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, input.uv).g, _OcclusionStrength);;
+
                 surfaceData.albedo = baseMap.rgb;
                 surfaceData.alpha = baseMap.a;
                 surfaceData.emission = emissionMap;                
                 surfaceData.metallic = _Metallic * metallicGlossMap.r;
-                surfaceData.occlusion = 1.0;
+                surfaceData.occlusion = occlusionMap;
                 surfaceData.smoothness = _Smoothness * metallicGlossMap.a;
                 surfaceData.specular = 0.0;
                 surfaceData.clearCoatMask = 0.0h;
