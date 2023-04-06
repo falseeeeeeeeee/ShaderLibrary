@@ -26,7 +26,7 @@ Shader "URP/Base/S_Unlit"
         CBUFFER_START(UnityPerMaterial)
         half4 _BaseColor;
         float4 _BaseMap_ST;
-        half _Cutoff;
+        // half _Cutoff;
         CBUFFER_END
 
         TEXTURE2D(_BaseMap);	SAMPLER(sampler_BaseMap);
@@ -349,14 +349,15 @@ Shader "URP/Base/S_Unlit"
             Cull Off
 
             HLSLPROGRAM
-            #pragma only_renderers gles gles3 glcore d3d11
-            #pragma target 2.0
+            #pragma exclude_renderers gles gles3 glcore
+            #pragma target 4.5
 
             #pragma vertex UniversalVertexMeta
             #pragma fragment UniversalFragmentMetaUnlit
+
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature EDITOR_VISUALIZATION
 
-            //#include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitMetaPass.hlsl"
 
             ENDHLSL

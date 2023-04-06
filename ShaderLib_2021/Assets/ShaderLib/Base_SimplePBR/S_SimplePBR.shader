@@ -33,6 +33,7 @@ Shader "URP/Base/S_SimplePBR"
             "IgnoreProjector" = "True"
             "Queue" = "Geometry"
             // "Queue" = "AlphaTest"
+            
         }
         
         HLSLINCLUDE
@@ -250,72 +251,9 @@ Shader "URP/Base/S_SimplePBR"
             #pragma vertex ShadowPassVertex
             #pragma fragment ShadowPassFragment
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
-
-            float3 _LightDirection;
-            float3 _LightPosition;
-
-            struct Attributes
-            {
-                float4 positionOS   : POSITION;
-                float3 normalOS     : NORMAL;
-                float2 texcoord     : TEXCOORD0;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-            };
-
-            struct Varyings
-            {
-                float2 uv           : TEXCOORD0;
-                float4 positionCS   : SV_POSITION;
-            };
-
-            float4 GetShadowPositionHClip(Attributes input)
-            {
-                float3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
-                float3 normalWS = TransformObjectToWorldNormal(input.normalOS);
-
-            #if _CASTING_PUNCTUAL_LIGHT_SHADOW
-                float3 lightDirectionWS = normalize(_LightPosition - positionWS);
-            #else
-                float3 lightDirectionWS = _LightDirection;
-            #endif
-
-                float4 positionCS = TransformWorldToHClip(ApplyShadowBias(positionWS, normalWS, lightDirectionWS));
-
-            #if UNITY_REVERSED_Z
-                positionCS.z = min(positionCS.z, UNITY_NEAR_CLIP_VALUE);
-            #else
-                positionCS.z = max(positionCS.z, UNITY_NEAR_CLIP_VALUE);
-            #endif
-
-                return positionCS;
-            }
-
-            Varyings ShadowPassVertex(Attributes input)
-            {
-                Varyings output;
-                UNITY_SETUP_INSTANCE_ID(input);
-                
-                output.positionCS = GetShadowPositionHClip(input);
-
-                output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-                
-                return output;
-            }
-
-            half4 ShadowPassFragment(Varyings input) : SV_TARGET
-            {
-                half4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
-                half3 color = baseMap.rgb * _BaseColor.rgb;
-                half alpha = baseMap.a * _BaseColor.a;
-
-                #ifdef _ALPHATEST_ON
-                    clip(alpha - _Cutoff);
-                #endif
-                return 0;
-            }
+            #include "../Include/SIH_SimpleLitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+            
             ENDHLSL
         }
         
@@ -344,49 +282,9 @@ Shader "URP/Base/S_SimplePBR"
             #pragma multi_compile_instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
-            struct Attributes
-            {
-                float4 position     : POSITION;
-                float2 texcoord     : TEXCOORD0;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-            };
-
-            struct Varyings
-            {
-                float2 uv           : TEXCOORD0;
-                float4 positionCS   : SV_POSITION;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-                UNITY_VERTEX_OUTPUT_STEREO
-            };
-
-            Varyings DepthOnlyVertex(Attributes input)
-            {
-                Varyings output = (Varyings)0;
-                UNITY_SETUP_INSTANCE_ID(input);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
-
-                output.positionCS = TransformObjectToHClip(input.position.xyz);
-                output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-
-                return output;
-            }
-
-            half4 DepthOnlyFragment(Varyings input) : SV_TARGET
-            {
-                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-                
-                half4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
-                half3 color = baseMap.rgb * _BaseColor.rgb;
-                half alpha = baseMap.a * _BaseColor.a;
-
-                #ifdef _ALPHATEST_ON
-                    clip(alpha - _Cutoff);
-                #endif
-                
-                return 0;
-            }
+            #include "../Include/SIH_SimpleLitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            
             ENDHLSL
         }
 
@@ -412,55 +310,10 @@ Shader "URP/Base/S_SimplePBR"
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON
-
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
-            struct Attributes
-            {
-                float3 normal       : NORMAL;
-                float4 positionOS   : POSITION;
-                float4 tangentOS    : TANGENT;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-            };
-
-            struct Varyings
-            {
-                float4 positionCS   : SV_POSITION;
-                float3 normalWS     : TEXCOORD1;
-
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-                UNITY_VERTEX_OUTPUT_STEREO
-            };
-
-            Varyings DepthNormalsVertex(Attributes input)
-            {
-                Varyings output = (Varyings)0;
-                UNITY_SETUP_INSTANCE_ID(input);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
-
-                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
-
-                VertexNormalInputs normalInput = GetVertexNormalInputs(input.normal, input.tangentOS);
-                output.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
-
-                return output;
-            }
-
-            float4 DepthNormalsFragment(Varyings input) : SV_TARGET
-            {
-                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-
-                // Output...
-                #if defined(_GBUFFER_NORMALS_OCT)
-                    float3 normalWS = normalize(input.normalWS);
-                    float2 octNormalWS = PackNormalOctQuadEncode(normalWS);             // values between [-1, +1], must use fp32 on some platforms
-                    float2 remappedOctNormalWS = saturate(octNormalWS * 0.5 + 0.5);     // values between [ 0,  1]
-                    half3 packedNormalWS = half3(PackFloat2To888(remappedOctNormalWS)); // values between [ 0,  1]
-                    return half4(packedNormalWS, 0.0);
-                #else
-                    return half4(NormalizeNormalPerPixel(input.normalWS), 0.0);
-                #endif
-            }
+            
+            #include "../Include/SIH_SimpleLitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitDepthNormalsPass.hlsl"
+            
             ENDHLSL
         }
         
@@ -480,7 +333,7 @@ Shader "URP/Base/S_SimplePBR"
             #pragma fragment UniversalFragmentMetaLit
 
             #pragma shader_feature EDITOR_VISUALIZATION
-            
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _EMISSION
 
             #include "../Include/SIH_SimpleLitInput.hlsl"
