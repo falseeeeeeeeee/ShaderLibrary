@@ -9,8 +9,8 @@ Shader "URP/Base/S_SimplePBR"
         [NoScaleOffset] _MetallicGlossMap ("Metallic Smoothness Map", 2D) = "white" {}
         _BumpScale ("Normal Scale", Float) = 1.0
         [Normal] [NoScaleOffset] _BumpMap ("Normal Map", 2D) = "bump" {}
-        _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
-        [NoScaleOffset] _OcclusionMap("Occlusion", 2D) = "white" {}
+        _OcclusionStrength("Occlusion Strength", Range(0.0, 1.0)) = 1.0
+        [NoScaleOffset] _OcclusionMap("Occlusion Map", 2D) = "white" {}
         [HDR] _EmissionColor ("Emission Color", Color) = (0, 0, 0)
         [NoScaleOffset] _EmissionMap ("Emission Map", 2D) = "white" {}
         // [ToggleUI] _AlphaTest("Use Alpha Cutoff", Int) = 0.0
