@@ -104,6 +104,11 @@
 ## Vertex
 
 
+### Vertex_VertexAnimaionTexture
+
+![](./ShaderLib_2021/Recordings/Vertex_VertexAnimaionTexture/Vertex_VertexAnimaionTexture.png)
+
+![](./ShaderLib_2021/Recordings/Vertex_VertexAnimaionTexture/Vertex_VertexAnimaionTexture.gif)
 
 ------
 
