@@ -112,6 +112,14 @@
 
 ------
 
+### Vertex_VertexAnimaionUVCut
+
+![](./ShaderLib_2021/Recordings/Vertex_VertexAnimaionUVCut/Vertex_VertexAnimaionUVCut.png)
+
+![](./ShaderLib_2021/Recordings/Vertex_VertexAnimaionUVCut/Vertex_VertexAnimaionUVCut.gif)
+
+------
+
 
 
 # 🥰巨人的肩膀
