@@ -2,6 +2,7 @@ Shader "URP/Base/S_SimplePBR"
 {
     Properties
     {
+        [Header(Base)] [Space(6)]
         _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _BaseMap ("Base Map", 2D) = "white" {}
         _Metallic ("Metallic", Range(0.0, 1.0)) = 0.0
@@ -15,7 +16,8 @@ Shader "URP/Base/S_SimplePBR"
         [NoScaleOffset] _EmissionMap ("Emission Map", 2D) = "white" {}
         // [ToggleUI] _AlphaTest("Use Alpha Cutoff", Int) = 0.0
         // _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
-        
+                
+        [Header(Other)] [Space(6)]
         [Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Float) = 2
         
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}

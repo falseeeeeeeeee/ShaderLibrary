@@ -2,11 +2,13 @@ Shader "URP/Base/S_Unlit"
 {
     Properties
     {
+        [Header(Base)] [Space(6)]
         [MainColor] _BaseColor("Base Color", Color) = (1.0, 1.0, 1.0, 1.0)
         [MainTexture] _BaseMap ("Base Map", 2D) = "white" {}
         // [ToggleUI] _AlphaTest("Use Alpha Cutoff", Int) = 0.0
         // _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
-
+                
+        [Header(Other)] [Space(6)]
         [Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Float) = 2
     }
 
