@@ -1,0 +1,8 @@
+Fire texture - http://suicidecrew.deviantart.com/art/Fire-Seamless-tile-116721709
+Screen Space Curvature - http://madebyevan.com/shaders/curvature/
+
+Grass Blades texture from:
+http://www.fuzzimo.com/free-hi-res-ornamental-grass-blade-textures/
+
+Keep them coming, contribute today! 
+http://amplify.pt/unity/amplify-shader-editor/contribute

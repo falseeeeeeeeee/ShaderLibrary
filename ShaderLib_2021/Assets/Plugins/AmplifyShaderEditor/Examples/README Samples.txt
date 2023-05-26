@@ -1,0 +1,3 @@
+Samples are provided by pipeline. To import the samples please use the "Start Screen" to do so instead of unpacking manually, this will ensure that they are imported correctly. Go to Windows > Amplify Shader Editor > Start Screen and under "Shader Samples" select the ones you want to import. Do be aware that importing any SRP samples requires to first install the respective pipeline using the package manager.
+
+Please notice that in some cases the sample may have been created in a different version from the SRP that you are using which can produce "pink" shaders. If that happens it's usually the case that you only need to open the shader in ASE and save it to update it.

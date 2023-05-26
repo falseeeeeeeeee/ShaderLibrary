@@ -1,0 +1,8 @@
+Use your Unity Asset Store invoice number in the Amplify Product download page to download the latest Amplify Shader Editor package and Shader Samples package.
+
+1 - Go to http://amplify.pt/download
+2 - Enter your Unity Asset Store and click Unlock
+3 - Scroll down to the Amplify Shader Editor entry
+4 - Click the Sample button to download the sample package.
+
+NOTE: You can also use the product download page to download the latest Amplify Shader Editor package. Due to Asset Store review times and update cycles, the version hosted there is usually more recent.
