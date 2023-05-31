@@ -53,7 +53,11 @@
 | Base（基本的）       | S_SimpleLit.shader | Base_SimpleLit        |
 | Effect（效果类型的） |                    |                       |
 | FX（给特效使用的）   |                    |                       |
+| Glass（玻璃相关的）  |                    |                       |
+| Sky（天空盒相关）    |                    |                       |
+| Tool（功能性材质）   |                    |                       |
 | Vertex（顶点相关的） |                    |                       |
+| Water（水相关的）    |                    |                       |
 
 
 
