@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_PROP_Cap01_Baihua01
+  m_Shader: {fileID: -6465566751694194690, guid: 713da4390da62b14b951267bdb164cf0,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AnisotropyKajiyaKay_63bf5b010a7f4f6bab3c1cef3306f675_NoiseMap_3472324296:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CapInRampMap:
+        m_Texture: {fileID: 2800000, guid: 544335d52066ca347b35db15357251b5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CapSideRampMap:
+        m_Texture: {fileID: 2800000, guid: 48abb3f39429f354ba37cf0a13a7e630, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 2800000, guid: 70ac061e50917454ba2fbc870bc840a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampMap:
+        m_Texture: {fileID: 2800000, guid: 6af47b5256d7e2a45ae63dbaa8e7c47f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3dd2277a1ff840c7bac58f0f515ad7a5_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e36b06860bcf40bc8e6aa1f9aa2736cd_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScratchesMap:
+        m_Texture: {fileID: 2800000, guid: 352f6728f77c0af49b0cedf117b7cea0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SealMap:
+        m_Texture: {fileID: 2800000, guid: b8ed13fc8c4c024459df643c130504f9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VoronoiMap:
+        m_Texture: {fileID: 2800000, guid: 500cdbcd8a79fd144899849ecc08eed6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _BlackGradientSwitch: 1
+    - _BlackOffset: 0
+    - _Blend: 0
+    - _CapInCoatSmoothnessStrength: 1
+    - _CapInMetallicStrength: 1
+    - _CapInNormalStrength: 0.2
+    - _CapInRampMapAdBright: 0.5
+    - _CapInRampMapAdHue: 1
+    - _CapInRampMapAdSaturation: 0.7
+    - _CapInSmoothnessStrength: 0.565
+    - _CapOutCoatSmoothnessStrength: 0
+    - _CapOutMetallicStrength: 0
+    - _CapOutNoiseScale: 800
+    - _CapOutNoiseStrength: 1
+    - _CapOutNormalStrength: 0
+    - _CapOutSmoothnessStrength: 0.5
+    - _CapSideCoatSmoothnessStrength: 0
+    - _CapSideMetallicStrength: 0.5
+    - _CapSideNormalStrength: 1
+    - _CapSideRampStrength: 1
+    - _CapSideSmoothnessStrength: 0
+    - _CastShadows: 1
+    - _CenterNoiseScale: 200
+    - _CoatMask: 0.665
+    - _CoatSmoothness: 0.941
+    - _Cull: 2
+    - _DstBlend: 0
+    - _EdgeDistortionDownStrength: 0.01
+    - _EdgeDistortionNoiseScale: 50
+    - _EdgeDistortionOutStrength: 0.005
+    - _EdgeDistortionSideStrength: 0.001
+    - _EdgeDistortionUPStrength: 0.04
+    - _EdgeDownDistortion: 0.01
+    - _EdgeUPDistortion: 0.04
+    - _FresnelPower: 1
+    - _Gloss: 0.025
+    - _MaskInHard: 0.302
+    - _MaskInSize: 4
+    - _MaskOutHard: 0.48
+    - _MaskOutSize: 1.8
+    - _MaskSideHard: 0.41
+    - _MaskSideSize: 0.071
+    - _Metallic: 0.874
+    - _NoiseHighAmp: 0.07
+    - _NoiseHighFreq: 20
+    - _NoiseLowAmp: -0.37
+    - _NoiseLowFreq: 10
+    - _NormalScale: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RampMapAdHue: 1
+    - _RampMapAdSaturation: 2
+    - _RampStrength: 0.5
+    - _RampXAxisNoiseStrength: 0
+    - _RampXAxisOffset: 0.569
+    - _ReceiveShadows: 1
+    - _RedSwitch: 0
+    - _ScratchesMapStrength: 1.142
+    - _SealMapNormalStrength: 1
+    - _SealMapScale: 6
+    - _Shift: 0.66
+    - _Shift1: 0
+    - _Shift2: 0
+    - _Smoothness: 0.831
+    - _SpecularInt: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _UVNoiseOffsetStrength: 0.02
+    - _UVNoiseScale: 227.5
+    - _UVNoiseTilingInStrength: 1
+    - _UVNoiseTilingOutStrength: 0.002
+    - _VoronoiMapInStrength: 1
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
+    m_Colors:
+    - _BaseColor: {r: 0.27058825, g: 0.2935371, b: 0.49019608, a: 1}
+    - _CapOutColor: {r: 0.45283014, g: 0.29738396, b: 0.21146315, a: 1}
+    - _EdgtDistortionTilingAndLevel: {r: 1, g: 1, b: 0.2, a: 0.8}
+    - _FlowUVDirAndStrength: {r: 1, g: 1, b: 0.1, a: 0}
+    - _ScratchesMapTiling: {r: 8, g: 8, b: 0, a: 0}
+    - _VoronoiMapTiling: {r: 15, g: 0.7, b: 0, a: 0}
+    - _VoronoiMapTilingInAndOut: {r: 15, g: 0.7, b: 15, a: 0.7}
+  m_BuildTextureStacks: []
+--- !u!114 &8551294436031631683
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

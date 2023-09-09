@@ -103,6 +103,14 @@
 
 ------
 
+### Effect_ThermalChange
+
+![](./ShaderLib_2021/Recordings/Effect_ThermalChange/Effect_ThermalChange.png)
+
+![](./ShaderLib_2021/Recordings/Effect_ThermalChange/Effect_ThermalChange.gif)
+
+------
+
 ## FX
 
 ## Glass

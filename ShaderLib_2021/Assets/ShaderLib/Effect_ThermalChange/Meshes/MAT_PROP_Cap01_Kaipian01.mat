@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_PROP_Cap01_Kaipian01
+  m_Shader: {fileID: -6465566751694194690, guid: 713da4390da62b14b951267bdb164cf0,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AnisotropyKajiyaKay_63bf5b010a7f4f6bab3c1cef3306f675_NoiseMap_3472324296:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CapInRampMap:
+        m_Texture: {fileID: 2800000, guid: 21738988aaf8ade45b29865690002e25, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CapSideRampMap:
+        m_Texture: {fileID: 2800000, guid: 974440807ece0774088b4a1874f22069, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 2800000, guid: 70ac061e50917454ba2fbc870bc840a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: eeaea029ef518ea479f44cf8cb923620, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampMap:
+        m_Texture: {fileID: 2800000, guid: ef68e49bc8542f14198e5e83f2c0616e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3dd2277a1ff840c7bac58f0f515ad7a5_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e36b06860bcf40bc8e6aa1f9aa2736cd_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6f18732c0a2cf794ea94d4aa93043b9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScratchesMap:
+        m_Texture: {fileID: 2800000, guid: 82bae60235911ac419324687f485a3f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SealMap:
+        m_Texture: {fileID: 2800000, guid: b8ed13fc8c4c024459df643c130504f9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VoronoiMap:
+        m_Texture: {fileID: 2800000, guid: f1d8ff88116896442aa4411b7e40dcb4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _CapInCoatSmoothnessStrength: 0.9
+    - _CapInMetallicStrength: 0.4
+    - _CapInNormalStrength: 0.5
+    - _CapInRampMapAdBright: 1
+    - _CapInRampMapAdHue: 0.95
+    - _CapInRampMapAdSaturation: 0.7
+    - _CapInSmoothnessStrength: 1
+    - _CapOutCoatSmoothnessStrength: 0
+    - _CapOutMetallicStrength: 0
+    - _CapOutNormalStrength: -2
+    - _CapOutSmoothnessStrength: 0.5
+    - _CapSideCoatSmoothnessStrength: 0.5
+    - _CapSideMetallicStrength: 0
+    - _CapSideNormalStrength: 2
+    - _CapSideRampStrength: 1
+    - _CapSideSmoothnessStrength: 0.446
+    - _CastShadows: 1
+    - _CenterNoiseScale: 200
+    - _CoatMask: 1
+    - _CoatSmoothness: 1
+    - _Cull: 2
+    - _DstBlend: 0
+    - _EdgeDistortionDownStrength: 0.01
+    - _EdgeDistortionNoiseScale: 20
+    - _EdgeDistortionOutStrength: 0.01
+    - _EdgeDistortionSideStrength: 0.01
+    - _EdgeDistortionUPStrength: 0.04
+    - _EdgeDownDistortion: 0.01
+    - _EdgeUPDistortion: 0.04
+    - _FresnelPower: 6.15
+    - _Gloss: 0.018
+    - _MaskInHard: 0.148
+    - _MaskInSize: -11.84
+    - _MaskOutHard: 0.49
+    - _MaskOutSize: 1.866
+    - _MaskSideHard: 0.473
+    - _MaskSideSize: 0.038
+    - _Metallic: 0.5
+    - _NoiseHighAmp: 0.59
+    - _NoiseHighFreq: 60
+    - _NoiseLowAmp: 0.1
+    - _NoiseLowFreq: 20
+    - _NormalScale: 0.1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RampStrength: 1
+    - _RampXAxisNoiseStrength: 0.05
+    - _RampXAxisOffset: 0.657
+    - _ReceiveShadows: 1
+    - _ScratchesMapStrength: 0.197
+    - _SealMapNormalStrength: 1
+    - _SealMapScale: 6
+    - _Shift: 0
+    - _Shift1: 0
+    - _Shift2: 0
+    - _Smoothness: 1
+    - _SpecularInt: 0
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _UVNoiseOffsetStrength: 0.01
+    - _UVNoiseScale: 300
+    - _UVNoiseTilingInStrength: 0.3
+    - _UVNoiseTilingOutStrength: 0.001
+    - _VoronoiMapInStrength: 0.908
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
+    m_Colors:
+    - _BaseColor: {r: 0.7311321, g: 1, b: 0.7466068, a: 1}
+    - _CapOutColor: {r: 0.6933962, g: 1, b: 0.7720126, a: 1}
+    - _EdgtDistortionTilingAndLevel: {r: 1, g: 1, b: 0.2, a: 0.8}
+    - _FlowUVDirAndStrength: {r: 1, g: 1, b: 0.1, a: 0}
+    - _ScratchesMapTiling: {r: 20, g: 12, b: 0, a: 0}
+    - _VoronoiMapTiling: {r: 8, g: 1, b: 0, a: 0}
+    - _VoronoiMapTilingInAndOut: {r: 8, g: 1, b: 8, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &8551294436031631683
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
