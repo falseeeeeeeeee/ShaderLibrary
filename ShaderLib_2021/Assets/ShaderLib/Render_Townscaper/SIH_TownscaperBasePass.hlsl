@@ -140,6 +140,7 @@ half4 frag(Varyings input) : SV_Target
     baseMap.rgb = lerp(baseMap.rgb, paletteColor, 1.0 - baseMap.a) * _BaseColor.rgb;
     float3 color = DayNightColorBlend(baseMap.rgb, lightColor, lambert, _DayColor, _NightColor, _DayIntensity, _NightIntensity);
     color = pow(color,1.5) * lightShadowColor + Saturation(baseMap,saturate(pow(ToGray(lightColor), 1))) * bakeGI;
+    // color += lerp(float3(0.0, 0.0, 0.0), emissionColor, 1);
     color += lerp(float3(0.0, 0.0, 0.0), emissionColor, _EmissionSwitch);
     
     // Final

@@ -1,16 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-[ExecuteAlways]
 public class DayNightCycle : MonoBehaviour
 {
     [Header("DirectionalLightSetting")]
     public Light DirectionalLight;
-    [Range(0,1)] public float DirectionalLightRotationY;
-    [Range(0,1)] public float DirectionalLightRotationX;
+    [Range(0, 1)] public float DirectionalLightRotationY;
+    [Range(0, 1)] public float DirectionalLightRotationX;
     public Vector2 DirectionalLightRotationXRange = new Vector2(20, 80);
-    
+
     [Header("SkySetting")]
     public Color DayColor = Color.white;
     public Color MidColor = Color.red;
@@ -18,104 +18,72 @@ public class DayNightCycle : MonoBehaviour
     public float DayColorIntensity = 1f;
     public float MidColorIntensity = 1f;
     public float NightColorIntensity = 1f;
-    
+
     [Header("Debug")]
     public bool DebugShaderBaseColor = false;
 
-    float timer = 0;
-    bool Light = false;
-
     void Update()
     {
-        if (!Application.isPlaying)
-        {
-            UpdateLighting();
-        }
+        RotateDirectionalLight();
 
         float t = DirectionalLightRotationX;
 
-        #region 灯光控制
-        if (t == 0)
-        {
-            if (!Light)
-            {
-                Light = true;
-                timer = 0;
-            }
-            timer += Time.deltaTime;
-            if (timer > 0.5f)
-            {
-                Shader.SetGlobalFloat("_EmissionSwitch", 1.0f);
-                timer = 0;
-            }
-        }
-        else if (t > 0.2)
-        {
-            if (Light)
-            {
-                Light = false;
-                timer = 0;
-            }
-            timer += Time.deltaTime;
-            if (timer > 0.5f)
-            {
-                Shader.SetGlobalFloat("_EmissionSwitch", 0.0f);
-                timer = 0;
-            }
-        }
-        #endregion
+        // 根据 DirectionalLightRotationX 控制 _EmissionSwitch
+        // Shader.SetGlobalFloat("_EmissionSwitch", Mathf.Clamp01(t * 5.0f));
 
         if (t < 0.1f) // midnight to dawn
         {
             float tt = t / 0.1f;
             DirectionalLight.color = Color.Lerp(NightColor * NightColorIntensity, MidColor * MidColorIntensity, Mathf.Pow(tt, 0.2f));
             DirectionalLight.intensity = DayColorIntensity * tt + 0.001f;
-            Shader.SetGlobalFloat("_SkyBoxExposure", Mathf.Lerp(0.5f, 1.0f, tt));
+
+            // 设置全局Shader参数
+            // Shader.SetGlobalFloat("_SkyBoxExposure", Mathf.Lerp(0.5f, 1.0f, tt));
+            Shader.SetGlobalFloat("_EmissionSwitch", 2.0f);
+
         }
         else if (t < 0.4f) // dawn to dusk
         {
             float tt = (t - 0.2f) / 0.2f;
             DirectionalLight.color = Color.Lerp(MidColor * MidColorIntensity, DayColor * DayColorIntensity, Mathf.Pow(tt, 2f));
+
+            // 设置Shader参数
+            Shader.SetGlobalFloat("_EmissionSwitch", Mathf.Lerp(0.5f, 2.0f, tt));
         }
         else // dusk to midnight
         {
             DirectionalLight.color = DayColor * DayColorIntensity;
-            Shader.SetGlobalFloat("_SkyBoxExposure", 1.0f);
+
+            // 设置Shader参数
+            Shader.SetGlobalFloat("_EmissionSwitch", 0.0f);
         }
 
         if (DebugShaderBaseColor)
         {
-            GameObject.Find("Global Volume").GetComponent<Volume>().enabled = false;
+            // 控制 URP Volume 的开启与关闭
+            ToggleURPVolume(!DebugShaderBaseColor);
             Shader.EnableKeyword("_DEBUGBASEMAP_ON");
         }
         else
         {
-            GameObject.Find("Global Volume").GetComponent<Volume>().enabled = true;
+            // 控制 URP Volume 的开启与关闭
+            ToggleURPVolume(!DebugShaderBaseColor);
             Shader.DisableKeyword("_DEBUGBASEMAP_ON");
         }
     }
 
-    void OnValidate()
+    private void ToggleURPVolume(bool enable)
     {
-        UpdateLighting();
+        Volume volume = GameObject.Find("Global Volume").GetComponent<Volume>();
+        volume.enabled = enable;
     }
 
-    private void UpdateLighting()
+    private void RotateDirectionalLight()
     {
-        // 在世界空间坐标下旋转Y轴
+        // 光照旋转逻辑
         float yRotation = DirectionalLightRotationY * 360;
         DirectionalLight.transform.rotation = Quaternion.Euler(0, yRotation, 0);
-        // 在局部坐标下旋转X轴
-        float xRotation = Remap(DirectionalLightRotationX, 0, 1, DirectionalLightRotationXRange.x, DirectionalLightRotationXRange.y);
-        DirectionalLight.transform.Rotate(xRotation, 0, 0, Space.Self);
+        float xRotation = Mathf.Lerp(DirectionalLightRotationXRange.x, DirectionalLightRotationXRange.y, DirectionalLightRotationX);
+        DirectionalLight.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
     }
-
-    #region [方法]
-
-    public static float Remap(float value, float sourceRangeMin, float sourceRangeMax, float targetRangeMin, float targetRangeMax)
-    {
-        return (value - sourceRangeMin) / (sourceRangeMax - sourceRangeMin) * (targetRangeMax - targetRangeMin) + targetRangeMin;
-    }
-
-    #endregion
 }

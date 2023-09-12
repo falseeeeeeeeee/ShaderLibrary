@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 693337058}
-  DirectionalLightRotationY: 0
+  DirectionalLightRotationY: 0.5
   DirectionalLightRotationX: 1
   DirectionalLightRotationXRange: {x: 20, y: 80}
   DayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -618,22 +618,22 @@ PrefabInstance:
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000003348487
+      value: -0.11317107
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000028097139
+      value: -0.053858653
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7660445
+      value: 0.8958406
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.64278764
+      value: -0.42633477
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948585, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 1490022623332948585, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.951
+      value: 0.8860914
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3a54affacf4dce4a90dbd501d885b8a, type: 3}
