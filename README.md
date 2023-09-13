@@ -122,6 +122,14 @@
 
 ------
 
+### Effect_RhythmLED
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLED/Effect_RhythmLED.png)
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLED/Effect_RhythmLED.gif)
+
+------
+
 ### Effect_TextureDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_TextureDiffusion/Effect_TextureDiffusion.png)
