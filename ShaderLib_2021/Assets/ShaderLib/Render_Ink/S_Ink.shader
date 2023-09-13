@@ -1,4 +1,4 @@
-Shader "URP/Render/Ink"
+Shader "URP/Render/S_Ink"
 {
     Properties 
     {
