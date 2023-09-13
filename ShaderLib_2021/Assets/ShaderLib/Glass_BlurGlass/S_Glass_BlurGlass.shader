@@ -1,4 +1,4 @@
-Shader "URP/Base/S_SimplePBR"
+Shader "URP/Glass/S_BlurGlass"
 {
     Properties
     {

@@ -140,7 +140,21 @@
 ![](./ShaderLib_2021/Recordings/Render_Ink/Render_Ink.gif)
 
 ------
+### Render_Ink2
 
+![](./ShaderLib_2021/Recordings/Render_Ink2/Render_Ink2.png)
+
+![](./ShaderLib_2021/Recordings/Render_Ink2/Render_Ink2.gif)
+
+------
+
+### Render_SimpleToon
+
+![](./ShaderLib_2021/Recordings/Render_SimpleToon/Render_SimpleToon.png)
+
+![](./ShaderLib_2021/Recordings/Render_SimpleToon/Render_SimpleToon.gif)
+
+------
 ### Render_Townscaper
 
 ![](./ShaderLib_2021/Recordings/Render_Townscaper/Render_Townscaper.png)
