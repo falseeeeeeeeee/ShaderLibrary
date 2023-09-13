@@ -95,6 +95,16 @@
 
 ------
 
+## Character
+
+### Character_Stockings
+
+![](./ShaderLib_2021/Recordings/Character_Stockings/Character_Stockings.png)
+
+![](./ShaderLib_2021/Recordings/Character_Stockings/Character_Stockings.gif)
+
+------
+
 ## Effect
 
 ### Effect_HexagonDiffusion
