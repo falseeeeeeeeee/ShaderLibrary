@@ -26469,6 +26469,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2629357974394276741, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2629357976115345860, guid: 9fb86bca96f97444899e1457ff5c046e,
         type: 3}
       propertyPath: m_RootOrder
@@ -26529,7 +26534,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: PR_ShaderCalibration
       objectReference: {fileID: 0}
+    - target: {fileID: 2935277081058459064, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2935277081502535650, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935277081681062733, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935277082029096816, guid: 9fb86bca96f97444899e1457ff5c046e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935277082069543282, guid: 9fb86bca96f97444899e1457ff5c046e,
         type: 3}
       propertyPath: m_IsActive
       value: 0
