@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2667573099770076485
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_Vehicle_CyberCar01_SWindow
+  m_Shader: {fileID: 4800000, guid: ac45ce3e54cdabb48a44b17095abee85, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _FOLDOUTBASE_ON
+  - _FOLDOUTCLEARCOAT_ON
+  - _FOLDOUTFLAKE_ON
+  - _FOLDOUTOTHER_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BASE_COLOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 58dc06ae5a6823b48a46a011cce768d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: ccfd342fd3fc88144884017a6ede17f9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EMISSION_COLOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: a81333d191ec31644b110df030aa894b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlakeMap:
+        m_Texture: {fileID: 2800000, guid: 93d4f33ed9833a44c9ddb0d3bd1435e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlossinessMap:
+        m_Texture: {fileID: 2800000, guid: 0ea496227ee657d43964a47c22ea8d8d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _METALNESS_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallcMap:
+        m_Texture: {fileID: 2800000, guid: 89714fe5570ab2d4e8b7288584813a9d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NORMAL_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: ccfd342fd3fc88144884017a6ede17f9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: c553624ed1d66854e896235143857d4f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RoughnessMap:
+        m_Texture: {fileID: 2800000, guid: 4a188256a68470949a4eb2bcea4ad30f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SPECULAR_COLOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SPECULAR_IOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SPECULAR_ROUGHNESS_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
+        m_Texture: {fileID: 2800000, guid: a3ff62de6f687104283dcb547f8d92a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Cull: 2
+    - _CullMode: 2
+    - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EdgeFactor: 0.3
+    - _EdgeFalloffFactor: 0.9
+    - _EnvironmentReflections: 1
+    - _FacingReflection: 0.17
+    - _FacingSpecular: 1
+    - _FlakeDensity: 10
+    - _FlakeFactor: 0.1
+    - _FlakeFalloffFactor: 0.05
+    - _FlakeReflection: 2.5
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _METALNESS: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _NormalScale: 1
+    - _Occlusion: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _PerpendicularReflection: 0.768
+    - _PerpendicularSpecular: 0.11
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _ReflectionContrast: 1
+    - _ReflectionFactor: 1
+    - _ReflectionFalloffFactor: 3.8
+    - _SPECULAR_IOR: 1.5
+    - _SPECULAR_ROUGHNESS: 0
+    - _Smoothness: 1
+    - _SmoothnessTextureChannel: 0
+    - _SpecularFactor: 0.3
+    - _SpecularFalloffFactor: 2.92
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _UVSec: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    - _foldoutBase: 1
+    - _foldoutClearCoat: 1
+    - _foldoutFlake: 1
+    - _foldoutOther: 1
+    m_Colors:
+    - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.18281263, g: 0.30333275, b: 0.63273466, a: 1}
+    - _ClearCoatColor: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
+    - _Color: {r: 0.028, g: 0.0749, b: 0.3581, a: 1}
+    - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
+    - _EdgeColor: {r: 0, g: 1, b: 0.80547357, a: 1}
+    - _EmissionColor: {r: 5.992157, g: 5.992157, b: 5.992157, a: 1}
+    - _PigmentColor: {r: 1, g: 0.32704395, b: 0.57995695, a: 1}
+    - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

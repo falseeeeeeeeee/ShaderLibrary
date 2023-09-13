@@ -85,6 +85,16 @@
 
 ------
 
+## Car
+
+### Car_CarPaint
+
+![](./ShaderLib_2021/Recordings/Car_CarPaint/Car_CarPaint.png)
+
+![](./ShaderLib_2021/Recordings/Car_CarPaint/Car_CarPaint.gif)
+
+------
+
 ## Effect
 
 ### Effect_HexagonDiffusion
