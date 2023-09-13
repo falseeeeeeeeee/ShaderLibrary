@@ -98,7 +98,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mipmap: 0
+    - _Mipmap: 0.06
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0

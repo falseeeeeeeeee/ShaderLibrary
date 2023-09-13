@@ -89,7 +89,8 @@ public class ControllerMatetialShader : MonoBehaviour
     {
         public Material Material;
         public string MaterialFloatName = "_CloseSwitch";
-        [Range(0f,1f)] public float Switch;
+        // [Range(0f,1f)] public float Switch;
+        public float Switch;
 
         public void SetMaterialFloat()
         {
