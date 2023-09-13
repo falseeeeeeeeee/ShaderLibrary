@@ -159,6 +159,14 @@
 
 ------
 
+### Sky_StylizedSky2
+
+![](./ShaderLib_2021/Recordings/Sky_StylizedSky2/Sky_StylizedSky2.png)
+
+![](./ShaderLib_2021/Recordings/Sky_StylizedSky2/Sky_StylizedSky2.gif)
+
+------
+
 ## Tool
 
 ### Tool_CubeMap
