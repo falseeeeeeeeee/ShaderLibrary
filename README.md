@@ -107,6 +107,13 @@
 
 ## Effect
 
+### Effect_BoxWire
+
+![](./ShaderLib_2021/Recordings/Effect_BoxWire/Effect_BoxWire.png)
+
+![](./ShaderLib_2021/Recordings/Effect_BoxWire/Effect_BoxWire.gif)
+
+------
 ### Effect_HexagonDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
