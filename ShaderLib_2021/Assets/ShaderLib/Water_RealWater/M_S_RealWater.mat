@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_S_RealWater
+  m_Shader: {fileID: 4800000, guid: 9a56352ed52dbee4499586ae14499478, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CubeMap:
+        m_Texture: {fileID: 8900000, guid: e9b821fba18cbee4897c8efa33642069, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamNoiseMap:
+        m_Texture: {fileID: 2800000, guid: 6aa5a69b11e7d284c92b4a11439e0785, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: a9d5c58016dca43498452e3f51d52ce7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrapMap:
+        m_Texture: {fileID: 2800000, guid: b0d60ba8890ae1e49812993394e10d12, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CubeMapIntensity: 1
+    - _CubeMapMipmap: 0
+    - _CullMode: 2
+    - _DepthMaxDistance: 0.73
+    - _DetailNormalScale: 0.5
+    - _FoamAmount: 0.087
+    - _FresnelRange: 0.2
+    - _NormalScale: 1
+    - _RefractionMaxDistance: 1
+    - _RefractionStrength: 0.02
+    - _SpecularRange: 128
+    - _Transparent: 1
+    - _WaveFrequency: 4
+    - _WaveMask: 0
+    - _WaveSpeed: 20
+    - _WaveStrength: 0.025
+    - _Wrap1Scale: 0.045
+    - _Wrap2Scale: 0.02
+    m_Colors:
+    - _BaseColor: {r: 0.21568629, g: 0.46274513, b: 0.40784317, a: 1}
+    - _DepthDeepColor: {r: 0.12941177, g: 0.25882354, b: 0.227451, a: 1}
+    - _DepthShallowColor: {r: 0.34901962, g: 0.68235296, b: 0.5686275, a: 1}
+    - _DetailNormalParams: {r: 1, g: 1, b: -1, a: 0.5}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamParams: {r: 2, g: 2, b: -0.5, a: -1}
+    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _NormalParams: {r: 4, g: 4, b: 1, a: 1}
+    - _SpecularColor: {r: 1, g: 0.9843138, b: 0.8745099, a: 1}
+    - _Wrap1Params: {r: 1, g: 1, b: 0.1, a: 0.2}
+    - _Wrap2Params: {r: 4.7, g: 4, b: -0.3, a: -0.4}
+  m_BuildTextureStacks: []
