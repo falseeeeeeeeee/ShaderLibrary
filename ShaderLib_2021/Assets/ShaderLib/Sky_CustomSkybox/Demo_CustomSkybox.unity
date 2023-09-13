@@ -160,7 +160,7 @@ MonoBehaviour:
   MaterialFloatName:
   - Material: {fileID: 2100000, guid: 765a59e830392664f98d259cd46acb9f, type: 2}
     MaterialFloatName: _Mipmap
-    Switch: 0.06
+    Switch: 8
   - Material: {fileID: 2100000, guid: 765a59e830392664f98d259cd46acb9f, type: 2}
     MaterialFloatName: _Rotation
     Switch: 0
