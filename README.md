@@ -107,11 +107,26 @@
 
 ## Effect
 
+### Effect_BoxWire
+
+![](./ShaderLib_2021/Recordings/Effect_BoxWire/Effect_BoxWire.png)
+
+![](./ShaderLib_2021/Recordings/Effect_BoxWire/Effect_BoxWire.gif)
+
+------
 ### Effect_HexagonDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.gif)
+
+------
+
+### Effect_RhythmLED
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLED/Effect_RhythmLED.png)
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLED/Effect_RhythmLED.gif)
 
 ------
 
@@ -252,6 +267,30 @@
 ![](./ShaderLib_2021/Recordings/Water_LiquidWater/Water_LiquidWater.png)
 
 ![](./ShaderLib_2021/Recordings/Water_LiquidWater/Water_LiquidWater.gif)
+
+------
+
+### Water_RealWater
+
+![](./ShaderLib_2021/Recordings/Water_RealWater/Water_RealWater.png)
+
+![](./ShaderLib_2021/Recordings/Water_RealWater/Water_RealWater.gif)
+
+------
+
+### Water_SimpleLava
+
+![](./ShaderLib_2021/Recordings/Water_SimpleLava/Water_SimpleLava.png)
+
+![](./ShaderLib_2021/Recordings/Water_SimpleLava/Water_SimpleLava.gif)
+
+------
+
+### Water_ToonWater
+
+![](./ShaderLib_2021/Recordings/Water_ToonWater/Water_ToonWater.png)
+
+![](./ShaderLib_2021/Recordings/Water_ToonWater/Water_ToonWater.gif)
 
 ------
 
