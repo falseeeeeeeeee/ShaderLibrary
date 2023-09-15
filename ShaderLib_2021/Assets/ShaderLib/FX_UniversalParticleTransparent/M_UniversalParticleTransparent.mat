@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_UniversalParticleTransparent
+  m_Shader: {fileID: 4800000, guid: 547b458c49361c048ba27b5bcd0fbb14, type: 3}
+  m_ValidKeywords:
+  - _ADDTEX1UVS_NORMAL
+  - _CYLINDERFACE_Y
+  - _DISSOLVETEXUVS_NORMAL
+  - _DISTORTMAINTEX_ON
+  - _MAINTEXUVS_NORMAL
+  - _MASKTEXUVS_NORMAL
+  m_InvalidKeywords:
+  - _ADDTEX1MULVERTEXCOLOR_ON
+  - _DISSOLVETEXAR_ON
+  - _DISTORTTEXAR_ON
+  - _MAINTEXMULVERTEXCOLOR_ON
+  - _MASKTEXAR_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AddTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VertexOffsetTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Add1Brightness: 1
+    - _Add1Saturation: 1
+    - _AddTex1BlendStyle: 0
+    - _AddTex1Intensity: 1
+    - _AddTex1MulVertexColor: 1
+    - _AddTex1Power: 1
+    - _AddTex1RSpeed: 0
+    - _AddTex1USpeed: 0
+    - _AddTex1UVRotation: 0
+    - _AddTex1UVS: 0
+    - _AddTex1VSpeed: 0
+    - _AlphaCut: 0
+    - _AlphaGamma: 0
+    - _BlendMode: 0
+    - _BlendOp: 0
+    - _ColorMask: 15
+    - _CullMode: 2
+    - _CustomAddTex1: 0
+    - _CustomAlphaGamma: 2.2
+    - _CustomDissolveTex: 0
+    - _CustomDistortTex: 0
+    - _CustomMainTex: 0
+    - _CustomVertexOffsetTex: 0
+    - _Cutoff: 0.5
+    - _CylinderFace: 1
+    - _DissolveIntensity: 0
+    - _DissolveSoft: 0.1
+    - _DissolveTexAR: 1
+    - _DissolveTexIntensity: 1
+    - _DissolveTexPower: 1
+    - _DissolveTexSoft: 0
+    - _DissolveTexUSpeed: 0
+    - _DissolveTexUVS: 0
+    - _DissolveTexVSpeed: 0
+    - _DissolveWide: 0.05
+    - _DissolveWideSaturation: 2
+    - _DissolveWideUseColor: 0
+    - _DistortDissolveTex: 0
+    - _DistortIntensity: 0
+    - _DistortMainTex: 1
+    - _DistortMaskTex: 0
+    - _DistortTexAR: 1
+    - _DistortTexUSpeed: 0
+    - _DistortTexVSpeed: 0
+    - _DstBlend: 10
+    - _FAddTex1: 0
+    - _FDissolveTex: 0
+    - _FDistortTex: 0
+    - _FFresnel: 0
+    - _FMaskTex: 0
+    - _FVertexOffsetTex: 0
+    - _FresnelAlphaBlendStyle: 2
+    - _FresnelBlendStyle: 0
+    - _FresnelHard: 0
+    - _FresnelMulVertexColor: 0
+    - _FresnelPower: 1
+    - _FresnelReverse: 0
+    - _FresnelScale: 1
+    - _MainTexAR: 0
+    - _MainTexMulVertexColor: 1
+    - _MainTexUSpeed: 0
+    - _MainTexUVS: 0
+    - _MainTexVSpeed: 0
+    - _MaskTexAR: 1
+    - _MaskTexReverse: 0
+    - _MaskTexUSpeed: 0
+    - _MaskTexUVS: 0
+    - _MaskTexVSpeed: 0
+    - _PreMulAlpha: 0
+    - _SoftFade: 1
+    - _SoftParticles: 0
+    - _SrcBlend: 5
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilFail: 0
+    - _StencilPass: 0
+    - _StencilReadMask: 255
+    - _StencilToggle: 0
+    - _StencilWriteMask: 255
+    - _StencilZFail: 0
+    - _Transparent: 1
+    - _UseUIAlphaClip: 0
+    - _UseUIRect: 0
+    - _VertexOffsetSinTime: 0
+    - _VertexOffsetStrength: 0
+    - _VertexOffsetTexUSpeed: 0
+    - _VertexOffsetTexVSpeed: 0
+    - _ZTestMode: 4
+    - _ZWriteMode: 0
+    m_Colors:
+    - _AddColor1: {r: 1, g: 1, b: 1, a: 1}
+    - _AddTex1UVCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _CylinderCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _VertexOffsetXYZSpeed: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

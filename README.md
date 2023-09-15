@@ -12,7 +12,7 @@
 
 ​		命名前缀按照制作Shader的工具类型当作前缀。如：ASE_XXX、SG_XXX...
 
-​		Shader路径按照使用的管线分类，一级为管线类型，二级为类别。如：CG/Base/ASE_XXX、URP/Base/SG_XXX...
+​		Shader路径按照使用的管线分类，一级为管线类型，二级为类别。如：Default/Base/ASE_XXX、URP/Base/SG_XXX...
 
 ​		Shader采用模块化路径，每一个Shader分为一个文件夹，相关的模型材质引用都放在根目录的**ShaderLib**文件夹下，如：Assets/ShaderLib/Base_XXX/S_XXX.shader
 
@@ -22,7 +22,7 @@
 | :----------------------------- | :------- | :----------------------------- |
 | Shader Forge                   | SF_      | SF_SimpleLit.shader            |
 | Amplify Shader Editor          | ASE_     | ASE_SimpleLit.shader           |
-| Amplify Shader Editor 材质函数 | ASF_     | ASF_CustomLight.asset          |
+| Amplify Shader Editor 材质函数 | ASEF_    | ASEF_CustomLight.asset         |
 | Shader Graph                   | SG_      | SG_SimpleLit.shadergraph       |
 | Shader Graph 子图              | SGS_     | SGS_CustomLight.shadersubgraph |
 | Shader Graph HLSL引用          | SGH_     | SGH_CustomLight.hlsl           |
@@ -33,12 +33,26 @@
 
 ## 路径
 
-| 管线                    | 命名方式：管线类型/类别/文件名 |
-| :---------------------- | :----------------------------- |
-| CG（默认渲染管线）      | CG/Base/S_SimpleLit.shader     |
-| LWRP（轻量渲染管线）    | LWRP/Base/S_SimpleLit.shader   |
-| **URP（通用渲染管线）** | URP/Base/S_SimpleLit.shader    |
-| HDRP（高清渲染管线）    | HDRP/Base/S_SimpleLit.shader   |
+| 管线                    | 命名方式：管线类型/类别/文件名  |
+| :---------------------- | :------------------------------ |
+| Default（默认渲染管线） | Default/Base/S_SimpleLit.shader |
+| LWRP（轻量渲染管线）    | LWRP/Base/S_SimpleLit.shader    |
+| **URP（通用渲染管线）** | **URP/Base/S_SimpleLit.shader** |
+| HDRP（高清渲染管线）    | HDRP/Base/S_SimpleLit.shader    |
+
+**引用材质函数/子图路径**
+
+如果不通用只用一次就放在原材质旁边，如果通用就要放在对应的Include文件夹内，如项目文件夹路径：Assets/Arts/**Shaders**/Include/ASE
+
+| 使用工具                       | 文件夹路径                       | 命名方式 |
+| ------------------------------ | -------------------------------- | -------- |
+| Shader Forge 材质函数          | Assets/Arts/Shaders/Include/SF   | SFF_xxx  |
+| Amplify Shader Editor 材质函数 | Assets/Arts/Shaders/Include/ASE  | ASEF_xxx |
+| Shader Graph 子图              | Assets/Arts/Shaders/Include/SG   | SGS_xxx  |
+| Shader Graph HLSL引用          | Assets/Arts/Shaders/Include/SG   | SGH_xxx  |
+| CG引用                         | Assets/Arts/Shaders/Include/CG   | SIC_xxx  |
+| HLSL引用                       | Assets/Arts/Shaders/Include/HLSL | SIH_xxx  |
+| GLSL引用                       | Assets/Arts/Shaders/Include/GLSL | SIG_xxx  |
 
 ## 类别
 
@@ -48,16 +62,20 @@
 
 ​		项目文件夹路径：Assets/Arts/Shader/**Base**/S_SimpleLit.shader
 
-| 类别                 | 文件名             | 文件夹名称：类别_名称 |
-| :------------------- | :----------------- | :-------------------- |
-| Base（基本的）       | S_SimpleLit.shader | Base_SimpleLit        |
-| Effect（效果类型的） |                    |                       |
-| FX（给特效使用的）   |                    |                       |
-| Glass（玻璃相关的）  |                    |                       |
-| Sky（天空盒相关）    |                    |                       |
-| Tool（功能性材质）   |                    |                       |
-| Vertex（顶点相关的） |                    |                       |
-| Water（水相关的）    |                    |                       |
+| 类别                  | 文件名             | 文件夹名称：类别_名称 |
+| :-------------------- | :----------------- | :-------------------- |
+| Base（基本的）        | S_SimpleLit.shader | Base_SimpleLit        |
+| Car（车漆相关）       |                    |                       |
+| Character（角色相关） |                    |                       |
+| Effect（效果类型的）  |                    |                       |
+| FX（给特效使用的）    |                    |                       |
+| Glass（玻璃相关的）   |                    |                       |
+| PPS（后处理相关）     |                    |                       |
+| Render（渲染效果）    |                    |                       |
+| Sky（天空盒相关）     |                    |                       |
+| Tool（功能性材质）    |                    |                       |
+| Vertex（顶点相关的）  |                    |                       |
+| Water（水相关的）     |                    |                       |
 
 
 
