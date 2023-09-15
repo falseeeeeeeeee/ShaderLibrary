@@ -298,6 +298,22 @@
 
 ------
 
+### Tool_ScreenSpaceOutlines
+
+![](./ShaderLib_2021/Recordings/Tool_ScreenSpaceOutlines/Tool_ScreenSpaceOutlines.png)
+
+![](./ShaderLib_2021/Recordings/Tool_ScreenSpaceOutlines/Tool_ScreenSpaceOutlines.gif)
+
+------
+
+### Tool_ShadowPlan
+
+![](./ShaderLib_2021/Recordings/Tool_ShadowPlan/Tool_ShadowPlan.png)
+
+![](./ShaderLib_2021/Recordings/Tool_ShadowPlan/Tool_ShadowPlan.gif)
+
+------
+
 ## Vertex
 
 ### Vertex_VertexAnimaionTexture
