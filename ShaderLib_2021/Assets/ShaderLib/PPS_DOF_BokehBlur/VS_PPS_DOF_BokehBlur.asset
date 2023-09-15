@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-272123408258380356
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff1bd36b92b63e48958cff894fa0bb8, type: 3}
+  m_Name: DOF_BokehBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  blurSize:
+    m_OverrideState: 1
+    m_Value: 0.0021
+  iterations:
+    m_OverrideState: 1
+    m_Value: 200
+  RTDownSample:
+    m_OverrideState: 1
+    m_Value: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.428
+  lensCoeff:
+    m_OverrideState: 1
+    m_Value: 0.342
+  maxCoC:
+    m_OverrideState: 1
+    m_Value: 0.924
+  rcpMaxCoC:
+    m_OverrideState: 1
+    m_Value: 0.231
+  rcpAspect:
+    m_OverrideState: 1
+    m_Value: 1.8
+  taaParams:
+    m_OverrideState: 1
+    m_Value: 2.87
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: VS_PPS_DOF_BokehBlur
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -272123408258380356}

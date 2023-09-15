@@ -146,8 +146,6 @@
 
 ------
 
-## FX
-
 ## Glass
 
 ### Glass_BlurGlass
@@ -163,6 +161,64 @@
 ![](./ShaderLib_2021/Recordings/Glass_MatcapGlass/Glass_MatcapGlass.png)
 
 ![](./ShaderLib_2021/Recordings/Glass_MatcapGlass/Glass_MatcapGlass.gif)
+
+------
+
+## PPS
+
+### PPS_Bloom
+
+![](./ShaderLib_2021/Recordings/PPS_Bloom/PPS_Bloom.png)
+
+![](./ShaderLib_2021/Recordings/PPS_Bloom/PPS_Bloom.gif)
+
+------
+
+### PPS_BokehBlur
+
+![](./ShaderLib_2021/Recordings/PPS_BokehBlur/PPS_BokehBlur.png)
+
+![](./ShaderLib_2021/Recordings/PPS_BokehBlur/PPS_BokehBlur.gif)
+
+------
+
+### PPS_DOF_BokehBlur
+
+![](./ShaderLib_2021/Recordings/PPS_DOF_BokehBlur/PPS_DOF_BokehBlur.png)
+
+![](./ShaderLib_2021/Recordings/PPS_DOF_BokehBlur/PPS_DOF_BokehBlur.gif)
+
+------
+
+### PPS_GaussianBlur
+
+![](./ShaderLib_2021/Recordings/PPS_GaussianBlur/PPS_GaussianBlur.png)
+
+![](./ShaderLib_2021/Recordings/PPS_GaussianBlur/PPS_GaussianBlur.gif)
+
+------
+
+### PPS_HueBrightnessSaturationContrast
+
+![](./ShaderLib_2021/Recordings/PPS_HueBrightnessSaturationContrast/PPS_HueBrightnessSaturationContrast.png)
+
+![](./ShaderLib_2021/Recordings/PPS_HueBrightnessSaturationContrast/PPS_HueBrightnessSaturationContrast.gif)
+
+------
+
+### PPS_Mosaic
+
+![](./ShaderLib_2021/Recordings/PPS_Mosaic/PPS_Mosaic.png)
+
+![](./ShaderLib_2021/Recordings/PPS_Mosaic/PPS_Mosaic.gif)
+
+------
+
+### PPS_VolumeLighting
+
+![](./ShaderLib_2021/Recordings/PPS_VolumeLighting/PPS_VolumeLighting.png)
+
+![](./ShaderLib_2021/Recordings/PPS_VolumeLighting/PPS_VolumeLighting.gif)
 
 ------
 

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: VS_PPS_BokehBlur
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 790251578081583116}
+--- !u!114 &790251578081583116
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31cbe7ce8b2c364aac7cc19ee2c191d, type: 3}
+  m_Name: BokehBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  blurSize:
+    m_OverrideState: 1
+    m_Value: 0.00133
+  iterations:
+    m_OverrideState: 1
+    m_Value: 256
+  RTDownSample:
+    m_OverrideState: 1
+    m_Value: 1
