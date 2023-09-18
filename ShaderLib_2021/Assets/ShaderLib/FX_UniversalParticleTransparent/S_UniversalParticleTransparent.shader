@@ -721,7 +721,7 @@ Shader "URP/FX/S_UniversalParticleTransparent"
 
 				// 预乘
 				#ifdef _PREMULALPHA_ON
-                    Alpha = Color * Alpha;
+                    Alpha = Color.rgb * Alpha;
                 #endif
 
 				// 伽马

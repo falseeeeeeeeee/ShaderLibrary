@@ -12,8 +12,16 @@ Material:
   m_ValidKeywords:
   - _ADDTEX1UVS_NORMAL
   - _CYLINDERFACE_Y
-  - _DISSOLVETEXUVS_NORMAL
+  - _DISSOLVETEXUVS_CYLINDER
+  - _DISSOLVEWIDEUSECOLOR_ON
+  - _DISTORTDISSOLVETEX_ON
   - _DISTORTMAINTEX_ON
+  - _DISTORTMASKTEX_ON
+  - _FDISSOLVETEX_ON
+  - _FDISTORTTEX_ON
+  - _FFRESNEL_ON
+  - _FMASKTEX_ON
+  - _FVERTEXOFFSETTEX_ON
   - _MAINTEXUVS_NORMAL
   - _MASKTEXUVS_NORMAL
   m_InvalidKeywords:
@@ -36,23 +44,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 750e5d8387d7c5046ae04301c8c1154f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistortTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 750e5d8387d7c5046ae04301c8c1154f, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 16, y: 16}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _VertexOffsetTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 750e5d8387d7c5046ae04301c8c1154f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -83,38 +91,38 @@ Material:
     - _Cutoff: 0.5
     - _CylinderFace: 1
     - _DissolveIntensity: 0
-    - _DissolveSoft: 0.1
+    - _DissolveSoft: 0
     - _DissolveTexAR: 1
-    - _DissolveTexIntensity: 1
-    - _DissolveTexPower: 1
+    - _DissolveTexIntensity: 1.2
+    - _DissolveTexPower: 0.5
     - _DissolveTexSoft: 0
-    - _DissolveTexUSpeed: 0
-    - _DissolveTexUVS: 0
-    - _DissolveTexVSpeed: 0
+    - _DissolveTexUSpeed: 0.01
+    - _DissolveTexUVS: 2
+    - _DissolveTexVSpeed: 0.01
     - _DissolveWide: 0.05
     - _DissolveWideSaturation: 2
-    - _DissolveWideUseColor: 0
-    - _DistortDissolveTex: 0
+    - _DissolveWideUseColor: 1
+    - _DistortDissolveTex: 1
     - _DistortIntensity: 0
     - _DistortMainTex: 1
-    - _DistortMaskTex: 0
+    - _DistortMaskTex: 1
     - _DistortTexAR: 1
-    - _DistortTexUSpeed: 0
-    - _DistortTexVSpeed: 0
+    - _DistortTexUSpeed: 0.01
+    - _DistortTexVSpeed: 0.01
     - _DstBlend: 10
     - _FAddTex1: 0
-    - _FDissolveTex: 0
-    - _FDistortTex: 0
-    - _FFresnel: 0
-    - _FMaskTex: 0
-    - _FVertexOffsetTex: 0
+    - _FDissolveTex: 1
+    - _FDistortTex: 1
+    - _FFresnel: 1
+    - _FMaskTex: 1
+    - _FVertexOffsetTex: 1
     - _FresnelAlphaBlendStyle: 2
     - _FresnelBlendStyle: 0
     - _FresnelHard: 0
     - _FresnelMulVertexColor: 0
     - _FresnelPower: 1
     - _FresnelReverse: 0
-    - _FresnelScale: 1
+    - _FresnelScale: 0
     - _MainTexAR: 0
     - _MainTexMulVertexColor: 1
     - _MainTexUSpeed: 0
@@ -122,9 +130,9 @@ Material:
     - _MainTexVSpeed: 0
     - _MaskTexAR: 1
     - _MaskTexReverse: 0
-    - _MaskTexUSpeed: 0
+    - _MaskTexUSpeed: 0.1
     - _MaskTexUVS: 0
-    - _MaskTexVSpeed: 0
+    - _MaskTexVSpeed: 0.1
     - _PreMulAlpha: 0
     - _SoftFade: 1
     - _SoftParticles: 0
@@ -145,13 +153,13 @@ Material:
     - _VertexOffsetTexUSpeed: 0
     - _VertexOffsetTexVSpeed: 0
     - _ZTestMode: 4
-    - _ZWriteMode: 0
+    - _ZWriteMode: 1
     m_Colors:
     - _AddColor1: {r: 1, g: 1, b: 1, a: 1}
     - _AddTex1UVCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _CylinderCenter: {r: 0, g: 0, b: 0, a: 0}
-    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CylinderCenter: {r: 0, g: 0, b: 0.5, a: 0}
+    - _DissolveColor: {r: 0, g: 1, b: 0.5911093, a: 1}
+    - _FresnelColor: {r: 1, g: 0, b: 0.318408, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
-    - _VertexOffsetXYZSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _VertexOffsetXYZSpeed: {r: 0.1, g: 0.1, b: 0.1, a: 0}
   m_BuildTextureStacks: []

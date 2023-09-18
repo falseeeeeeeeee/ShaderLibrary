@@ -164,6 +164,16 @@
 
 ------
 
+## FX
+
+### FX_UniversalParticleTransparent
+
+![](./ShaderLib_2021/Recordings/FX_UniversalParticleTransparent/FX_UniversalParticleTransparent.png)
+
+![](./ShaderLib_2021/Recordings/FX_UniversalParticleTransparent/FX_UniversalParticleTransparent.gif)
+
+------
+
 ## Glass
 
 ### Glass_BlurGlass
