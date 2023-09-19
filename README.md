@@ -115,6 +115,14 @@
 
 ## Character
 
+### Character_SimpleSSS
+
+![](./ShaderLib_2021/Recordings/Character_SimpleSSS/Character_SimpleSSS.png)
+
+![](./ShaderLib_2021/Recordings/Character_SimpleSSS/Character_SimpleSSS.gif)
+
+------
+
 ### Character_Stockings
 
 ![](./ShaderLib_2021/Recordings/Character_Stockings/Character_Stockings.png)
