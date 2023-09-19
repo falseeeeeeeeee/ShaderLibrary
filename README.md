@@ -172,6 +172,22 @@
 
 ------
 
+### Effect_Transitions
+
+![](./ShaderLib_2021/Recordings/Effect_Transitions/Effect_Transitions.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Transitions/Effect_Transitions.gif)
+
+------
+
+### Effect_Transitions2
+
+![](./ShaderLib_2021/Recordings/Effect_Transitions2/Effect_Transitions2.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Transitions2/Effect_Transitions2.gif)
+
+------
+
 ## FX
 
 ### FX_UniversalParticleTransparent
