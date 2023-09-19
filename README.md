@@ -67,7 +67,9 @@
 | Base（基本的）        | S_SimpleLit.shader | Base_SimpleLit        |
 | Car（车漆相关）       |                    |                       |
 | Character（角色相关） |                    |                       |
+| Cloud（云相关）       |                    |                       |
 | Effect（效果类型的）  |                    |                       |
+| Fog（雾效相关）       |                    |                       |
 | FX（给特效使用的）    |                    |                       |
 | Glass（玻璃相关的）   |                    |                       |
 | PPS（后处理相关）     |                    |                       |
@@ -202,6 +204,16 @@
 ![](./ShaderLib_2021/Recordings/Effect_Transitions3/Effect_Transitions3.png)
 
 ![](./ShaderLib_2021/Recordings/Effect_Transitions3/Effect_Transitions3.gif)
+
+------
+
+## Fog
+
+### Fog_UnderWaterFog
+
+![](./ShaderLib_2021/Recordings/Fog_UnderWaterFog/Fog_UnderWaterFog.png)
+
+![](./ShaderLib_2021/Recordings/Fog_UnderWaterFog/Fog_UnderWaterFog.gif)
 
 ------
 
