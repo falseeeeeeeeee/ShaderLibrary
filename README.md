@@ -140,6 +140,15 @@
 ![](./ShaderLib_2021/Recordings/Effect_BoxWire/Effect_BoxWire.gif)
 
 ------
+
+### Effect_Fluid
+
+![](./ShaderLib_2021/Recordings/Effect_Fluid/Effect_Fluid.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Fluid/Effect_Fluid.gif)
+
+------
+
 ### Effect_HexagonDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
