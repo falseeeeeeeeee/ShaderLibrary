@@ -209,6 +209,14 @@
 
 ## Fog
 
+### Fog_HeighFog
+
+![](./ShaderLib_2021/Recordings/Fog_HeighFog/Fog_HeighFog.png)
+
+![](./ShaderLib_2021/Recordings/Fog_HeighFog/Fog_HeighFog.gif)
+
+------
+
 ### Fog_UnderWaterFog
 
 ![](./ShaderLib_2021/Recordings/Fog_UnderWaterFog/Fog_UnderWaterFog.png)
@@ -216,7 +224,6 @@
 ![](./ShaderLib_2021/Recordings/Fog_UnderWaterFog/Fog_UnderWaterFog.gif)
 
 ------
-
 ## FX
 
 ### FX_UniversalParticleTransparent

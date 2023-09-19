@@ -511,7 +511,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Graphs/ENV",
+    "m_Path": "URP/Fog",
     "m_GraphPrecision": 2,
     "m_PreviewMode": 2,
     "m_OutputNode": {
