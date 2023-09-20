@@ -430,6 +430,22 @@
 
 ------
 
+### Tool_BlendModePS
+
+![](./ShaderLib_2021/Recordings/Tool_BlendModePS/Tool_BlendModePS.png)
+
+![](./ShaderLib_2021/Recordings/Tool_BlendModePS/Tool_BlendModePS.gif)
+
+------
+
+### Tool_BlendModeUnity
+
+![](./ShaderLib_2021/Recordings/Tool_BlendModeUnity/Tool_BlendModeUnity.png)
+
+![](./ShaderLib_2021/Recordings/Tool_BlendModeUnity/Tool_BlendModeUnity.gif)
+
+------
+
 ### Tool_CubeMap
 
 ![](./ShaderLib_2021/Recordings/Tool_CubeMap/Tool_CubeMap.png)
