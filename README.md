@@ -201,6 +201,14 @@
 
 ------
 
+### Effect_Shield
+
+![](./ShaderLib_2021/Recordings/Effect_Shield/Effect_Shield.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Shield/Effect_Shield.gif)
+
+------
+
 ### Effect_TextureDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_TextureDiffusion/Effect_TextureDiffusion.png)
@@ -258,6 +266,7 @@
 ![](./ShaderLib_2021/Recordings/Fog_UnderWaterFog/Fog_UnderWaterFog.gif)
 
 ------
+
 ## FX
 
 ### FX_UniversalParticleTransparent
