@@ -421,6 +421,14 @@
 
 ------
 
+### Tool_Decal
+
+![](./ShaderLib_2021/Recordings/Tool_Decal/Tool_Decal.png)
+
+![](./ShaderLib_2021/Recordings/Tool_Decal/Tool_Decal.gif)
+
+------
+
 ### Tool_MatCap
 
 ![](./ShaderLib_2021/Recordings/Tool_MatCap/Tool_MatCap.png)
