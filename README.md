@@ -117,6 +117,22 @@
 
 ## Character
 
+### Character_Hair（**Anisotropic Highlight Calculation**）
+
+![](./ShaderLib_2021/Recordings/Character_Hair/Character_Hair.png)
+
+![](./ShaderLib_2021/Recordings/Character_Hair/Character_Hair.gif)
+
+------
+
+### Character_Hair2（UVNoise）
+
+![](./ShaderLib_2021/Recordings/Character_Hair2/Character_Hair2.png)
+
+![](./ShaderLib_2021/Recordings/Character_Hair2/Character_Hair2.gif)
+
+------
+
 ### Character_SimpleSSS
 
 ![](./ShaderLib_2021/Recordings/Character_SimpleSSS/Character_SimpleSSS.png)
