@@ -149,6 +149,16 @@
 
 ------
 
+## Cloud
+
+### Cloud_ParallaxCloud
+
+![](./ShaderLib_2021/Recordings/Cloud_ParallaxCloud/Cloud_ParallaxCloud.png)
+
+![](./ShaderLib_2021/Recordings/Cloud_ParallaxCloud/Cloud_ParallaxCloud.gif)
+
+------
+
 ## Effect
 
 ### Effect_BoxWire
