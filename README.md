@@ -542,6 +542,14 @@
 
 ------
 
+### Tool_Stencil
+
+![](./ShaderLib_2021/Recordings/Tool_Stencil/Tool_Stencil.png)
+
+![](./ShaderLib_2021/Recordings/Tool_Stencil/Tool_Stencil.gif)
+
+------
+
 ## Vertex
 
 ### Vertex_VertexAnimaionTexture
