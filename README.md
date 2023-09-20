@@ -394,6 +394,14 @@
 
 ------
 
+### Render_SimpleJelly
+
+![](./ShaderLib_2021/Recordings/Render_SimpleJelly/Render_SimpleJelly.png)
+
+![](./ShaderLib_2021/Recordings/Render_SimpleJelly/Render_SimpleJelly.gif)
+
+------
+
 ### Render_SimpleToon
 
 ![](./ShaderLib_2021/Recordings/Render_SimpleToon/Render_SimpleToon.png)
@@ -402,11 +410,11 @@
 
 ------
 
-### Render_SimpleJelly
+### Render_ThreeColor
 
-![](./ShaderLib_2021/Recordings/Render_SimpleJelly/Render_SimpleJelly.png)
+![](./ShaderLib_2021/Recordings/Render_ThreeColor/Render_ThreeColor.png)
 
-![](./ShaderLib_2021/Recordings/Render_SimpleJelly/Render_SimpleJelly.gif)
+![](./ShaderLib_2021/Recordings/Render_ThreeColor/Render_ThreeColor.gif)
 
 ------
 

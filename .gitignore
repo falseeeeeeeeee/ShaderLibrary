@@ -62,6 +62,10 @@ crashlytics-build.properties
 # 忽略掉个人测试&购买的付费插件目录
 */Assets/Test
 */Assets/Test.meta
+*/Assets/Art
+*/Assets/Art.meta
+*/Assets/Arts
+*/Assets/Arts.meta
 */Assets/SrcRes
 */Assets/SrcRes.meta
 */Assets/Plugins/MulliganRenamer
