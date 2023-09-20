@@ -169,6 +169,14 @@
 
 ------
 
+### Effect_Dissolve
+
+![](./ShaderLib_2021/Recordings/Effect_Dissolve/Effect_Dissolve.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Dissolve/Effect_Dissolve.gif)
+
+------
+
 ### Effect_Fluid
 
 ![](./ShaderLib_2021/Recordings/Effect_Fluid/Effect_Fluid.png)
