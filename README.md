@@ -249,6 +249,14 @@
 
 ------
 
+### Effect_XRay
+
+![](./ShaderLib_2021/Recordings/Effect_XRay/Effect_XRay.png)
+
+![](./ShaderLib_2021/Recordings/Effect_XRay/Effect_XRay.gif)
+
+------
+
 ## Fog
 
 ### Fog_HeighFog
@@ -430,7 +438,7 @@
 
 ------
 
-### Tool_BlendModePS
+### Tool_BlendModePS（含GUI）
 
 ![](./ShaderLib_2021/Recordings/Tool_BlendModePS/Tool_BlendModePS.png)
 
@@ -438,7 +446,7 @@
 
 ------
 
-### Tool_BlendModeUnity
+### Tool_BlendModeUnity（含GUI）
 
 ![](./ShaderLib_2021/Recordings/Tool_BlendModeUnity/Tool_BlendModeUnity.png)
 
