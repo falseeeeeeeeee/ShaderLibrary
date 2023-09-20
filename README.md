@@ -445,11 +445,35 @@
 
 ------
 
+### Tool_PolarCoord
+
+![](./ShaderLib_2021/Recordings/Tool_PolarCoord/Tool_PolarCoord.png)
+
+![](./ShaderLib_2021/Recordings/Tool_PolarCoord/Tool_PolarCoord.gif)
+
+------
+
 ### Tool_ScreenSpaceOutlines
 
 ![](./ShaderLib_2021/Recordings/Tool_ScreenSpaceOutlines/Tool_ScreenSpaceOutlines.png)
 
 ![](./ShaderLib_2021/Recordings/Tool_ScreenSpaceOutlines/Tool_ScreenSpaceOutlines.gif)
+
+------
+
+### Tool_ScreenUV
+
+![](./ShaderLib_2021/Recordings/Tool_ScreenUV/Tool_ScreenUV.png)
+
+![](./ShaderLib_2021/Recordings/Tool_ScreenUV/Tool_ScreenUV.gif)
+
+------
+
+### Tool_Sequence（含Billboard）
+
+![](./ShaderLib_2021/Recordings/Tool_Sequence/Tool_Sequence.png)
+
+![](./ShaderLib_2021/Recordings/Tool_Sequence/Tool_Sequence.gif)
 
 ------
 
