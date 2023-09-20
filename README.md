@@ -295,6 +295,14 @@
 
 ------
 
+### Glass_Bubble
+
+![](./ShaderLib_2021/Recordings/Glass_Bubble/Glass_Bubble.png)
+
+![](./ShaderLib_2021/Recordings/Glass_Bubble/Glass_Bubble.gif)
+
+------
+
 ### Glass_MatcapGlass
 
 ![](./ShaderLib_2021/Recordings/Glass_MatcapGlass/Glass_MatcapGlass.png)
