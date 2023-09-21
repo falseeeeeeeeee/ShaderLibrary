@@ -209,6 +209,14 @@
 
 ------
 
+### Effect_RhythmLEDScreen
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLEDScreen/Effect_RhythmLEDScreen.png)
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLEDScreen/Effect_RhythmLEDScreen.gif)
+
+------
+
 ### Effect_Shield
 
 ![](./ShaderLib_2021/Recordings/Effect_Shield/Effect_Shield.png)

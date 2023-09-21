@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6327198721340610590
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_RhythmLEDScreen 1
+  m_Shader: {fileID: -6465566751694194690, guid: 9ab71debdb073004894ab10d54c65280,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 396aa004f6f4c5f4f8b18c09632cca9d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _InputMap:
+        m_Texture: {fileID: 2800000, guid: 5736902f325a87d408d6c99de26fda2d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LEDMap:
+        m_Texture: {fileID: 2800000, guid: dbe15880ad34d9a4c87b13a936579953, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_04710da2add54fb687913d1bf5a6b7b2: 20
+    - Vector1_9587ac5421c44de1b677a4ce4f167768: 10
+    - _BaseColorizeIntensity: 1
+    - _FlipbookNumber: 2
+    - _GlobaBrightness: 1
+    - _InputColorColorizeIntensity: 1
+    - _InputMapXSpeed: 0.1
+    - _InputMapYSpeed: 0
+    - _LEDBrightness: 10
+    - _LEDMapNormalStrength: 0
+    - _LEDMapXxX: 0
+    - _LEDNumber: 50
+    - _LEDStrength: 10
+    - _LEDStyle: 2
+    - _LEDXNumber: 16
+    - _LEDYNumber: 16
+    - _LOD: 2.84
+    - _Metallic: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RandomNoiseScale: 10
+    - _RandomSpeed: 1
+    - _Smoothness: 1
+    - _USERANDOMCOLOR: 0
+    - _UseIntervalOffset: 0
+    - _UsePosterize: 1
+    m_Colors:
+    - Color_941038397df743edb971942aa6a65b41: {r: 1.498039, g: 1.498039, b: 1.498039,
+        a: 0}
+    - _BaseColor: {r: 9.849155, g: 9.849155, b: 9.849155, a: 1}
+    - _InputColor: {r: 1, g: 1, b: 1, a: 1}
+    - _InputMapTileAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _RandomColorMinAndMax: {r: 0, g: 1, b: 0, a: 0}
+    - _Vector2: {r: 2, g: 2, b: 0, a: 0}
+  m_BuildTextureStacks: []
