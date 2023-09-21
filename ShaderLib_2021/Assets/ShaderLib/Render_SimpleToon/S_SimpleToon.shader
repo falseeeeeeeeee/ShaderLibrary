@@ -1,4 +1,4 @@
-﻿Shader "URP/Toon/S_SimpleToon"
+﻿Shader "URP/Render/S_SimpleToon"
 {
     Properties 
     {
