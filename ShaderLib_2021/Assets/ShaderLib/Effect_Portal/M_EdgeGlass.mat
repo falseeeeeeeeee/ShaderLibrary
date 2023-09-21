@@ -36,10 +36,10 @@ Material:
     m_Floats:
     - _BlurStrength: 0.484
     - _CullMode: 2
-    - _DepthOffset: 3.8
+    - _DepthOffset: 3.25
     - _EnableBumpMap: 0
     - _GlassBlurStrength: 1
-    - _GlassThickness: 0
+    - _GlassThickness: 0.01
     - _Gloss: 0.473
     - _NormalScale: 1
     - _SpecularRange: 0.275
@@ -50,6 +50,6 @@ Material:
     m_Colors:
     - _BaseColor: {r: 2, g: 2, b: 2, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _DepthEdgeColor: {r: 32, g: 2.2641506, b: 2.2641506, a: 1}
+    - _DepthEdgeColor: {r: 2.3455484, g: 13.980477, b: 31.999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
