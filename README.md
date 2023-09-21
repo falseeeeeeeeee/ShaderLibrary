@@ -185,6 +185,14 @@
 
 ------
 
+### Effect_Glitch
+
+![](./ShaderLib_2021/Recordings/Effect_Glitch/Effect_Glitch.png)
+
+![](./ShaderLib_2021/Recordings/Effect_Glitch/Effect_Glitch.gif)
+
+------
+
 ### Effect_HexagonDiffusion
 
 ![](./ShaderLib_2021/Recordings/Effect_HexagonDiffusion/Effect_HexagonDiffusion.png)
