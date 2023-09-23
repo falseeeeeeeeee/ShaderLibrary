@@ -62,23 +62,23 @@
 
 ​		项目文件夹路径：Assets/Arts/Shader/**Base**/S_SimpleLit.shader
 
-| 类别                  | 文件名             | 文件夹名称：类别_名称 |
-| :-------------------- | :----------------- | :-------------------- |
-| Base（基本的）        | S_SimpleLit.shader | Base_SimpleLit        |
-| Car（车漆相关）       |                    |                       |
-| Character（角色相关） |                    |                       |
-| Cloud（云相关）       |                    |                       |
-| Effect（效果类型的）  |                    |                       |
-| Fog（雾效相关）       |                    |                       |
-| FX（给特效使用的）    |                    |                       |
-| Glass（玻璃相关的）   |                    |                       |
-| PPS（后处理相关）     |                    |                       |
-| Render（渲染效果）    |                    |                       |
-| Sky（天空盒相关）     |                    |                       |
-| Tool（功能性材质）    |                    |                       |
-| Vertex（顶点相关的）  |                    |                       |
-| Water（水相关的）     |                    |                       |
-
+| 类别                   | 文件名             | 文件夹名称：类别_名称 |
+| :--------------------- | :----------------- | :-------------------- |
+| Base（基本的）         | S_SimpleLit.shader | Base_SimpleLit        |
+| Car（车漆相关）        |                    |                       |
+| Character（角色相关）  |                    |                       |
+| Cloud（云相关）        |                    |                       |
+| Effect（效果类型的）   |                    |                       |
+| Fog（雾效相关）        |                    |                       |
+| FX（给特效使用的）     |                    |                       |
+| Geometry（几何着色器） |                    |                       |
+| Glass（玻璃相关的）    |                    |                       |
+| PPS（后处理相关）      |                    |                       |
+| Render（渲染效果）     |                    |                       |
+| Sky（天空盒相关）      |                    |                       |
+| Tool（功能性材质）     |                    |                       |
+| Vertex（顶点相关的）   |                    |                       |
+| Water（水相关的）      |                    |                       |
 
 
 ------
@@ -325,6 +325,25 @@
 
 ------
 
+## Geometry
+
+### Geometry_Grass
+
+![](./ShaderLib_2021/Recordings/Geometry_Grass/Geometry_Grass.png)
+
+![](./ShaderLib_2021/Recordings/Geometry_Grass/Geometry_Grass.gif)
+
+------
+
+### Geometry_Wireframe
+
+![](./ShaderLib_2021/Recordings/Geometry_Wireframe/Geometry_Wireframe.png)
+
+![](./ShaderLib_2021/Recordings/Geometry_Wireframe/Geometry_Wireframe.gif)
+
+------
+
+
 ## Glass
 
 ### Glass_BlurGlass
@@ -531,6 +550,30 @@
 ![](./ShaderLib_2021/Recordings/Tool_Decal/Tool_Decal.png)
 
 ![](./ShaderLib_2021/Recordings/Tool_Decal/Tool_Decal.gif)
+
+------
+
+### Tool_Displacement
+
+![](./ShaderLib_2021/Recordings/Tool_Displacement/Tool_Displacement.png)
+
+![](./ShaderLib_2021/Recordings/Tool_Displacement/Tool_Displacement.gif)
+
+------
+
+### Tool_FlowMap
+
+![](./ShaderLib_2021/Recordings/Tool_FlowMap/Tool_FlowMap.png)
+
+![](./ShaderLib_2021/Recordings/Tool_FlowMap/Tool_FlowMap.gif)
+
+------
+
+### Tool_Fwidth
+
+![](./ShaderLib_2021/Recordings/Tool_Fwidth/Tool_Fwidth.png)
+
+![](./ShaderLib_2021/Recordings/Tool_Fwidth/Tool_Fwidth.gif)
 
 ------
 
