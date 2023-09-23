@@ -1,10 +1,17 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class ChangeMaterialTexture : MonoBehaviour
 {
-    public Texture[] textures; // 贴图数组
-    public string shaderProperty = "_RampTex"; // Shader属性名
+    [System.Serializable]
+    public class TextureSet
+    {
+        public string shaderProperty; // Shader属性名
+        public Texture[] textures; // 贴图数组
+    }
+
+    public List<TextureSet> textureSets = new List<TextureSet>(); // 存储所有的TextureSet
 
     [Range(0, 10)] // 默认最大值为10，但会在Start()中根据textures的长度进行调整
     public int textureIndex = 0; // 滑条
@@ -21,7 +28,7 @@ public class ChangeMaterialTexture : MonoBehaviour
     {
         if (textureIndex != previousIndex) // 如果索引发生变化
         {
-            UpdateTexture();
+            UpdateTextures();
             previousIndex = textureIndex;
         }
     }
@@ -29,16 +36,22 @@ public class ChangeMaterialTexture : MonoBehaviour
     // 当Inspector的值发生变化时调用
     private void OnValidate()
     {
-        UpdateTexture();
+        UpdateTextures();
     }
 
     // 使用此方法来切换贴图
-    private void UpdateTexture()
+    private void UpdateTextures()
     {
-        if (rend && textures.Length > 0)
+        if (rend)
         {
-            textureIndex = Mathf.Clamp(textureIndex, 0, textures.Length - 1);
-            rend.material.SetTexture(shaderProperty, textures[textureIndex]);
+            foreach (var textureSet in textureSets)
+            {
+                if (textureSet.textures.Length > 0)
+                {
+                    int index = Mathf.Clamp(textureIndex, 0, textureSet.textures.Length - 1);
+                    rend.material.SetTexture(textureSet.shaderProperty, textureSet.textures[index]);
+                }
+            }
         }
     }
 }
