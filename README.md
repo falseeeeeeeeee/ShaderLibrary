@@ -225,6 +225,14 @@
 
 ------
 
+### Effect_RhythmLight
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLight/Effect_RhythmLight.png)
+
+![](./ShaderLib_2021/Recordings/Effect_RhythmLight/Effect_RhythmLight.gif)
+
+------
+
 ### Effect_RhythmLineWave
 
 ![](./ShaderLib_2021/Recordings/Effect_RhythmLineWave/Effect_RhythmLineWave.png)
