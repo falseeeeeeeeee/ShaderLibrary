@@ -21,17 +21,24 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_BuLuoNiYa_Eye
-  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+  m_Shader: {fileID: 4800000, guid: c91a9c4a9ba7b9a40a033897784852eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ValidKeywords:
+  - _FAKE_OUTLINE_ON
+  - _METAL_SPECULAR_ON
+  - _OUTLINE_ON
+  - _RIM_LIGHTING_ON
+  - _SPECULAR_COLOR_CUSTOM
+  - _SPECULAR_ON
+  - _USE_RAMP_COLOR_ON
+  m_InvalidKeywords:
+  - _AREA_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -39,6 +46,14 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 96e2cdb648efb814eaa0b11aa0ae188c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyCoolRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyWarmRamp:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,6 +76,46 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ExpressionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FaceColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FaceMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairCoolRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairWarmRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyStockings:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 96e2cdb648efb814eaa0b11aa0ae188c, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -69,7 +124,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OutlineZOffsetMaskTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -78,6 +141,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyStockings:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -95,41 +170,146 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Area: 0
+    - _BaseColorBPower: 1
+    - _BaseColorGPower: 1
+    - _BaseColorRPower: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
+    - _BlendOpOverlay: 0
+    - _BodyCoolRampColorMixFactor: 0
+    - _BodyWarmRampColorMixFactor: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
+    - _CullMode: 2
     - _Cutoff: 0.5
+    - _DayTime: 12
+    - _DayTimeManualON: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _DstBlendMode: 0
+    - _DstBlendModeOverlay: 0
+    - _EmissionIntensity: 1
+    - _EmissionMixBaseColor: 1
+    - _EnableCustomSpecularColor: 1
+    - _EnableMetalSpecular: 1
+    - _EnableSpecular: 1
     - _EnvironmentReflections: 1
+    - _ExCheekIntensity: 0
+    - _ExShadowIntensity: 0
+    - _ExShyIntensity: 0
+    - _FaceShadowOffset: -0.01
+    - _FaceShadowTransitionSoftness: 0.05
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HairCoolRampColorMixFactor: 0
+    - _HairWarmRampColorMixFactor: 0
+    - _IndirectLightFlattenNormal: 0
+    - _IndirectLightMixBaseColor: 1
+    - _IndirectLightOcclusionUsage: 0.5
+    - _IndirectLightUsage: 0.5
+    - _IsFace: 0
+    - _LerpAOIntensity: 1
+    - _MainLightBrightnessFactor: 1
+    - _MainLightColorUsage: 1
+    - _MetalSpecularMetallic: 0.52
     - _Metallic: 0
+    - _ModelScale: 1
     - _OcclusionStrength: 1
+    - _OutlineGamma: 16
+    - _OutlineUseVertexColorSmoothNormal: 0
+    - _OutlineWidth: 1
+    - _OutlineZOffset: 0.0001
+    - _OutlineZOffsetMaskRemapEnd: 1
+    - _OutlineZOffsetMaskRemapStart: 0
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RimDark0: 0.5
+    - _RimEdgeSoftness: 0.05
+    - _RimIntensity: 0.5
+    - _RimIntensityBackFace: 0
+    - _RimLightMixAlbedo: 0.9
+    - _RimThresholdMax: 0.9
+    - _RimThresholdMin: 0.6
+    - _RimWidth0: 0.5
     - _SampleGI: 0
+    - _ScrBlendModeOverlay: 1
+    - _ShadowBoost: 1
+    - _ShadowRampOffset: 0.75
+    - _ShadowThresholdCenter: 0
+    - _ShadowThresholdSoftness: 0.1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
+    - _SpecularBrightness: 10
+    - _SpecularExpon: 50
     - _SpecularHighlights: 1
+    - _SpecularKsMetal: 1
+    - _SpecularKsNonMetal: 0.04
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _SrcBlendMode: 1
+    - _StencilComp: 0
+    - _StencilCompOverlay: 0
+    - _StencilFailOp: 0
+    - _StencilPassOp: 0
+    - _StencilRef: 0
+    - _StencilRefOverlay: 0
+    - _StencilZFailOp: 0
+    - _StockingsTextureUsage: 0.1
+    - _StockingsTransitionHardness: 0.4
+    - _StockingsTransitionPower: 1
+    - _StockingsTransitionThreshold: 0.58
     - _Surface: 0
+    - _UseAlphaClipping: 0
+    - _UseDrawOverlay: 0
+    - _UseEmission: 0
+    - _UseFaceExpression: 0
+    - _UseFakeOutline: 1
+    - _UseNormalMap: 0
+    - _UseOutline: 1
+    - _UseRampColor: 1
+    - _UseRimLight: 1
+    - _UseStockings: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _mBloomIntensity0: 1
     m_Colors:
+    - _BackFaceTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BloomColor0: {r: 1, g: 1, b: 1, a: 1}
+    - _BodyCoolRampColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BodyWarmRampColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionTintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ExCheekColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ExEyeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ExShadowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ExShyColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FaceColorMapColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FrontFaceTintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HairColorMapColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HairCoolRampColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HairWarmRampColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HeadForward: {r: 0, g: 0, b: 1, a: 1}
+    - _HeadRight: {r: 1, g: 0, b: 0, a: 1}
+    - _LowerBodyColorMapColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _RimColor0: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _StockingsDarkColor: {r: 0, g: 0, b: 0, a: 1}
+    - _StockingsLightColor: {r: 1.8, g: 1.48299, b: 0.856821, a: 1}
+    - _StockingsTransitionColor: {r: 0.36038098, g: 0.24298596, b: 0.35813096, a: 1}
+    - _UpperBodyColorMapColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

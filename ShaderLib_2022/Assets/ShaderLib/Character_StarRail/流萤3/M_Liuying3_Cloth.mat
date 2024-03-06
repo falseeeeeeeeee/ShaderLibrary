@@ -8,17 +8,18 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Liuying3_Cloth
-  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+  m_Shader: {fileID: 4800000, guid: c91a9c4a9ba7b9a40a033897784852eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ValidKeywords:
+  - _OUTLINE_ON
+  m_InvalidKeywords:
+  - _AREA_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -26,6 +27,14 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 981cddf3c11bca443bbfcf414e3f8006, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyCoolRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyWarmRamp:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -48,7 +57,43 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FaceColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FaceMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairCoolRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairWarmRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _LightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyStockings:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -84,6 +129,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _UpperBodyColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyStockings:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -98,14 +155,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
     - _AlphaClip: 0
     - _AlphaTest: 0
     - _AlphaTestThreshold: 0.5
     - _AlphaToMask: 0
+    - _Area: 0
     - _BackFaceUV2: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
+    - _BlendOpOverlay: 0
     - _BloomColor: 0
     - _BloomIntensity: 0
     - _BumpScale: 1
@@ -119,18 +179,30 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _DstBlendColor: 0
+    - _DstBlendMode: 0
+    - _DstBlendModeOverlay: 0
     - _EmissionIntensity: 0
+    - _EmissionMixBaseColor: 1
     - _EmissionThreshold: 1
     - _EnvironmentReflections: 1
+    - _FaceShadowOffset: -0.01
+    - _FaceShadowTransitionSoftness: 0.05
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _IndirectLightFlattenNormal: 0
+    - _IndirectLightMixBaseColor: 1
+    - _IndirectLightOcclusionUsage: 0.5
+    - _IndirectLightUsage: 0.5
+    - _MainLightBrightnessFactor: 1
     - _Metallic: 0
     - _Model: 0
     - _ModelScale: 1
     - _OcclusionStrength: 1
     - _OutlineColor: 0
+    - _OutlineGamma: 16
     - _OutlineNormal: 0
+    - _OutlineUseVertexColorSmoothNormal: 0
     - _OutlineWidth: 2.16
     - _OutlineZOffset: -0.01
     - _Parallax: 0.005
@@ -150,6 +222,11 @@ Material:
     - _RimEdgeSoftness: 0.05
     - _RimIntensity: 0.527
     - _RimIntensityBackFace: 0
+    - _RimLightBrightness: 1
+    - _RimLightFadeout: 1
+    - _RimLightMixAlbedo: 0.9
+    - _RimLightThreshold: 0.05
+    - _RimLightWidth: 1
     - _RimThresholdMax: 0.9
     - _RimThresholdMin: 0.6
     - _RimWidth: 0
@@ -162,10 +239,16 @@ Material:
     - _RimWidth6: 0.3
     - _RimWidth7: 0.3
     - _SampleGI: 0
+    - _ScrBlendModeOverlay: 1
+    - _ShadowBoost: 1
+    - _ShadowRampOffset: 0.75
+    - _ShadowThresholdCenter: 0
+    - _ShadowThresholdSoftness: 0.1
     - _SingleMaterial: 0
     - _SingleMaterialID: -1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+    - _SpecularBrightness: 10
     - _SpecularColor: 0
     - _SpecularEdgeSoftness: 0
     - _SpecularEdgeSoftness0: 0.1
@@ -176,6 +259,7 @@ Material:
     - _SpecularEdgeSoftness5: 0.1
     - _SpecularEdgeSoftness6: 0.1
     - _SpecularEdgeSoftness7: 0.1
+    - _SpecularExpon: 50
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
     - _SpecularIntensity0: 1
@@ -186,6 +270,8 @@ Material:
     - _SpecularIntensity5: 1
     - _SpecularIntensity6: 1
     - _SpecularIntensity7: 1
+    - _SpecularKsMetal: 1
+    - _SpecularKsNonMetal: 0.04
     - _SpecularMetallic: 0
     - _SpecularMetallic0: 0
     - _SpecularMetallic1: 0
@@ -207,12 +293,28 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SrcBlendColor: 1
+    - _SrcBlendMode: 1
+    - _StencilComp: 0
+    - _StencilCompOverlay: 0
+    - _StencilFailOp: 0
+    - _StencilPassOp: 0
+    - _StencilRef: 0
+    - _StencilRefOverlay: 0
+    - _StencilZFailOp: 0
     - _StockingsDarkWidth: 0.5
     - _StockingsLightedIntensity: 0.25
     - _StockingsLightedWidth: 1
     - _StockingsPower: 1
     - _StockingsRoughness: 1
+    - _StockingsTextureUsage: 0.1
+    - _StockingsTransitionHardness: 0.4
+    - _StockingsTransitionPower: 1
+    - _StockingsTransitionThreshold: 0.58
     - _Surface: 0
+    - _UseAlphaClipping: 0
+    - _UseDrawOverlay: 0
+    - _UseEmission: 0
+    - _UseOutline: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _mBloomIntensity0: 1
@@ -225,6 +327,7 @@ Material:
     - _mBloomIntensity7: 1
     m_Colors:
     - _BackColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BackFaceTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BloomColor0: {r: 1, g: 1, b: 1, a: 1}
     - _BloomColor1: {r: 1, g: 1, b: 1, a: 1}
@@ -236,6 +339,10 @@ Material:
     - _BloomColor7: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionTintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FrontFaceTintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HeadForward: {r: 0, g: 0, b: 1, a: 1}
+    - _HeadRight: {r: 1, g: 0, b: 0, a: 1}
     - _Maps_ST: {r: 1, g: 1, b: 0, a: 0}
     - _OutlineColor0: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor1: {r: 0, g: 0, b: 0, a: 1}
@@ -253,6 +360,7 @@ Material:
     - _RimColor5: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor6: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor7: {r: 1, g: 1, b: 1, a: 1}
+    - _RimLightTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor0: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor1: {r: 1, g: 1, b: 1, a: 1}
@@ -264,6 +372,9 @@ Material:
     - _SpecularColor7: {r: 1, g: 1, b: 1, a: 1}
     - _StockingsColor: {r: 1, g: 1, b: 1, a: 1}
     - _StockingsColorDark: {r: 1, g: 1, b: 1, a: 1}
+    - _StockingsDarkColor: {r: 0, g: 0, b: 0, a: 1}
+    - _StockingsLightColor: {r: 1.8, g: 1.48299, b: 0.856821, a: 1}
+    - _StockingsTransitionColor: {r: 0.360381, g: 0.242986, b: 0.358131, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5482146333140829998
 MonoBehaviour:
