@@ -25,15 +25,15 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _AREA_FACE
+  - _OUTLINE_ON
+  m_InvalidKeywords:
   - _FAKE_OUTLINE_ON
   - _METAL_SPECULAR_ON
-  - _OUTLINE_ON
   - _RIM_LIGHTING_ON
   - _SPECULAR_COLOR_CUSTOM
   - _SPECULAR_ON
   - _USE_RAMP_COLOR_ON
-  m_InvalidKeywords:
-  - _AREA_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -49,11 +49,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BodyCoolRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0c0b2f18766227240936b722e669722a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BodyWarmRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0f43fcea544016a429dc1539931105a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -81,39 +81,39 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 96e2cdb648efb814eaa0b11aa0ae188c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 50834ac8a1e7adf4eb0cbfdf015e8bca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4d69b65b0c31f53409624bdef1feb685, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairCoolRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e0ce6a5e4c57c1045978210efabdb5d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairLightMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d3e3fffce592ef3449530f5b766d7127, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairWarmRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9f72af982c0c8884081c9deec5d88adc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LowerBodyColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ea61e7225d9814a46b1e15c223da5e58, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LowerBodyLightMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 61445dee94c1e1c43a7a9d2833897300, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LowerBodyStockings:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 48426d9eaa4058549bfe0051a27662db, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -145,15 +145,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpperBodyColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 54b47c78a0c61094393bef7522ad00a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpperBodyLightMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d252a06e4a83e244fae0662d754f8de3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpperBodyStockings:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4eadf03dcc4df1d46997865a4a6da433, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -173,7 +173,7 @@ Material:
     - _Alpha: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Area: 0
+    - _Area: 1
     - _BaseColorBPower: 1
     - _BaseColorGPower: 1
     - _BaseColorRPower: 1
@@ -186,11 +186,13 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorType: 1
     - _Cull: 2
     - _CullMode: 2
     - _Cutoff: 0.5
     - _DayTime: 12
     - _DayTimeManualON: 0
+    - _DebugColor: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -213,7 +215,7 @@ Material:
     - _GlossyReflections: 0
     - _HairCoolRampColorMixFactor: 0
     - _HairWarmRampColorMixFactor: 0
-    - _IndirectLightFlattenNormal: 0
+    - _IndirectLightFlattenNormal: 0.2
     - _IndirectLightMixBaseColor: 1
     - _IndirectLightOcclusionUsage: 0.5
     - _IndirectLightUsage: 0.5
@@ -238,7 +240,11 @@ Material:
     - _RimEdgeSoftness: 0.05
     - _RimIntensity: 0.5
     - _RimIntensityBackFace: 0
+    - _RimLightBrightness: 1
+    - _RimLightFadeout: 1
     - _RimLightMixAlbedo: 0.9
+    - _RimLightThreshold: 0.5
+    - _RimLightWidth: 0.5
     - _RimThresholdMax: 0.9
     - _RimThresholdMin: 0.6
     - _RimWidth0: 0.5
@@ -251,10 +257,11 @@ Material:
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularBrightness: 10
-    - _SpecularExpon: 50
+    - _SpecularExpon: 10
     - _SpecularHighlights: 1
     - _SpecularKsMetal: 1
     - _SpecularKsNonMetal: 0.04
+    - _SpecularMetalRange: 0.6
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SrcBlendMode: 1
@@ -301,11 +308,12 @@ Material:
     - _HairColorMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _HairCoolRampColor: {r: 1, g: 1, b: 1, a: 1}
     - _HairWarmRampColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HeadForward: {r: 0, g: 0, b: 1, a: 1}
-    - _HeadRight: {r: 1, g: 0, b: 0, a: 1}
+    - _HeadForward: {r: 1.3877788e-15, g: 0, b: 0.049999952, a: 0}
+    - _HeadRight: {r: 0.050000004, g: 0, b: 0, a: 0}
     - _LowerBodyColorMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _RimColor0: {r: 1, g: 1, b: 1, a: 1}
+    - _RimLightTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _StockingsDarkColor: {r: 0, g: 0, b: 0, a: 1}

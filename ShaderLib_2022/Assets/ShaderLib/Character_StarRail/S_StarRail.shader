@@ -2,6 +2,7 @@ Shader "URP/Character/S_StarRail"
 {
     Properties
     {
+        [Enum(None,1,baseColor,2,indirectLightColor,3,mianLightColor,4,mainLightShadow,5,rampColor,6,specularColor,7)] _DebugColor ("Debug Color", Int) = 1
         [KeywordEnum (None, Face, Hair, UpperBody, LowerBody)] _Area("Material area", float) = 0
         [HideInInspector] _HeadForward("", Vector) = (0,0,1)
         [HideInInspector] _HeadRight("", Vector) = (1,0,0)
@@ -37,6 +38,7 @@ Shader "URP/Character/S_StarRail"
 
         [Header(Main Lighting)]
         _MainLightBrightnessFactor("Main light brightness factor (Default 1)",Range(0,1)) = 1
+        _MainLightColorUsage("Main light color usage (Default 1)",Range(0,1)) = 1
         _ShadowThresholdCenter("Shadow threshold center (Default 0)",Range(-1,1)) = 0
         _ShadowThresholdSoftness("Shadow threshold softness (Default 0.1)",Range(0,1)) = 0.1
         _ShadowRampOffset("Shadow ramp offset (Default 0.75)",Range(0,1)) = 0.75
@@ -51,6 +53,7 @@ Shader "URP/Character/S_StarRail"
         _SpecularExpon("Specular exponent (Default 50)",Range(0,100)) = 50
         _SpecularKsNonMetal("Specular KS non-metal (Default 0.04)",Range(0,1)) = 0.04
         _SpecularKsMetal("Specular KS metal (Default 1)",Range(0,1)) = 1
+        _SpecularMetalRange("Specular Metal Range (Default 0.52)",Range(0,1)) = 0.52
         _SpecularBrightness("Specular brightness (Default 1)",Range(0,10)) = 10
 
         [Header(Stockings)]

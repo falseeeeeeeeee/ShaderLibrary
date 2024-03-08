@@ -26,7 +26,7 @@ SAMPLER(sampler_LowerBodyColorMap);
 #endif
 
 // LightMap
-#if _AREA_FACE 
+#if _AREA_HAIR 
 TEXTURE2D(_HairLightMap);
 SAMPLER(sampler_HairLightMap);
 #elif _AREA_UPPERBODY
@@ -34,7 +34,7 @@ TEXTURE2D(_UpperBodyLightMap);
 SAMPLER(sampler_UpperBodyLightMap);
 #elif _AREA_LOWERBODY 
 TEXTURE2D(_LowerBodyLightMap);
-SAMPLER(sampler_LowerBodyLightMap;
+SAMPLER(sampler_LowerBodyLightMap);
 #endif
 
 // RampColorMap
@@ -67,6 +67,7 @@ SAMPLER(sampler_LowerBodyStockings);
 // -------------------------------------
 // CBUFFER
 CBUFFER_START(UnityPerMaterial);
+float _DebugColor;
 float3 _HeadForward;
 float3 _HeadRight;
 
@@ -93,21 +94,22 @@ float _ShadowThresholdSoftness;
 float _ShadowRampOffset;
 
 // FaceShadow
-#if _AREA_FACE
+// #if _AREA_FACE
 float _FaceShadowOffset;
 float _FaceShadowTransitionSoftness;
-#endif
+// #endif
 
 // Specular
-#if _AREA_HAIR || _AREA_UPPERBODY || _AREA_LOWERBODY
+// #if _AREA_HAIR || _AREA_UPPERBODY || _AREA_LOWERBODY
 float _SpecularExpon;
 float _SpecularKsNonMetal;
 float _SpecularKsMetal;
+float _SpecularMetalRange;
 float _SpecularBrightness;
-#endif
+// #endif
 
 // Stockings
-#if _AREA_UPPERBODY || _AREA_LOWERBODY
+// #if _AREA_UPPERBODY || _AREA_LOWERBODY
 float3 _StockingsDarkColor;
 float3 _StockingsLightColor;
 float3 _StockingsTransitionColor;
@@ -115,7 +117,7 @@ float _StockingsTransitionThreshold;
 float _StockingsTransitionPower;
 float _StockingsTransitionHardness;
 float _StockingsTextureUsage;
-#endif
+// #endif
 
 // RimLight
 float _RimLightWidth;
@@ -126,17 +128,17 @@ float _RimLightBrightness;
 float _RimLightMixAlbedo;
 
 // Emission
-#if _EMISSION_ON
+// #if _EMISSION_ON
 float _EmissionMixBaseColor;
 float3 _EmissionTintColor;
 float _EmissionIntensity;
-#endif
+// #endif
 
 // Outline
-#if _OUTLINE_ON
+// #if _OUTLINE_ON
 float _OutlineWidth;
 float _OutlineGamma;
-#endif
+// #endif
 
 CBUFFER_END
 #endif
