@@ -27,6 +27,7 @@ Material:
   m_ValidKeywords:
   - _AREA_LOWERBODY
   - _OUTLINE_ON
+  - _OUTLINE_VERTEX_COLOR_SMOOTH_NORMAL
   m_InvalidKeywords:
   - _FAKE_OUTLINE_ON
   - _METAL_SPECULAR_ON
@@ -228,7 +229,7 @@ Material:
     - _ModelScale: 1
     - _OcclusionStrength: 1
     - _OutlineGamma: 16
-    - _OutlineUseVertexColorSmoothNormal: 0
+    - _OutlineUseVertexColorSmoothNormal: 1
     - _OutlineWidth: 1
     - _OutlineZOffset: 0.0001
     - _OutlineZOffsetMaskRemapEnd: 1
@@ -265,17 +266,17 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SrcBlendMode: 1
-    - _StencilComp: 0
+    - _StencilComp: 7
     - _StencilCompOverlay: 0
     - _StencilFailOp: 0
-    - _StencilPassOp: 0
-    - _StencilRef: 0
+    - _StencilPassOp: 1
+    - _StencilRef: 6
     - _StencilRefOverlay: 0
     - _StencilZFailOp: 0
     - _StockingsTextureUsage: 0.1
     - _StockingsTransitionHardness: 0.4
     - _StockingsTransitionPower: 1
-    - _StockingsTransitionThreshold: 0.58
+    - _StockingsTransitionThreshold: 0.5
     - _Surface: 0
     - _UseAlphaClipping: 0
     - _UseDrawOverlay: 0

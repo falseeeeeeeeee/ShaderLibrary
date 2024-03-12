@@ -11,6 +11,40 @@ float3 desaturation(float3 color)
     return float3(grayf, grayf, grayf);
 }
 
+// 线性采样渐变映射
+struct Gradient // 结构体
+{
+    int colorsLength;
+    float4 colors[8];
+};
+Gradient GradientConstruct()    // 构造函数
+{
+    Gradient g;
+    g.colorsLength = 2;
+    g.colors[0] = float4(1, 1, 1, 0);   // 第四位是在轴上的坐标
+    g.colors[1] = float4(1, 1, 1, 1);
+    g.colors[2] = float4(0, 0, 0, 0);
+    g.colors[3] = float4(0, 0, 0, 0);
+    g.colors[4] = float4(0, 0, 0, 0);
+    g.colors[5] = float4(0, 0, 0, 0);
+    g.colors[6] = float4(0, 0, 0, 0);
+    g.colors[7] = float4(0, 0, 0, 0);
+    return g;
+}
+float3 SampleGradient(Gradient Gradient, float Time)    // 方法
+{
+    float3 color = Gradient.colors[0].rgb;
+    for (int c = 1; c < Gradient.colorsLength; c++)
+    {
+        float colorPos = saturate((Time - Gradient.colors[c- 1 ].w) / (Gradient.colors[c].w - Gradient.colors[c - 1].w)) * step(c, Gradient.colorsLength - 1);
+        color = lerp(color, Gradient.colors[c].rgb, colorPos);
+    }
+    #ifdef UNITY_COLORSPACE_GAMMA
+        color = LinearToSRGB(color);
+    #endif
+    return color;
+}
+
 // -------------------------------------
 // 基本结构体输入
 struct Attributes
@@ -190,15 +224,92 @@ float4 StarRailPassFragment(Varyings input, bool isFrontFace : SV_IsFrontFace) :
         specularColor *= mainLight.color;
         specularColor *= _SpecularBrightness;
     #endif
+
+    // Stockings
+    float3 stockingsEffect = 1;
+    #if _AREA_UPPERBODY || _AREA_LOWERBODY
+        float2 stockingsMapRG = 0;
+        float stockingsMapB = 0;
+        #if _AREA_UPPERBODY
+            stockingsMapRG = SAMPLE_TEXTURE2D(_UpperBodyStockings, sampler_UpperBodyStockings, input.uv).rg;
+            stockingsMapB = SAMPLE_TEXTURE2D(_UpperBodyStockings, sampler_UpperBodyStockings, input.uv * 20).b;
+        #elif _AREA_LOWERBODY
+            stockingsMapRG = SAMPLE_TEXTURE2D(_LowerBodyStockings, sampler_LowerBodyStockings, input.uv).rg;
+            stockingsMapB = SAMPLE_TEXTURE2D(_LowerBodyStockings, sampler_LowerBodyStockings, input.uv * 20).b;
+        #endif
+
+        float NoV = dot(normalWS, viewDirectionWS);
+        float fac = NoV;
+        fac = pow(saturate(fac), _StockingsTransitionPower);
+        fac = saturate((fac - _StockingsTransitionHardness / 2) / (1- _StockingsTransitionHardness));   // 亮暗过渡的硬度
+        fac = fac * (stockingsMapB * _StockingsTextureUsage + (1 - _StockingsTextureUsage));    // 混入细节纹理
+        fac = lerp(fac, 1, stockingsMapRG.g);   // 厚度插值一下亮区
     
+        Gradient curve = GradientConstruct();
+        curve.colorsLength = 3;
+        curve.colors[0] = float4(_StockingsDarkColor.rgb, 0);
+        curve.colors[1] = float4(_StockingsTransitionColor.rgb, _StockingsTransitionThreshold);
+        curve.colors[2] = float4(_StockingsLightColor.rgb, 1);
+        float3 stockingsColor = SampleGradient(curve, fac);
+        
+        stockingsEffect = lerp(1, stockingsColor, stockingsMapRG.r); 
+    #endif
+
+    // 边缘光
+    float linearEyeDepth = LinearEyeDepth(input.positionCS.z, _ZBufferParams);
+    float3 normalVS = mul((float3x3)UNITY_MATRIX_V, normalWS);
+    float2 uvOffset = float2(sign(normalVS.x), 0) * _RimLightWidth / (1 + linearEyeDepth) / 100;    // 法线的横坐标确定采样UV的偏移方向，乘偏移量，除以深度实现近粗远细，加1限制最大宽度
+    int2 loadTexPos = input.positionCS.xy + uvOffset * _ScaledScreenParams.xy;   // 采样深度缓冲，把UV偏移转换成坐标偏移
+    loadTexPos = min(loadTexPos, _ScaledScreenParams.xy - 1);
+    float offsetSceneDepth = LoadSceneDepth(loadTexPos);   // 在深度缓存上采样偏移像素的深度
+    float offsetLinearEyeDepth = LinearEyeDepth(offsetSceneDepth, _ZBufferParams);  // 将非线性的深度缓存转换成线性的
+    float rimLight = saturate(offsetLinearEyeDepth - (linearEyeDepth + _RimLightThreshold)) / _RimLightFadeout;
+    float3 rimLightColor = rimLight * mainLight.color.rgb;
+    rimLightColor *= _RimLightTintColor;
+    rimLightColor *= _RimLightBrightness;
+
+    // 自发光
+    float3 emissionColor = 0;
+    #if _EMISSION_ON
+        emissionColor = areaMap.a;
+        emissionColor *= lerp(1, baseColor, _EmissionMixBaseColor);
+        emissionColor *= _EmissionTintColor;
+        emissionColor *=_EmissionIntensity;
+    #endif
+            
+
+    // 脸部描边
+    float fakeOutlineEffect = 0;
+    float3 fakeOutlineColor = 0;
+    #if _AREA_FACE && _OUTLINE_ON
+        float fakeOutline = faceMap.b;
+        float3 headForwardShadow = normalize(_HeadForward);
+        fakeOutlineEffect = smoothstep(0.0, 0.25, pow(saturate(dot(headForwardShadow, viewDirectionWS)), 20) * fakeOutline);
+        float2 outlineUV = float2(0, 0.0625);
+        float3 coolRampShadow = SAMPLE_TEXTURE2D(_BodyCoolRamp, sampler_BodyCoolRamp, outlineUV).rgb;
+        float3 warmRampShadow = SAMPLE_TEXTURE2D(_BodyWarmRamp, sampler_BodyWarmRamp, outlineUV).rgb;
+        float3 ramp = lerp(coolRampShadow, warmRampShadow, 0.5);
+        fakeOutlineColor = pow(saturate(ramp), _OutlineGamma);
+    #endif
+
     // Albedo
     float3 albedo = 0;
     albedo += indirectLightColor;
     albedo += mianLightColor;
     albedo += specularColor;
+    albedo *= stockingsEffect;
+    albedo += rimLightColor * lerp(1, albedo, _RimLightMixAlbedo);
+    albedo += emissionColor;
+    albedo = lerp(albedo, fakeOutlineColor, fakeOutlineEffect);
 
     // Alpha
     float alpha = _Alpha;
+
+    // 避免背部看到眉毛
+    #if _DRAW_OVERLAY_ON
+        float3 headForward = normalize(_HeadForward);
+        alpha = lerp(1, alpha, saturate(dot(headForward, viewDirectionWS))); // 越小Alpha越接近1 
+    #endif
     
     //Debug
     switch(_DebugColor) 
@@ -221,17 +332,15 @@ float4 StarRailPassFragment(Varyings input, bool isFrontFace : SV_IsFrontFace) :
         case 7:
             albedo = specularColor;
         break;
-        /*case 8:
-        #if _AREA_UPPERBODY || _AREA_LOWERBODY
-            albedo = metallic;
-        #endif
-        break;*/
         default:
             // albedo = albedo;
         break;
     }
-    
+
     float4 color = float4(albedo, alpha);
+    clip(color.a - _AlphaClip);
+    color.rgb = MixFog(color.rgb, input.positionWSAndFogFactor.w);
+    
     return color;
 }
 #endif

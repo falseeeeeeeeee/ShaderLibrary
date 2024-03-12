@@ -273,7 +273,6 @@ Shader "URP/Character/S_StarRail"
 
         Pass
         {
-            Name "ForwardLit"
             Name "DrawCore"
             Tags
             {
@@ -314,6 +313,115 @@ Shader "URP/Character/S_StarRail"
 
             #include "./SIH_StarRailInput.hlsl"
             #include "./SIH_StarRailDrawCorePass.hlsl"
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "DrawOverlay"
+            Tags
+            {
+                "RenderPipeline" = "UniversalPipeline"
+                "RenderType" = "Opaque"
+                "LightMode" = "UniversalForward"
+            }
+            
+            // -------------------------------------
+            // Render State Commands
+            Cull[_Cull]
+            Stencil
+            {
+                Ref [_StencilRefOverlay]
+                Comp [_StencilCompOverlay]
+            }
+            Blend [_ScrBlendModeOverlay] [_DstBlendModeOverlay]
+            BlendOp [_BlendOpOverlay]
+            ZWrite [_ZWrite]
+
+            HLSLPROGRAM
+            // -------------------------------------
+            // Universal Pipeline keywords
+            #pragma multi_compile _MAIN_LIGHT_SHADOWS
+            #pragma multi_compile _MAIN_LIGHT_SHADOWS_CASCADE
+            #pragma multi_compile_fragment _SHADOWS_SOFT
+            
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fog
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex StarRailPassVertex
+            #pragma fragment StarRailPassFragment
+
+            #if _DRAW_OVERLAY_ON
+                #include "./SIH_StarRailInput.hlsl"
+                #include "./SIH_StarRailDrawCorePass.hlsl"
+            #else
+                struct Attributes {};
+                struct Varyings
+                {
+                    float4 positionCS : SV_POSITION;
+                };
+                Varyings StarRailPassVertex(Attributes input)
+                {
+                    return (Varyings)0;
+                }
+                float4 StarRailPassFragment(Varyings input) : SV_TARGET
+                {
+                    return 0;
+                }
+            #endif
+
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "DrawOutline"
+            Tags
+            {
+                "RenderPipeline" = "UniversalPipeline"
+                "RenderType" = "Opaque"
+                "LightMode" = "UniversalForwardOnly"
+            }
+            
+            // -------------------------------------
+            // Render State Commands
+            Cull Front
+            ZWrite [_ZWrite]
+
+            HLSLPROGRAM
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fog
+            
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex StarRailPassVertex
+            #pragma fragment StarRailPassFragment
+
+            /*#include "./SIH_StarRailInput.hlsl"
+            #include "./SIH_StarRailDrawOutlinePass.hlsl"*/
+            #if _OUTLINE_ON
+                #include "./SIH_StarRailInput.hlsl"
+                #include "./SIH_StarRailDrawOutlinePass.hlsl"
+            #else
+                struct Attributes {};
+                struct Varyings
+                {
+                    float4 positionCS : SV_POSITION;
+                };
+                Varyings StarRailPassVertex(Attributes input)
+                {
+                    return (Varyings)0;
+                }
+                float4 StarRailPassFragment(Varyings input) : SV_TARGET
+                {
+                    return 0;
+                }
+            #endif
+            
             ENDHLSL
         }
     }

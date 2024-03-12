@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02481086, g: 0.19641206, b: 0.8632811, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 5262557494860613697, guid: dddac010d8cde7048891c0b91ddcedf6,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[29]
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5262557494860613697, guid: dddac010d8cde7048891c0b91ddcedf6,
         type: 3}
@@ -400,27 +400,32 @@ PrefabInstance:
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.631279
+      value: 0.23533396
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2943702
+      value: 0.109738015
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6502928
+      value: 0.875221
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3032365
+      value: -0.4081222
       objectReference: {fileID: 0}
     - target: {fileID: 1490022623332948584, guid: d3a54affacf4dce4a90dbd501d885b8a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.7
+      value: 869.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490022623332948585, guid: d3a54affacf4dce4a90dbd501d885b8a,
+        type: 3}
+      propertyPath: m_ColorTemperature
+      value: 6000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

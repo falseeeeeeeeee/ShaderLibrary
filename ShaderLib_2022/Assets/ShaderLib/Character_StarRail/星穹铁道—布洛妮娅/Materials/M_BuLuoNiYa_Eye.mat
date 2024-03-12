@@ -26,7 +26,9 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _AREA_FACE
+  - _EMISSION_ON
   - _OUTLINE_ON
+  - _OUTLINE_VERTEX_COLOR_SMOOTH_NORMAL
   m_InvalidKeywords:
   - _FAKE_OUTLINE_ON
   - _METAL_SPECULAR_ON
@@ -37,7 +39,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1999
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -228,7 +230,7 @@ Material:
     - _ModelScale: 1
     - _OcclusionStrength: 1
     - _OutlineGamma: 16
-    - _OutlineUseVertexColorSmoothNormal: 0
+    - _OutlineUseVertexColorSmoothNormal: 1
     - _OutlineWidth: 1
     - _OutlineZOffset: 0.0001
     - _OutlineZOffsetMaskRemapEnd: 1
@@ -243,8 +245,8 @@ Material:
     - _RimLightBrightness: 1
     - _RimLightFadeout: 1
     - _RimLightMixAlbedo: 0.9
-    - _RimLightThreshold: 0.5
-    - _RimLightWidth: 0.5
+    - _RimLightThreshold: 0.05
+    - _RimLightWidth: 1
     - _RimThresholdMax: 0.9
     - _RimThresholdMin: 0.6
     - _RimWidth0: 0.5
@@ -275,11 +277,11 @@ Material:
     - _StockingsTextureUsage: 0.1
     - _StockingsTransitionHardness: 0.4
     - _StockingsTransitionPower: 1
-    - _StockingsTransitionThreshold: 0.58
+    - _StockingsTransitionThreshold: 0.5
     - _Surface: 0
     - _UseAlphaClipping: 0
     - _UseDrawOverlay: 0
-    - _UseEmission: 0
+    - _UseEmission: 1
     - _UseFaceExpression: 0
     - _UseFakeOutline: 1
     - _UseNormalMap: 0
