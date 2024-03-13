@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1967885511048498534
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_LiuYing_EyeTranparent
+  m_Shader: {fileID: 4800000, guid: c91a9c4a9ba7b9a40a033897784852eb, type: 3}
+  m_Parent: {fileID: 2100000, guid: d7efc502d2c6b14458ad2c380fd308c7, type: 2}
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords:
+  - _AREA_FACE
+  - _EMISSION_ON
+  - _OUTLINE_ON
+  - _OUTLINE_VERTEX_COLOR_SMOOTH_NORMAL
+  m_InvalidKeywords:
+  - _FAKE_OUTLINE_ON
+  - _METAL_SPECULAR_ON
+  - _RIM_LIGHTING_ON
+  - _SPECULAR_COLOR_CUSTOM
+  - _SPECULAR_ON
+  - _SURFACE_TYPE_TRANSPARENT
+  - _USE_RAMP_COLOR_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FaceColorMap:
+        m_Texture: {fileID: 2800000, guid: 543ca4394faaa4d4eb64ae46e5cc5a5d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FaceMap:
+        m_Texture: {fileID: 2800000, guid: acf12d723bcce4e4cb5455abb66141ab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairColorMap:
+        m_Texture: {fileID: 2800000, guid: b36ef3898c077224eb9755e2e99ad3f7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairLightMap:
+        m_Texture: {fileID: 2800000, guid: 1dddce91a28839946a818db0a30c381b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyColorMap:
+        m_Texture: {fileID: 2800000, guid: 981cddf3c11bca443bbfcf414e3f8006, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyLightMap:
+        m_Texture: {fileID: 2800000, guid: 3d15cf38d70179346bdc00cd7c1d3b84, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LowerBodyStockings:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyColorMap:
+        m_Texture: {fileID: 2800000, guid: c99c139c65df0a24292455e4d6c851b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyLightMap:
+        m_Texture: {fileID: 2800000, guid: 45fbd605173c1d244ab0f3ebe80ba4ea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpperBodyStockings:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.5
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
+    - _DstBlendMode: 10
+    - _RimLightWidth: 0.32
+    - _SrcBlend: 5
+    - _SrcBlendMode: 5
+    - _Surface: 1
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.050980393}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.050980393}
+    - _FrontFaceTintColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

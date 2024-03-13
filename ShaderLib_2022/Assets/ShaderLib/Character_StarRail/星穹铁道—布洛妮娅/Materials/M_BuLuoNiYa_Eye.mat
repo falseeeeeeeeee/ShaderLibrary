@@ -229,7 +229,7 @@ Material:
     - _Metallic: 0
     - _ModelScale: 1
     - _OcclusionStrength: 1
-    - _OutlineGamma: 16
+    - _OutlineGamma: 30
     - _OutlineUseVertexColorSmoothNormal: 1
     - _OutlineWidth: 1
     - _OutlineZOffset: 0.0001
@@ -310,8 +310,8 @@ Material:
     - _HairColorMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _HairCoolRampColor: {r: 1, g: 1, b: 1, a: 1}
     - _HairWarmRampColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HeadForward: {r: 1.3877788e-15, g: 0, b: 0.049999952, a: 0}
-    - _HeadRight: {r: 0.050000004, g: 0, b: 0, a: 0}
+    - _HeadForward: {r: 0, g: 0, b: 0.05, a: 0}
+    - _HeadRight: {r: 0.05, g: 0, b: 0, a: 0}
     - _LowerBodyColorMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _RimColor0: {r: 1, g: 1, b: 1, a: 1}
