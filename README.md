@@ -149,6 +149,18 @@
 
 ------
 
+### Character_StarRail
+
+![](./ShaderLib_2022/Recordings/Character_StarRail/Character_StarRail_布洛妮娅.png)
+
+![](./ShaderLib_2022/Recordings/Character_StarRail/Character_StarRail_布洛妮娅.gif)
+
+![](./ShaderLib_2022/Recordings/Character_StarRail/Character_StarRail_流萤.png)
+
+![](./ShaderLib_2022/Recordings/Character_StarRail/Character_StarRail_流萤.gif)
+
+------
+
 ## Cloud
 
 ### Cloud_ParallaxCloud
