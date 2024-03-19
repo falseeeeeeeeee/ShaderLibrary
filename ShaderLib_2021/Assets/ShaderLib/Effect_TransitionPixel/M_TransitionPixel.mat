@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4221150891744074229
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_TransitionPixel
+  m_Shader: {fileID: -6465566751694194690, guid: 9b18e9af48e18c3478bf3f108ed2af0f,
+    type: 3}
+  m_ValidKeywords:
+  - _TRANSITIONSSTYLE_B
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: ca7ba913502c8bb44a66350131805326, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _DebugEffect: 1
+    - _DebugSwitch: 0
+    - _InvertColor: 0
+    - _Metallic: 0
+    - _PixelNumber: 32
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RANDOMTRANSITIONSCOLOR: 0
+    - _RandomTransitionsColor: 1
+    - _Smoothness: 0.5
+    - _TRANSITIONSSTYLE: 1
+    - _TransitionsColorIntensity: 2
+    - _TransitionsColorPower: 1.5
+    - _TransitionsColorSize: 0.8
+    - _TransitionsEmissionPower: 2
+    - _TransitionsMaskPower: 1
+    - _TransitionsSwitch: 0.5
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TransitionsColor: {r: 2.9960785, g: 1.0509804, b: 0, a: 0}
+  m_BuildTextureStacks: []

@@ -277,6 +277,17 @@
 
 ------
 
+### Effect_TransitionPixel
+
+![](./ShaderLib_2021/Recordings/Effect_TransitionPixel/Effect_TransitionPixel.png)
+![](./ShaderLib_2021/Recordings/Effect_TransitionPixel/Effect_TransitionPixel_Random.png)
+
+![](./ShaderLib_2021/Recordings/Effect_TransitionPixel/Effect_TransitionPixel_A.gif)
+![](./ShaderLib_2021/Recordings/Effect_TransitionPixel/Effect_TransitionPixel_B.gif)
+![](./ShaderLib_2021/Recordings/Effect_TransitionPixel/Effect_TransitionPixel_C.gif)
+
+------
+
 ### Effect_Transitions
 
 ![](./ShaderLib_2021/Recordings/Effect_Transitions/Effect_Transitions.png)
