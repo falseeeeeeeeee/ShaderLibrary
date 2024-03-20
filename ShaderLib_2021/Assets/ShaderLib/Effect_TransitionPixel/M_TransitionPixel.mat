@@ -21,11 +21,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_TransitionPixel
-  m_Shader: {fileID: -6465566751694194690, guid: 9b18e9af48e18c3478bf3f108ed2af0f,
-    type: 3}
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: 703fbfc3d99999545bdaa99e10744e5c, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _TRANSITIONSSTYLE_B
-  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -53,6 +52,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CullMode: 2
     - _DebugEffect: 1
     - _DebugSwitch: 0
     - _InvertColor: 0
@@ -61,7 +61,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RANDOMTRANSITIONSCOLOR: 0
-    - _RandomTransitionsColor: 1
+    - _RandomTransitionsColor: 0
     - _Smoothness: 0.5
     - _TRANSITIONSSTYLE: 1
     - _TransitionsColorIntensity: 2
@@ -69,7 +69,8 @@ Material:
     - _TransitionsColorSize: 0.8
     - _TransitionsEmissionPower: 2
     - _TransitionsMaskPower: 1
-    - _TransitionsSwitch: 0.5
+    - _TransitionsStyle: 3
+    - _TransitionsSwitch: 0.441
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransitionsColor: {r: 2.9960785, g: 1.0509804, b: 0, a: 0}
