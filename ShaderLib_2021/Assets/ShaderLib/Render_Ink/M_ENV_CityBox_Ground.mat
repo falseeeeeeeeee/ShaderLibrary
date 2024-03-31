@@ -148,7 +148,7 @@ Material:
     - _GuassianVStep: 0.5
     - _InlinePower: 1.71
     - _InlineThred: 0
-    - _InteriorNoiseLevel: 0.102
+    - _InteriorNoiseLevel: 0.601
     - _MaxOutlineZOffset: 0.5
     - _Metallic: 0
     - _Mode: 0

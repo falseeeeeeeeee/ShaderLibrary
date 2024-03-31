@@ -115,8 +115,8 @@ Material:
     - Vector1_2FA10055: 0.7
     - Vector1_46F1304E: 0.2
     - Vector1_BBEA2355: 1
-    - _BlotchMulti: 2.56
-    - _BlotchSub: 0.8
+    - _BlotchMulti: 8
+    - _BlotchSub: 0.728
     - _BlurDist: 0
     - _BumpScale: 1
     - _CullMode: 2
@@ -130,7 +130,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _PaperScale: 0.2
-    - _PaperStrength: 0.5
+    - _PaperStrength: 0.604
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
