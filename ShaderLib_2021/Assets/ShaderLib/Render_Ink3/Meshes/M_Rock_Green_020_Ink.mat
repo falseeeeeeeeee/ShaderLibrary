@@ -173,7 +173,7 @@ Material:
     - _InkFresnelPower: 0.35
     - _InkFresnelThred: 0.4
     - _InkMapFresnelScale: 0.03
-    - _InkMapMax: 0.5
+    - _InkMapMax: 2
     - _InkMapMin: 0.1
     - _InkMapScale: 0.1
     - _InteriorNoiseLevel: 0.7
