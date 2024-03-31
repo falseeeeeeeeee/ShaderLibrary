@@ -476,6 +476,16 @@
 
 ------
 
+### Render_Ink3
+
+![](./ShaderLib_2021/Recordings/Render_Ink3/24_加个暗角.png)
+![](./ShaderLib_2021/Recordings/Render_Ink3/19_混合雾.png)
+![](./ShaderLib_2021/Recordings/Render_Ink3/18_水墨边缘光法线外扩描边（近大远小）.png)
+![](./ShaderLib_2021/Recordings/Render_Ink3/Render_Ink3_Sequence.gif)
+![](./ShaderLib_2021/Recordings/Render_Ink3/Render_Ink3_Test.gif)
+
+------
+
 ### Render_SimpleJelly
 
 ![](./ShaderLib_2021/Recordings/Render_SimpleJelly/Render_SimpleJelly.png)
