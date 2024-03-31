@@ -6,15 +6,11 @@ using UnityEngine.Rendering.Universal;
 public class UnderWater : CustomVolumeComponent
 {
     //颜色调整属性
-    /*public ClampedFloatParameter hue = new ClampedFloatParameter(1f, 0f, 2f); //亮度
-    public ClampedFloatParameter brightness = new ClampedFloatParameter(1f, 0f, 4f); //亮度
-    public ClampedFloatParameter saturation = new ClampedFloatParameter(1, 0f, 4f); //饱和度
-    public ClampedFloatParameter contrast = new ClampedFloatParameter(1, 0, 4f); //对比度*/
+    public ClampedFloatParameter test = new ClampedFloatParameter(1f, 0f, 1f);
     
     internal static readonly int BufferRT1 = Shader.PropertyToID("_BufferRT1");
 
     Material material;
-    // const string shaderName = "URP/PPS/HueBrightnessSaturationContrastShader";
     const string shaderName = "URP/PPS/S_UnderWaterShader";
     
     //插入位置
@@ -42,10 +38,8 @@ public class UnderWater : CustomVolumeComponent
             return;
         
         //色彩调整
-        /*material.SetFloat("_Hue", hue.value);
-        material.SetFloat("_Brightness", brightness.value);
-        material.SetFloat("_Saturation", saturation.value);
-        material.SetFloat("_Contrast", contrast.value);*/
+        material.SetFloat("_TestFloat", test.value);
+
         
         // 创建临时缓冲区
         cmd.GetTemporaryRT(BufferRT1, Screen.width,  Screen.height, 0, FilterMode.Bilinear);

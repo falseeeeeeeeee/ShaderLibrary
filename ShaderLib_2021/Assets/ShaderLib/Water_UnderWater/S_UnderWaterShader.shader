@@ -5,7 +5,8 @@ Shader "URP/PPS/S_UnderWaterShader"
         _UnderWaterColorA("UnderWaterColorA", Color) = (0,1,1,1)
         _UnderWaterColorB("UnderWaterColorB", Color) = (0,0,1,1)
         _DepthMaxDistance("DepthMaxDistance", Float) = 1
-        _BaseMap("BaseMap", 2D) = "white" {}
+        _TestFloat("TestFloat", Float) = 1
+        _MainTex("MainTex", 2D) = "white" {}
     }
     SubShader 
     {
@@ -18,10 +19,11 @@ Shader "URP/PPS/S_UnderWaterShader"
         float4 _UnderWaterColorA;
         float4 _UnderWaterColorB;
         float _DepthMaxDistance;
-        float4 _BaseMap_ST;
+        float4 _MainTex_ST;
+        float _TestFloat;
         CBUFFER_END
 
-		TEXTURE2D(_BaseMap);	SAMPLER(sampler_BaseMap);
+		TEXTURE2D(_MainTex);	SAMPLER(sampler_MainTex);
 
         TEXTURE2D(_CameraOpaqueTexture);	    SAMPLER(sampler_CameraOpaqueTexture);
         TEXTURE2D_X_FLOAT(_CameraDepthTexture);     SAMPLER(sampler_CameraDepthTexture);
@@ -29,13 +31,14 @@ Shader "URP/PPS/S_UnderWaterShader"
 
         Pass {
             
-            Blend SrcAlpha OneMinusSrcAlpha
+//            Blend SrcAlpha OneMinusSrcAlpha
 
-//            ZWrite Off
-            Stencil {
+            ZTest Always Cull Off ZWrite Off
+            
+            /*Stencil {
                 Ref 5
                 Comp NotEqual
-            }
+            }*/
             
 			HLSLPROGRAM
             #pragma vertex vert
@@ -60,7 +63,7 @@ Shader "URP/PPS/S_UnderWaterShader"
             Varyings vert (Attributes input)
             {
                 Varyings output;
-                output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
+                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 // output.positionHCS = TransformObjectToHClip(input.positionOS.xyz);
                 VertexPositionInputs positionInput = GetVertexPositionInputs(input.positionOS.xyz);
                 output.positionHCS = positionInput.positionCS;
@@ -73,6 +76,7 @@ Shader "URP/PPS/S_UnderWaterShader"
 
             half4 frag(Varyings input) : SV_Target
             {
+                half4 renderTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv);
 
                 // Depth
                 float depthColor = SAMPLE_TEXTURE2D_X(_CameraDepthTexture, sampler_CameraDepthTexture, input.uvSS).r;   //采样深度值
@@ -86,10 +90,10 @@ Shader "URP/PPS/S_UnderWaterShader"
                 scenesColor.rgb = lerp(depthGradientColor, scenesColor, 0.5);
 
 
-                float3 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv).rgb;
+                float3 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv).rgb;
                 color = scenesColor.rgb * depthGradientColor;
 
-                return float4(color.rgb, 1);
+                return float4(renderTex.rgb * _TestFloat, renderTex.a);
             }
             ENDHLSL
         }

@@ -1,4 +1,4 @@
-Shader "URP/PPS/S_UnderWaterShader"
+Shader "URP/Water/S_UnderWater"
 {
     Properties 
     {
