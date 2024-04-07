@@ -11,8 +11,8 @@ Shader "Default/Glass/S_Glass_BlurGlass_Default"
     {
         Tags 
         { 
-            "Queue"="Transparent"               // 调整渲染顺序
-            "RenderType"="Transparent"          // 对应改为Cutout
+            "Queue"="Transparent" 
+            "RenderType"="Transparent" 
             "ForceNoShadowCasting"="True"       // 关闭阴影投射
             "IgnoreProjector"="True"            // 不响应投射器
         }
