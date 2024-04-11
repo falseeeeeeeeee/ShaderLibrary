@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4437371221922724508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8d8a1ab63ea4e4bb1c2e18b22c130d, type: 3}
+  m_Name: GrabColorRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  m_RenderPassEvent: 400
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +68,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 1890552812190690440}
-  m_RendererFeatureMap: adc0de57c6d2eee588ecbd1fc4973c1a
+  - {fileID: -4437371221922724508}
+  - {fileID: 7216492917760435684}
+  m_RendererFeatureMap: adc0de57c6d2eee588ecbd1fc4973c1a6445c144624a6bc2e4a53bf712222664
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -109,6 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d560267158d6dd049828769b5ed3f439, type: 3}
   m_Name: TimeFieidRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_RenderPassEvent: 450
   m_Material: {fileID: 2100000, guid: fe58192df4063e64580d9e990c88f899, type: 2}
+--- !u!114 &7216492917760435684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260a9a3e65d8424c8c34b1843a08ec0, type: 3}
+  m_Name: GrabDepthRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_RenderPassEvent: 500

@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: 41.48
   scatter:
     m_OverrideState: 1
-    m_Value: 0.464
+    m_Value: 0.32
   concentration:
     m_OverrideState: 1
     m_Value: 100
