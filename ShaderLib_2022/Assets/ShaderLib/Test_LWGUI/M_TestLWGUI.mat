@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_TestLWGUI
+  m_Shader: {fileID: 4800000, guid: d8f20b194284cb6479cb7cc82a2ed449, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _KEY1
+  - _SUBKEYWORDENUM_KEY1
+  m_InvalidKeywords:
+  - _BASECOLOR_ON
+  - _BASEGROUP_ON
+  - _GROUP_ON
+  - _KEYWORD
+  - _KWENUM__KEY1
+  - _PASSSELECT_ON
+  - _PASSSWITCH
+  - _PASSSWITCH_ON
+  - _SUBKEYWORDENUM_SKEY1
+  - _SUBKEYWORDENUM__SKEY1
+  - _TOGGLE0_ON
+  - _TOGGLE_KEYWORD
+  - _TOGGLE_ON
+  - _ZWRITE_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AdvancedTex0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AdvancedTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AdvancedTex7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap_Channel:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: 6e9989704e880f84681e91e089e55ef0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AdvancedFloat0: 0
+    - _AdvancedFloat1: 0
+    - _AdvancedFloat2: 0
+    - _AdvancedFloat3: 0
+    - _AdvancedFloat4: 0
+    - _AdvancedFloat7: 0
+    - _AdvancedRange0: 0
+    - _AdvancedRange1: 0
+    - _AdvancedRange2: 0
+    - _Advancedfloat0: 0
+    - _Advancedfloat1: 0
+    - _Advancedfloat2: 0
+    - _Advancedfloat3: 0
+    - _Advancedfloat4: 0
+    - _Advancedfloat44: 0
+    - _Advancedfloat7: 0
+    - _AlphaTest: 0
+    - _BaseGroup: 0
+    - _BlendMode: 0
+    - _BlendOp: 0
+    - _ColorMask: 15
+    - _Cull: 2
+    - _CullMode: 2
+    - _Cutoff: 0.5
+    - _DecoratorGroup: 0
+    - _DstBlend: 0
+    - _Enum: 0
+    - _Float: 0.4
+    - _Float1: 1
+    - _IntSlider: 9.75
+    - _IntSlider2: 0
+    - _KWEnum: 0
+    - _MinMaxSlider: 1
+    - _MinMaxSlider2: 1
+    - _MinMaxSliderEnd: 1
+    - _MinMaxSliderStart: 0
+    - _PassSelect: 1
+    - _PassSwitch: 1
+    - _PowerSlider: 0.11
+    - _PresetGroup: 0
+    - _RangeEnd: 1
+    - _RangeStart: 0
+    - _SettingGroup: 0
+    - _SrcBlend: 1
+    - _SubEnum: 0
+    - _SubGroup: 0
+    - _SubKeywordEnum: 0
+    - _TestHelpbox: 1
+    - _TestTooltips: 1
+    - _Toggle: 0
+    - _Toggle0: 0
+    - _Toggle2: 0
+    - _ZTest: 4
+    - _ZTestMode: 4
+    - _ZWrite: 1
+    - _ZWriteMode: 1
+    - _enum: 2
+    - _float: 0
+    - _float1: 0
+    - _float2: 0
+    - _float3: 0
+    - _float_helpbox: 1
+    - _float_tooltip: 1
+    - _group: 1
+    - _group1: 1
+    - _group2: 0
+    - _key1_Float1: 0
+    - _key2_Float2: 0.5
+    - _key3_Float3: 1
+    - _key3_Float3_Range: 0.308
+    - _key3_Float4_PowerSlider: 0.052
+    - _minMaxSlider: 1
+    - _rangeEnd: 1
+    - _rangeStart: 0.19194186
+    - _subKeywordEnum: 0
+    - _toggle: 0
+    - _toggle2: 0
+    m_Colors:
+    - _AdvancedColor0: {r: 1, g: 1, b: 1, a: 1}
+    - _AdvancedColor7: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseMapChannel: {r: 1, g: 0, b: 0, a: 0}
+    - _Channel: {r: 1, g: 0, b: 0, a: 0}
+    - _Color1: {r: 1, g: 0, b: 0, a: 1}
+    - _Color111: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0, g: 1, b: 0, a: 1}
+    - _Color3: {r: 0, g: 0, b: 1, a: 1}
+    - _Color4: {r: 1, g: 1, b: 1, a: 1}
+    - _Toggle: {r: 0, g: 0, b: 0, a: 1}
+    - _Toggle2: {r: 0, g: 0, b: 0, a: 1}
+    - _Vector: {r: 0, g: 0, b: 0, a: 1}
+    - _color1: {r: 0.7, g: 0.7, b: 1, a: 1}
+    - _textureChannelMask1: {r: 0, g: 0, b: 0, a: 1}
+    - _vector1: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
