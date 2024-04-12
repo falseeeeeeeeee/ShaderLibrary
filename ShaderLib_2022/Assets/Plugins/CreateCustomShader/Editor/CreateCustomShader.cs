@@ -21,7 +21,7 @@ public class CreateCustomShader
     [MenuItem("Assets/Create/Shader/URP Unlit Shader")]
     public static void CreateURPUnlitShader()
     {
-        string templatePath = "Assets/Plugins/CreateCustomShader/Shader/URPUnlitShader.shader";
+        string templatePath = "Assets/Plugins/CreateCustomShader/Shader/S_URPUnlitShader.shader";
         CreateShaderTemplate(templatePath, "S_URPUnlitShader.shader");
     }
 
@@ -30,7 +30,7 @@ public class CreateCustomShader
     // public static void CreateOtherShader()
     // {
     //     // 替换以下路径和文件名以匹配你的第二个Shader模板
-    //     string templatePath = "Assets/Plugins/CreateCustomShader/Shader/OtherShader.shader";
+    //     string templatePath = "Assets/Plugins/CreateCustomShader/Shader/S_OtherShader.shader";
     //     CreateShaderTemplate(templatePath, "S_OtherShader.shader");
     // }
 

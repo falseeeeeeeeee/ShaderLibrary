@@ -140,5 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b260a9a3e65d8424c8c34b1843a08ec0, type: 3}
   m_Name: GrabDepthRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_RenderPassEvent: 500
