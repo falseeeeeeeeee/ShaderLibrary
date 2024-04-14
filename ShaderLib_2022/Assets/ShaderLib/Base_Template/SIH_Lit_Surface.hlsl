@@ -92,7 +92,7 @@ void InitSurfaceData(Varyings input, out SurfaceData surfaceData)
     #endif
     surfaceData.smoothness = specGloss.a;
 
-    surfaceData.normalTS = SampleNormal(input.uv, _BumpMap, sampler_BumpMap, _BumpScale);
+    surfaceData.normalTS = SampleNormal(input.uv, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
     surfaceData.occlusion = SampleOcclusion(input.uv);
     surfaceData.emission = SampleEmission(input.uv, _EmissionColor.rgb, _EmissionMap, sampler_EmissionMap);
     

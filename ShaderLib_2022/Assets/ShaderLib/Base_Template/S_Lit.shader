@@ -35,9 +35,9 @@ Shader "URP/Base/S_Lit"
         [Toggle(_ALPHATEST_ON)] _AlphaTestToggle ("Alpha Clipping", Int) = 0
         _Cutoff ("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
         [Enum(UnityEngine.Rendering.CullMode)] _CullMode ("CullMode", Float) = 2
-        [Toggle(_SPECULARHIGHLIGHTS_OFF)] _SpecularHighlights ("Specular Highlights", Float) = 1
-        [Toggle(_ENVIRONMENTREFLECTIONS_OFF)] _EnvironmentReflections ("Environment Reflections", Float) = 1
-        [Toggle(_RECEIVE_SHADOWS_OFF)] _ReceiveShadows ("Receive Shadows", Float) = 1.0
+        [ToggleOff] _SpecularHighlights("Specular Highlights", Int) = 1.0
+        [ToggleOff] _EnvironmentReflections("Environment Reflections", Int) = 1.0
+        [Toggle(_RECEIVE_SHADOWS_OFF)] _ReceiveShadows ("Disable Receive Shadows", Int) = 1.0
     }
 
     SubShader
@@ -45,6 +45,7 @@ Shader "URP/Base/S_Lit"
         Tags
         {
             "RenderPipeline" = "UniversalPipeline"
+            "UniversalMaterialType" = "Lit"
             "RenderType" = "Opaque"
             "Queue" = "Geometry"
         }
@@ -401,7 +402,7 @@ Shader "URP/Base/S_Lit"
 
         // -------------------------------------
         // Meta Pass
-/*        Pass
+        Pass
         {
             Name "Meta"
             Tags
@@ -419,26 +420,30 @@ Shader "URP/Base/S_Lit"
             // -------------------------------------
             // Shader Stages
             #pragma vertex UniversalVertexMeta
-            #pragma fragment UniversalFragmentMetaLit
+            #pragma fragment UniversalFragmentMetaSimple
+            // #pragma fragment UniversalFragmentMetaLit
 
             // -------------------------------------
             // Material Keywords
-            #pragma shader_feature_local_fragment _SPECULAR_SETUP
+            // #pragma shader_feature_local_fragment _SPECULAR_SETUP
             #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
             #pragma shader_feature_local_fragment _SPECGLOSSMAP
+            // #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
+            // #pragma shader_feature_local_fragment _ALPHATEST_ON
+            // #pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
+            // #pragma shader_feature_local_fragment _SPECGLOSSMAP
             #pragma shader_feature EDITOR_VISUALIZATION
 
             // -------------------------------------
             // Includes
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitMetaPass.hlsl"
+            // #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
+
             ENDHLSL
-        }*/
+        }
     }
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }

@@ -51,7 +51,7 @@ Material:
     - _GlossSource: 0
     - _NormalMap: 0
     - _NormalMapToggle: 1
-    - _Smoothness: 0.181
+    - _Smoothness: 0.8
     - _SpecGlossMapToggle: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
