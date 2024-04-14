@@ -8,6 +8,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.053608A6" = ""
+	"OpenInspectorPreview.053608A6" = "0"
+	"currentGroup.053608A6" = "all"
 }
 providers = {
 	packages = {
@@ -53,6 +56,16 @@ providers = {
 	asset = {
 		active = true
 		priority = 25
+		defaultAction = null
+	}
+	archetype = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+	journal = {
+		active = true
+		priority = 2500
 		defaultAction = null
 	}
 }

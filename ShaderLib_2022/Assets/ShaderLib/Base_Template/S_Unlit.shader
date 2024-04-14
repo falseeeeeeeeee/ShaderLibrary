@@ -1,4 +1,4 @@
-Shader "URP/Template/#NAME#"
+Shader "URP/Base/S_Unlit"
 {
     Properties
     {
@@ -7,9 +7,9 @@ Shader "URP/Template/#NAME#"
         _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
 
         [Header(Settings)][Space(6)]
-        [Toggle(_ALPHATEST_ON)] _AlphaTestToggle ("Alpha Clipping", Int) = 0
-        _Cutoff ("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
-        [Enum(UnityEngine.Rendering.CullMode)] _CullMode ("CullMode", float) = 2
+        [Toggle(_ALPHATEST_ON)] _AlphaTest ("AlphaTest", Int) = 0
+        _Cutoff ("Cutoff", Range(0.0, 1.0)) = 0.5
+        [Enum(UnityEngine.Rendering.CullMode)]_CullMode ("CullMode", float) = 2
     }
 
     SubShader
@@ -276,6 +276,40 @@ Shader "URP/Template/#NAME#"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
+            ENDHLSL
+        }
+
+        // -------------------------------------
+        // Meta Pass
+        Pass
+        {
+            Name "Meta"
+            Tags
+            {
+                "LightMode" = "Meta"
+            }
+
+            // -------------------------------------
+            // Render State Commands
+            Cull Off
+            
+            HLSLPROGRAM
+            #pragma target 2.0
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex UniversalVertexMeta
+            #pragma fragment UniversalFragmentMetaUnlit
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature EDITOR_VISUALIZATION
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitMetaPass.hlsl"
             ENDHLSL
         }
     }

@@ -23,6 +23,7 @@ Material:
   - _PASSSELECT_ON
   - _PASSSWITCH
   - _PASSSWITCH_ON
+  - _SHOWIFTOGGLE0_ON
   - _SUBKEYWORDENUM_SKEY1
   - _SUBKEYWORDENUM__SKEY1
   - _TOGGLE0_ON
@@ -82,6 +83,7 @@ Material:
     - _AdvancedRange0: 0
     - _AdvancedRange1: 0
     - _AdvancedRange2: 0
+    - _AdvancedRange3: 0
     - _Advancedfloat0: 0
     - _Advancedfloat1: 0
     - _Advancedfloat2: 0
@@ -116,6 +118,7 @@ Material:
     - _RangeEnd: 1
     - _RangeStart: 0
     - _SettingGroup: 0
+    - _ShowIfToggle0: 1
     - _SrcBlend: 1
     - _SubEnum: 0
     - _SubGroup: 0
