@@ -58,8 +58,7 @@ namespace GammaUIRenderGraph
 
             if (diagnostics)
             {
-                Debug.Log(
-                    conversionMaterial != null
+                Debug.Log(conversionMaterial != null
                         ? "[GammaUI] READY: conversion feature created. Original UI shaders/materials will be preserved."
                         : "[GammaUI] Shader missing. Keep Resources/GammaUIRenderGraph.shader, or assign the Shader field.",
                     this);
@@ -71,8 +70,7 @@ namespace GammaUIRenderGraph
             var data = renderingData.cameraData;
             var camera = data.camera;
 
-            if (data.cameraType != CameraType.Game &&
-                !(showInSceneView && data.isSceneViewCamera))
+            if (data.cameraType != CameraType.Game && !(showInSceneView && data.isSceneViewCamera))
             {
                 if (data.isSceneViewCamera)
                     Report(camera, "SKIP: Scene View. Inspect Game View, or enable Show In Scene View.");
@@ -97,9 +95,7 @@ namespace GammaUIRenderGraph
                 reason = "Use a full-screen viewport without Dynamic Resolution.";
             else if (HDROutputSettings.main != null && HDROutputSettings.main.active)
                 reason = "HDR display output is not implemented. HDR scene rendering is allowed.";
-            else if (!SystemInfo.IsFormatSupported(
-                         GraphicsFormat.R16G16B16A16_SFloat,
-                         GraphicsFormatUsage.Blend))
+            else if (!SystemInfo.IsFormatSupported(GraphicsFormat.R16G16B16A16_SFloat, GraphicsFormatUsage.Blend))
                 reason = "This device cannot blend into an RGBA16F render target.";
 
             if (reason != null)
@@ -111,11 +107,7 @@ namespace GammaUIRenderGraph
             pass.layerMask = uiLayer;
             renderer.EnqueuePass(pass);
 
-            Report(
-                camera,
-                "ENQUEUE: cameraType=" + data.renderType +
-                ", AA=" + data.antialiasing +
-                ". Original UI shaders are preserved.");
+            Report(camera, "ENQUEUE: cameraType=" + data.renderType + ", AA=" + data.antialiasing + ". Original UI shaders are preserved.");
         }
 
         void Report(Camera camera, string message, bool warning = false)
@@ -166,9 +158,7 @@ namespace GammaUIRenderGraph
                 public RendererListHandle renderers;
             }
 
-            public GammaPass(
-                GammaUIRenderFeature owner,
-                Material conversionMaterial)
+            public GammaPass(GammaUIRenderFeature owner, Material conversionMaterial)
             {
                 this.owner = owner;
                 this.conversionMaterial = conversionMaterial;
@@ -179,9 +169,7 @@ namespace GammaUIRenderGraph
                 requiresIntermediateTexture = true;
             }
 
-            public override void RecordRenderGraph(
-                RenderGraph graph,
-                ContextContainer frameData)
+            public override void RecordRenderGraph(RenderGraph graph, ContextContainer frameData)
             {
                 var resources = frameData.Get<UniversalResourceData>();
                 var cameraData = frameData.Get<UniversalCameraData>();
@@ -191,10 +179,7 @@ namespace GammaUIRenderGraph
 
                 if (resources.isActiveTargetBackBuffer)
                 {
-                    owner.Report(
-                        camera,
-                        "SKIP in RECORD: active color is the back buffer. Set this camera's Renderer Data > Intermediate Texture to Always.",
-                        true);
+                    owner.Report(camera, "SKIP in RECORD: active color is the back buffer. Set this camera's Renderer Data > Intermediate Texture to Always.",true);
                     return;
                 }
 
@@ -202,10 +187,7 @@ namespace GammaUIRenderGraph
 
                 if (!source.IsValid())
                 {
-                    owner.Report(
-                        camera,
-                        "SKIP in RECORD: no valid active camera color texture.",
-                        true);
+                    owner.Report(camera, "SKIP in RECORD: no valid active camera color texture.", true);
                     return;
                 }
 
@@ -213,10 +195,7 @@ namespace GammaUIRenderGraph
 
                 if (colorDesc.msaaSamples != MSAASamples.None)
                 {
-                    owner.Report(
-                        camera,
-                        "SKIP in RECORD: active color is multisampled. Disable MSAA on the active URP Asset.",
-                        true);
+                    owner.Report(camera, "SKIP in RECORD: active color is multisampled. Disable MSAA on the active URP Asset.", true);
                     return;
                 }
 
@@ -235,41 +214,25 @@ namespace GammaUIRenderGraph
                 depthDesc.width = colorDesc.width;
                 depthDesc.height = colorDesc.height;
                 depthDesc.graphicsFormat = GraphicsFormat.None;
-                depthDesc.depthStencilFormat =
-                    SystemInfo.GetGraphicsFormat(DefaultFormat.DepthStencil);
+                depthDesc.depthStencilFormat = SystemInfo.GetGraphicsFormat(DefaultFormat.DepthStencil);
                 depthDesc.msaaSamples = 1;
                 depthDesc.bindMS = false;
                 depthDesc.useMipMap = false;
                 depthDesc.autoGenerateMips = false;
 
-                var depth = UniversalRenderer.CreateRenderGraphTexture(
-                    graph,
-                    depthDesc,
-                    "GammaUI Depth Stencil",
-                    true);
+                var depth = UniversalRenderer.CreateRenderGraphTexture(graph, depthDesc, "GammaUI Depth Stencil", true);
 
                 // Pass 0 in GammaUIRenderGraph.shader:
                 // camera Linear -> gamma-encoded numeric values.
                 // Afterwards set _GammaUIRGActive = 1 so original UI shaders can
                 // encode their source RGB before blending.
-                RecordBlit(
-                    graph,
-                    source,
-                    gamma,
-                    shaderPass: 0,
-                    gammaUIActiveAfterBlit: 1.0f,
-                    name: "GammaUI 1 - Linear To Gamma");
+                RecordBlit(graph, source, gamma, shaderPass: 0, gammaUIActiveAfterBlit: 1.0f, name: "GammaUI 1 - Linear To Gamma");
 
                 // IMPORTANT:
                 // No overrideShader / overrideMaterial here.
                 // Every UI renderer keeps its original material, shader, blend state,
                 // stencil state, textures, TMP SDF code, and custom effects.
-                var drawing = RenderingUtils.CreateDrawingSettings(
-                    new ShaderTagId("SRPDefaultUnlit"),
-                    rendering,
-                    cameraData,
-                    lights,
-                    SortingCriteria.CommonTransparent);
+                var drawing = RenderingUtils.CreateDrawingSettings(new ShaderTagId("SRPDefaultUnlit"), rendering, cameraData, lights, SortingCriteria.CommonTransparent);
 
                 // Extra common URP LightMode tags for custom UI shaders.
                 // The first matching pass is used.
@@ -277,67 +240,34 @@ namespace GammaUIRenderGraph
                 drawing.SetShaderPassName(2, new ShaderTagId("UniversalForwardOnly"));
                 drawing.SetShaderPassName(3, new ShaderTagId("Universal2D"));
 
-                var filtering = new FilteringSettings(
-                    RenderQueueRange.transparent,
-                    layerMask);
+                var filtering = new FilteringSettings(RenderQueueRange.transparent, layerMask);
 
-                var list = graph.CreateRendererList(
-                    new RendererListParams(
-                        rendering.cullResults,
-                        drawing,
-                        filtering));
+                var list = graph.CreateRendererList(new RendererListParams(rendering.cullResults, drawing, filtering));
 
-                using (var builder =
-                       graph.AddRasterRenderPass<DrawData>(
-                           "GammaUI 2 - Draw UI (Original Shaders)",
-                           out var data))
+                using (var builder = graph.AddRasterRenderPass<DrawData>("GammaUI 2 - Draw UI (Original Shaders)", out var data))
                 {
                     data.renderers = list;
 
                     builder.UseRendererList(list);
-                    builder.SetRenderAttachment(
-                        gamma,
-                        0,
-                        AccessFlags.ReadWrite);
-                    builder.SetRenderAttachmentDepth(
-                        depth,
-                        AccessFlags.ReadWrite);
+                    builder.SetRenderAttachment(gamma, 0, AccessFlags.ReadWrite);
+                    builder.SetRenderAttachmentDepth(depth, AccessFlags.ReadWrite);
 
                     builder.AllowPassCulling(false);
 
-                    builder.SetRenderFunc(
-                        static (DrawData d, RasterGraphContext context) =>
-                            context.cmd.DrawRendererList(d.renderers));
+                    builder.SetRenderFunc(static (DrawData d, RasterGraphContext context) => context.cmd.DrawRendererList(d.renderers));
                 }
 
                 // Pass 1 in GammaUIRenderGraph.shader:
                 // composite gamma values -> Linear.
                 // Afterwards reset _GammaUIRGActive = 0.
-                RecordBlit(
-                    graph,
-                    gamma,
-                    source,
-                    shaderPass: 1,
-                    gammaUIActiveAfterBlit: 0.0f,
-                    name: "GammaUI 3 - Gamma To Linear");
+                RecordBlit(graph, gamma, source, shaderPass: 1, gammaUIActiveAfterBlit: 0.0f, name: "GammaUI 3 - Gamma To Linear");
 
-                owner.Report(
-                    camera,
-                    "RECORD: conversion + original-shader UI draw + conversion registered.");
+                owner.Report(camera, "RECORD: conversion + original-shader UI draw + conversion registered.");
             }
 
-            void RecordBlit(
-                RenderGraph graph,
-                TextureHandle source,
-                TextureHandle destination,
-                int shaderPass,
-                float gammaUIActiveAfterBlit,
-                string name)
+            void RecordBlit(RenderGraph graph,TextureHandle source,TextureHandle destination,int shaderPass,float gammaUIActiveAfterBlit,string name)
             {
-                using var builder =
-                    graph.AddRasterRenderPass<BlitData>(
-                        name,
-                        out var data);
+                using var builder = graph.AddRasterRenderPass<BlitData>(name, out var data);
 
                 data.source = source;
                 data.material = conversionMaterial;
@@ -345,10 +275,7 @@ namespace GammaUIRenderGraph
                 data.gammaUIActiveAfterBlit = gammaUIActiveAfterBlit;
 
                 builder.UseTexture(source, AccessFlags.Read);
-                builder.SetRenderAttachment(
-                    destination,
-                    0,
-                    AccessFlags.Write);
+                builder.SetRenderAttachment(destination, 0, AccessFlags.Write);
 
                 // Required because this pass sets _GammaUIRGActive globally.
                 builder.AllowGlobalStateModification(true);
@@ -357,16 +284,9 @@ namespace GammaUIRenderGraph
                 builder.SetRenderFunc(
                     static (BlitData d, RasterGraphContext context) =>
                     {
-                        Blitter.BlitTexture(
-                            context.cmd,
-                            d.source,
-                            new Vector4(1, 1, 0, 0),
-                            d.material,
-                            d.shaderPass);
+                        Blitter.BlitTexture(context.cmd, d.source, new Vector4(1, 1, 0, 0), d.material, d.shaderPass);
 
-                        context.cmd.SetGlobalFloat(
-                            Active,
-                            d.gammaUIActiveAfterBlit);
+                        context.cmd.SetGlobalFloat(Active, d.gammaUIActiveAfterBlit);
                     });
             }
         }

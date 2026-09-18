@@ -15,11 +15,10 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
     public RenderPassEvent pop = RenderPassEvent.AfterRenderingPostProcessing;
 
     [Header("Blend Shader")]
-    [Tooltip("Optional. If empty, automatically finds: " + DefaultShaderName)]
-    [SerializeField] private Shader blendShader;
+    [Tooltip("Optional. If empty, automatically finds: " + DefaultShaderName)] [SerializeField]
+    private Shader blendShader;
 
-    [Header("Blend State")]
-    [Tooltip("Source factor used by: Blend [_SrcFactor] [_DstFactor]")]
+    [Header("Blend State")] [Tooltip("Source factor used by: Blend [_SrcFactor] [_DstFactor]")]
     public BlendMode srcFactor = BlendMode.SrcAlpha;
 
     [Tooltip("Destination factor used by: Blend [_SrcFactor] [_DstFactor]")]
@@ -30,12 +29,12 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
 
     static readonly int SrcFactorId = Shader.PropertyToID("_SrcFactor");
     static readonly int DstFactorId = Shader.PropertyToID("_DstFactor");
-    static readonly int BlendOpId = Shader.PropertyToID("_Opp");
+    static readonly int BlendOpId   = Shader.PropertyToID("_Opp");
 
     Material runtimeBlendMaterial;
 
     PushLayerRenderPass m_pushPass;
-    PopLayerRenderPass m_popPass;
+    PopLayerRenderPass  m_popPass;
 
     public class StackLayers : ContextItem
     {
@@ -49,24 +48,20 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
 
     class PushLayerRenderPass : ScriptableRenderPass
     {
-        public override void RecordRenderGraph(
-            RenderGraph renderGraph,
-            ContextContainer frameData)
+        public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
         {
-            UniversalResourceData resourcesData =
-                frameData.Get<UniversalResourceData>();
+            UniversalResourceData resourcesData = frameData.Get<UniversalResourceData>();
 
             var layers = frameData.GetOrCreate<StackLayers>();
 
             // Save everything rendered before Push.
             layers.layers.Push(resourcesData.cameraColor);
 
-            TextureDesc desc =
-                resourcesData.cameraColor.GetDescriptor(renderGraph);
+            TextureDesc desc = resourcesData.cameraColor.GetDescriptor(renderGraph);
 
             desc.clearBuffer = true;
-            desc.clearColor = Color.clear;
-            desc.name = "_NewRenderTarget_" + layers.layers.Count;
+            desc.clearColor  = Color.clear;
+            desc.name        = "_NewRenderTarget_" + layers.layers.Count;
 
             var layerColor = renderGraph.CreateTexture(desc);
 
@@ -75,9 +70,8 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
 
             if (!GraphicsFormatUtility.HasAlphaChannel(desc.format))
             {
-                Debug.LogWarning(
-                    "[PushPopLayer] The temporary layer has no alpha channel. " +
-                    "Layer blending may overwrite the previous image.");
+                Debug.LogWarning("[PushPopLayer] The temporary layer has no alpha channel. " +
+                                 "Layer blending may overwrite the previous image.");
             }
         }
     }
@@ -93,15 +87,12 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
             profilingSampler = new ProfilingSampler("Pop: Blend Snapshot!");
         }
 
-        public override void RecordRenderGraph(
-            RenderGraph renderGraph,
-            ContextContainer frameData)
+        public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
         {
             if (blendMaterial == null)
                 return;
 
-            UniversalResourceData resourcesData =
-                frameData.Get<UniversalResourceData>();
+            UniversalResourceData resourcesData = frameData.Get<UniversalResourceData>();
 
             var layers = frameData.GetOrCreate<StackLayers>();
 
@@ -113,16 +104,9 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
             // This implementation doesn't use framebuffer fetch.
             blendMaterial.DisableKeyword(FBFKeyword);
 
-            var blitParameters =
-                new RenderGraphUtils.BlitMaterialParameters(
-                    resourcesData.cameraColor,
-                    previousLayer,
-                    blendMaterial,
-                    0);
+            var blitParameters = new RenderGraphUtils.BlitMaterialParameters(resourcesData.cameraColor, previousLayer, blendMaterial, 0);
 
-            renderGraph.AddBlitPass(
-                blitParameters,
-                "Pop: Blend Snapshot!");
+            renderGraph.AddBlitPass(blitParameters, "Pop: Blend Snapshot!");
 
             resourcesData.cameraColor = previousLayer;
         }
@@ -131,7 +115,7 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
     public override void Create()
     {
         m_pushPass = new PushLayerRenderPass();
-        m_popPass = new PopLayerRenderPass();
+        m_popPass  = new PopLayerRenderPass();
 
         EnsureShaderAndMaterial();
     }
@@ -142,8 +126,7 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
         if (blendShader == null)
             blendShader = Shader.Find(DefaultShaderName);
 
-        if (runtimeBlendMaterial != null &&
-            runtimeBlendMaterial.shader != blendShader)
+        if (runtimeBlendMaterial != null &&runtimeBlendMaterial.shader != blendShader)
         {
             CoreUtils.Destroy(runtimeBlendMaterial);
             runtimeBlendMaterial = null;
@@ -151,11 +134,9 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
 
         if (runtimeBlendMaterial == null && blendShader != null)
         {
-            runtimeBlendMaterial =
-                CoreUtils.CreateEngineMaterial(blendShader);
+            runtimeBlendMaterial = CoreUtils.CreateEngineMaterial(blendShader);
 
-            runtimeBlendMaterial.name =
-                "PushPopLayer Runtime Blend Material";
+            runtimeBlendMaterial.name = "PushPopLayer Runtime Blend Material";
         }
 
         ApplyBlendSettings();
@@ -166,30 +147,20 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
         if (runtimeBlendMaterial == null)
             return;
 
-        runtimeBlendMaterial.SetFloat(
-            SrcFactorId,
-            (float)srcFactor);
+        runtimeBlendMaterial.SetFloat(SrcFactorId, (float)srcFactor);
 
-        runtimeBlendMaterial.SetFloat(
-            DstFactorId,
-            (float)dstFactor);
+        runtimeBlendMaterial.SetFloat(DstFactorId, (float)dstFactor);
 
-        runtimeBlendMaterial.SetFloat(
-            BlendOpId,
-            (float)blendOp);
+        runtimeBlendMaterial.SetFloat(BlendOpId, (float)blendOp);
     }
 
-    public override void AddRenderPasses(
-        ScriptableRenderer renderer,
-        ref RenderingData renderingData)
+    public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData  renderingData)
     {
         EnsureShaderAndMaterial();
 
         if (runtimeBlendMaterial == null)
         {
-            Debug.LogWarning(
-                $"[PushPopLayer] Shader not found: {DefaultShaderName}",
-                this);
+            Debug.LogWarning($"[PushPopLayer] Shader not found: {DefaultShaderName}", this);
             return;
         }
 
@@ -198,7 +169,7 @@ public class PushPopLayerRenderFeature : ScriptableRendererFeature
         m_pushPass.renderPassEvent = push;
 
         m_popPass.renderPassEvent = pop;
-        m_popPass.blendMaterial = runtimeBlendMaterial;
+        m_popPass.blendMaterial   = runtimeBlendMaterial;
 
         renderer.EnqueuePass(m_pushPass);
         renderer.EnqueuePass(m_popPass);
