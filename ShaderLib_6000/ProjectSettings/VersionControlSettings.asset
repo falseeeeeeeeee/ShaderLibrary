@@ -3,5 +3,5 @@
 --- !u!890905787 &1
 VersionControlSettings:
   m_ObjectHideFlags: 0
-  m_Mode: Unity Version Control
+  m_Mode: Hidden Meta Files
   m_TrackPackagesOutsideProject: 0
