@@ -126,6 +126,7 @@ SubShader {
 		#include "UnityUI.cginc"
 		#include "TMPro_Properties.cginc"
 		#include "TMPro.cginc"
+		#include "Assets/AssetRaw/Shaders/Include/SIH_GammaUI.hlsl"
 
 		struct vertex_t
 		{
@@ -246,6 +247,8 @@ SubShader {
 		fixed4 PixShader(pixel_t input) : SV_Target
 		{
 			UNITY_SETUP_INSTANCE_ID(input);
+			
+			input.color.rgb = GammaUIEncodeIfActive(input.color.rgb);
 
 			float c = tex2D(_MainTex, input.atlas).a;
 
