@@ -173,7 +173,9 @@ namespace GammaUIRenderGraph
                 this.owner = owner;
                 this.conversionMaterial = conversionMaterial;
 
-                renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
+                // Render and decode UI before this camera's post-processing.
+                // With Push/Pop: Push -> GammaUI -> UI post-processing -> Pop.
+                renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
                 requiresIntermediateTexture = true;
             }
 
