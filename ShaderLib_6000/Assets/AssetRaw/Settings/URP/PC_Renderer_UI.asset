@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7877790027832422272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b300e5f7eb9c75444b29bddd9d1f67ce, type: 3}
+  m_Name: PushPopLayerRenderFeature
+  m_EditorClassIdentifier: Assembly-CSharp::PushPopLayerRenderFeature
+  m_Active: 1
+  push: 0
+  pop: 600
+  blendShader: {fileID: 4800000, guid: 2f3c499c34896a94b9ef9a185f8ec569, type: 3}
+  srcFactor: 5
+  dstFactor: 10
+  blendOp: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,7 +45,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: 9071667274096615209}
-  m_RendererFeatureMap: 299f10715209e57d
+  - {fileID: -7877790027832422272}
+  m_RendererFeatureMap: 299f10715209e57d8010ef3fb577ac92
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -39,7 +59,7 @@ MonoBehaviour:
     m_Bits: 0
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 1
@@ -48,7 +68,7 @@ MonoBehaviour:
     failOperation: 0
     zFailOperation: 0
   m_ShadowTransparentReceive: 1
-  m_RenderingMode: 2
+  m_RenderingMode: 0
   m_DepthPrimingMode: 0
   m_CopyDepthMode: 0
   m_DepthAttachmentFormat: 0
