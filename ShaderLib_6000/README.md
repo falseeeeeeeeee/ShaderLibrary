@@ -25,7 +25,7 @@
 
 ![](Source/GammaUI/GammaUIScreen.png)
 
-* 所有的UI图片依旧保持sRGB勾选
+* 所有的UI图片依旧保持sRGB勾选，结果是RGB依然保持原样功能，A通道始终是Gamma
 
 * RenderFeature 中添加GammaUI
 
@@ -56,7 +56,74 @@
     | CullingMask（渲染哪些层）         | 除了UI      | UI        |
     | VolumeMask（后处理应用哪些层）    | Default     | UI        |
 
+
+# UI Camera 堆栈启用 TAA
+
+* 如果直接使用TAA会没效果以及弹警告
+  ![](Source/TAASetting/TAASettingScreen.png)
+
+* 将URP Universal包进行本地化，否则只改Library没办法同步其他人电脑
+  ![](Source/TAASetting/TAASettingScreen2.png)
+
+* 修改两处源码
+
+  * 将 `TemporalAA.cs` 中的检测警告注释掉
+
+  * ```c#
+    internal static string ValidateAndWarn(UniversalCameraData cameraData, bool isSTPRequested = false)
+    {
+        ...
     
+        if (reasonWarning == null && cameraData.cameraTargetDescriptor.msaaSamples != 1)
+        {
+            if (cameraData.xr != null && cameraData.xr.enabled)
+                reasonWarning = "because MSAA is on. MSAA must be disabled globally for all cameras in XR mode.";
+            else
+                reasonWarning = "because MSAA is on. Turn MSAA off on the camera or current URP Asset.";
+        }
+    	
+        // 注释掉这一段警告Log
+        // if(reasonWarning == null && cameraData.camera.TryGetComponent<UniversalAdditionalCameraData>(out var additionalCameraData))
+        // {
+        //     if (additionalCameraData.renderType == CameraRenderType.Overlay ||
+        //         additionalCameraData.cameraStack.Count > 0)
+        //     {
+        //         reasonWarning = "because camera is stacked.";
+        //     }
+        // }
+    
+        if (reasonWarning == null && cameraData.camera.allowDynamicResolution)
+            reasonWarning = "because camera has dynamic resolution enabled. You can use a constant render scale instead.";
+    
+        ...
+    }
+    
+  * 将 `UniversalCameraData.cs` 中的开启规则进行修改，是主相机继续TAA，Overlay相机不继续TAA
+  
+  
+  * ```c#
+    internal bool IsTemporalAAEnabled()
+    {
+        UniversalAdditionalCameraData additionalCameraData;
+        camera.TryGetComponent(out additionalCameraData);
+    
+        return IsTemporalAARequested()          			// Requested
+            && postProcessEnabled            			    // Postprocessing Enabled
+            && (taaHistory != null)                         // Initialized
+            && (cameraTargetDescriptor.msaaSamples == 1)    // No MSAA
+            // && !(additionalCameraData?.renderType == CameraRenderType.Overlay || additionalCameraData?.cameraStack.Count > 0)  // No Camera stack
+            && additionalCameraData?.renderType != CameraRenderType.Overlay  // 当前Camera不是Overlay类型
+            && !camera.allowDynamicResolution               // No Dynamic Resolution
+            && renderer.SupportsMotionVectors();     	    // Motion Vectors implemented
+    }
+  
+  
+
+
+
+
+
+
 
 
 

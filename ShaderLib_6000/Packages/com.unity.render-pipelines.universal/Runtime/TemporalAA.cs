@@ -357,14 +357,14 @@ namespace UnityEngine.Rendering.Universal
                     reasonWarning = "because MSAA is on. Turn MSAA off on the camera or current URP Asset.";
             }
 
-            if(reasonWarning == null && cameraData.camera.TryGetComponent<UniversalAdditionalCameraData>(out var additionalCameraData))
-            {
-                if (additionalCameraData.renderType == CameraRenderType.Overlay ||
-                    additionalCameraData.cameraStack.Count > 0)
-                {
-                    reasonWarning = "because camera is stacked.";
-                }
-            }
+            // if(reasonWarning == null && cameraData.camera.TryGetComponent<UniversalAdditionalCameraData>(out var additionalCameraData))
+            // {
+            //     if (additionalCameraData.renderType == CameraRenderType.Overlay ||
+            //         additionalCameraData.cameraStack.Count > 0)
+            //     {
+            //         reasonWarning = "because camera is stacked.";
+            //     }
+            // }
 
             if (reasonWarning == null && cameraData.camera.allowDynamicResolution)
                 reasonWarning = "because camera has dynamic resolution enabled. You can use a constant render scale instead.";

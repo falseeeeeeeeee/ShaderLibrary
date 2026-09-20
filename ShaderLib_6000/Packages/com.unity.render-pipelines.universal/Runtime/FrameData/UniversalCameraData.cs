@@ -503,7 +503,8 @@ namespace UnityEngine.Rendering.Universal
                    && postProcessEnabled                                                                                              // Postprocessing Enabled
                    && (taaHistory != null)                                                                                            // Initialized
                    && (cameraTargetDescriptor.msaaSamples == 1)                                                                       // No MSAA
-                   && !(additionalCameraData?.renderType == CameraRenderType.Overlay || additionalCameraData?.cameraStack.Count > 0)  // No Camera stack
+                   // && !(additionalCameraData?.renderType == CameraRenderType.Overlay || additionalCameraData?.cameraStack.Count > 0)  // No Camera stack
+                   && additionalCameraData?.renderType != CameraRenderType.Overlay                                                    // 当前Camera不是Overlay类型，意思是主相机继续TAA，Overlay相机不继续TAA
                    && !camera.allowDynamicResolution                                                                                  // No Dynamic Resolution
                    && renderer.SupportsMotionVectors();                                                                               // Motion Vectors implemented
         }
