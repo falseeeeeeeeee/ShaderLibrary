@@ -3095,45 +3095,9 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_Antialiasing
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_AntialiasingQuality
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 1489127250}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_TaaSettings.m_MipBias
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_TaaSettings.m_Quality
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_TaaSettings.m_JitterScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_TaaSettings.m_FrameInfluence
-      value: 0.01999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521168336027431192, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_TaaSettings.m_ContrastAdaptiveSharpening
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642910478322842208, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
-      propertyPath: m_Depth
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 7798181643227342461, guid: c2b0bb675e7cef746838581c7a4094c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
