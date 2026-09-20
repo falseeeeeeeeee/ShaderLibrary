@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.jasonma.lwgui": {
+      "version": "https://github.com/JasonMa0012/LWGUI.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0acba799ec7d582ebb667ea6db0aefd32fd8c2ef"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.14",
       "depth": 0,
