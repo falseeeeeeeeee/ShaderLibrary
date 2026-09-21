@@ -2,66 +2,191 @@ Shader "URP/Base/S_BaseCharacter"
 {
     Properties
     {
-        // Specular vs Metallic workflow
-        _WorkflowMode("WorkflowMode", Float) = 1.0
+        // -------------------------------------------------------------------------------------------------------------
+        // Base
+        [Main(BaseGroup, _, on, off)] _BaseGroup ("Base Group", Int) = 0
+        [MainTexture][Tex(BaseGroup, _BaseColor)] _BaseMap ("Base Map", 2D) = "white" {}
+        [HideInInspector] _BaseColor ("Base Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        // BaseMap2
+        [SubToggle(BaseGroup, _BASEMAP2_ON)] _BaseMap2Toggle ("Use Base Map 2", Int) = 0
+        [ShowIf(_BaseMap2Toggle, Equal, 1)][Tex(BaseGroup)] _BaseMap2 ("Base Map2", 2D) = "white" {}
+        [ShowIf(_BaseMap2Toggle, Equal, 1)][Sub(BaseGroup)] _BaseMap2Switch ("Base Map2 Switch", Range(0.0, 1.0)) = 0.0
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Metallic & Roughness & Occlusion, Normal
+        [Sub(BaseGroup)] _SpecularColor ("Specular Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        [Tex(BaseGroup)] _MROMap ("MRO Map", 2D) = "white" {}
+        [Sub(BaseGroup)] _Metallic ("Metallic", Range(0.0, 1.0)) = 0.0
+        [Sub(BaseGroup)] _Roughness ("Roughness", Range(0.0, 1.0)) = 1.0
+        [Sub(BaseGroup)] _Occlusion ("Occlusion", Range(0.0, 2.0)) = 1.0
+        [Tex(BaseGroup, _BumpScale)] _BumpMap("Normal Map", 2D) = "bump" {}
+        [HideInInspector] _BumpScale("Scale", Float) = 1.0
+        [Sub(BaseGroup)] _BaseMapST ("Tile & Offset", Vector) = (1.0, 1.0, 0.0, 0.0)
+        
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Emission
+        [Main(EmissionGroup, _EMISSION, off, on)] _EmissionGroup ("Emission Group", Int) = 0
+        [Tex(EmissionGroup, _EmissionColor)] _EmissionMap ("Emission Map", 2D) = "white" {}
+        [HideInInspector][HDR] _EmissionColor ("Emission Color", Color) = (0.0, 0.0, 0.0, 1.0)
+        // EmissionMap2
+        [SubToggle(EmissionGroup, _EMISSIONMAP2_ON)] _EmissionMap2Toggle ("Use Emission Map2", Int) = 0
+        [ShowIf(_EmissionMap2Toggle, Equal, 1)][Tex(EmissionGroup)] _EmissionMap2 ("Emission Map2", 2D) = "white" {}
+        [ShowIf(_EmissionMap2Toggle, Equal, 1)][Sub(EmissionGroup)] _EmissionMap2Switch ("Emission Map2 Switch", Range(0.0, 1.0)) = 0.0
+        // Emission Breathe
+        [SubToggle(EmissionGroup, _EMISSIONBREATHE_ON)] _EmissionBreathe ("Use Emission Breathe", Int) = 0.0
+        [ShowIf(_EmissionBreathe, Equal, 1)][SubToggle(EmissionGroup)] _EmissionBreatheRandomPosition ("Use Emission Breathe Random Position", Int) = 1
+        [ShowIf(_EmissionBreathe, Equal, 1)][Sub(EmissionGroup)] _EmissionBreatheParam ("Emission Breathe Param", Vector) = (0.8, 1.2, 0.2, 4.0)    // XY: MinMax, Z:IntervalSeed, W: Speed
+        // Emission Scan
+        [SubToggle(EmissionGroup, _EMISSIONSCAN_ON)] _EmissionScan ("Emission Scan", Int) = 0.0
+        [ShowIf(_EmissionScan, Equal, 1)][Tex(EmissionGroup)] _EmissionScanMap ("Emission Scan Map", 2D) = "white" {}
+        [ShowIf(_EmissionScan, Equal, 1)][Sub(EmissionGroup)] _EmissionScanIntensity ("Emission Scan Intensity", Float) = 1.0
+        [ShowIf(_EmissionScan, Equal, 1)][SubToggle(EmissionGroup)] _EmissionScanScale ("Emission Scan", Int) = 0.0
+        [Tooltip(CenterScale)]
+        [Tooltip(XY is MinMax)]
+        [Tooltip(Z is SpeedLerpPower)]
+        [Tooltip(W is Speed)]
+        [Tooltip()]
+        [Tooltip(OffsetScan)]
+        [Tooltip(XY is Tile)]
+        [Tooltip(ZW is Speed)]
+        [ShowIf(_EmissionScan, Equal, 1)][Sub(EmissionGroup)] _EmissionScanParam ("Emission Scan Scale Param", Vector) = (12, 0.05, 0.1, 1.0)
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Distort
+        [Main(DistortGroup, _DISTORT_ON, off, on)] _DistortGroup ("Distort Group", Int) = 0
+        [Tooltip(R is DistortA)]
+        [Tooltip(G is DistortB)]
+        [Tooltip(B is Distort Mask)]
+        [Tex(DistortGroup)] _DistortMap ("Distort Map", 2D) = "white" {}
+        [Sub(DistortGroup)] _DistortMapRStrength ("Distort Map R Strength", Range(0.0, 4.0)) = 1.0
+        [Sub(DistortGroup)] _DistortMapGStrength ("Distort Map G Strength", Range(0.0, 4.0)) = 1.0
+        [Sub(DistortGroup)] _DistortMapBStrength ("Distort Map B Strength", Range(0.0, 2.0)) = 1.0
+        [Sub(DistortGroup)] _DistortMapRTileAndSpeed ("Distort Map R Tile And Speed", Vector) = (1.0, 1.0, 0.0, 0.0)
+        [Sub(DistortGroup)] _DistortMapGTileAndSpeed ("Distort Map G Tile And Speed", Vector) = (1.0, 1.0, 0.0, 0.0)
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Fresnel
+        [Main(FresnalGroup, _FRESNEL_ON, off, on)] _FresnelGroup ("Fresnel Group", Int) = 0
+        [SubEnum(FresnalGroup, Multiply, 0, Noneee, 1)] _FresnelBlendMode ("Fresnel Blend Mode", Int) = 0
+        [Tooltip(CenterScale)]
+        [Tooltip(X is Power)]
+        [Tooltip(Y is Multiply)]
+        [Tooltip(ZW is MinMax)]
+        [Sub(FresnalGroup)] _FresnelParam ("Fresnel Param", Vector) = (1.0, 1.0, 0.0, 1.0)
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Matcap
+        [Main(MatcapGroup, _MATCAP_ON, off, on)] _MatcapGroup ("Matcap Group", Int) = 0
+        [SubEnum(MatcapGroup, Lerp, 0, Multiply, 1, Add, 2)] _MatcapBlendMode ("Matcap Blend Mode", Int) = 0
+        [Tex(MatcapGroup)] _MatcapMap ("Matcap Map", 2D) = "white" {}
+        [Sub(MatcapGroup)] _MatcapParam ("Matcap Param", Float) = 1.0
+        
+        // -------------------------------------------------------------------------------------------------------------
+        // Setting
+        [Main(SettingGroup, _, on, off)] _SettingGroup ("Setting Group", Float) = 0
+        [SubTitle(SettingGroup, Light)]
+        [SubToggle(SettingGroup, _RECEIVE_SHADOWS_ON)] _ReceiveShadows ("Receive Shadows", Int) = 1.0
+        [SubEnum(SettingGroup, UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Int) = 2
+        [Preset(SettingGroup, LWGUI_BlendModePreset)] _BlendMode ("Blend Mode Preset", Float) = 1
+        // Blend Mode
+        [SubTitle(SettingGroup, Blend Mode, 22)]
+        [SubEnum(SettingGroup, UnityEngine.Rendering.BlendOp)]  _BlendOp  ("Blend Op", Float) = 0
+        [SubEnum(SettingGroup, UnityEngine.Rendering.BlendMode)] _SrcBlend ("Src Blend", Float) = 1
+        [SubEnum(SettingGroup, UnityEngine.Rendering.BlendMode)] _DstBlend ("Dst Blend", Float) = 0
+        [SubEnum(SettingGroup, Off, 0, On, 1)] _ZWriteMode ("ZWrite Mode ", Float) = 1
+        [SubEnum(SettingGroup, UnityEngine.Rendering.CompareFunction)] _ZTestMode ("ZTest Mode", Float) = 4
+        // Alpha Mode
+        [SubTitle(SettingGroup, Alpha, 22)]
+        [SubToggle(SettingGroup, _ALPHATEST_ON)] _AlphaTest ("Alpha Clipping", Int) = 1
+        [Sub(SettingGroup)][ShowIf(_AlphaTest, Equal, 1)] _Cutoff ("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
+        [SubToggle(SettingGroup, _ALPHADITHER_ON)] _AlphaDither ("Alpha Dither", Int) = 0
+        [Sub(SettingGroup)][ShowIf(_AlphaDither, Equal, 1)] _AlphaDitherSwitch ("Alpha Dither Switch", Range(0.0, 1.0)) = 1.0
+    
+        // -------------------------------------------------------------------------------------------------------------
+        // State
+        [Main(DynamicGroup, _, on, off)] _DynamicGroup ("Dynamic Group", Float) = 0
+        // Character
+        [SubTitle(DynamicGroup, Character, 22)]
+        [NonModifiableTextureData][Tex(DynamicGroup)] _ChaBuffMap ("Cha Buff Map", 2D) = "white" {}
+        [Sub(DynamicGroup)][HDR] _StateColor ("State Color", Color) = (1.0, 0.4455, 0.0308, 1.0)
+        [Sub(DynamicGroup)] _StateSwitch ("State Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)][HDR] _AttackColor ("Attack Color", Color) = (1.0, 1.0, 1.0, 0.0)
+        [Sub(DynamicGroup)] _AttackSwitch ("Attack Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _DissolveSwitch ("Dissolve Switch", Range(0.0, 1.0)) = 1.0
+        [Sub(DynamicGroup)] _DissolveColorSwitch ("Dissolve Color Switch", Range(0.0, 2.0)) = 1.0
+        [Sub(DynamicGroup)] _CritSwitch ("Crit Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _ThumpSwitch ("Thump Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _ScanSwitch ("Scan Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _FrozenSwitch ("Frozen Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _WaterSwitch ("Water Switch", Range(0.0, 1.0)) = 0.0
+        [Sub(DynamicGroup)] _TouchSwitch ("Touch Switch", Range(0.0, 1.0)) = 0.0
+        [SubToggle(DynamicGroup, _TOUGHNESS_ON)] _Toughness ("Toughness Toggle", Int) = 1
+        [Sub(DynamicGroup)] _ToughnessSwitch ("Toughness Switch", Range(0.0, 1.0)) = 0.0
+        // Other
+        [SubTitle(DynamicGroup, Other, 22)]
+        [SubToggle(DynamicGroup, _OUTLINE_ON)] _OutlineSwitch ("Outline Switch", Int) = 1
+        [Sub(DynamicGroup)] _OutlineSize ("Outline Size", Range(0.0, 8.0)) = 1.0
+        [Sub(DynamicGroup)] _LocalBrightnessSwitch ("Local Brightness Switch", Range(0.0, 1.0)) = 0.0
+        [SubToggle(DynamicGroup)] _GlobalIntensityParamOn ("Global Intensity Param On", Int) = 1
+        
+        
+//        // Specular vs Metallic workflow
+//        _WorkflowMode("WorkflowMode", Float) = 1.0
+//
+//        [MainTexture] _BaseMap("Albedo", 2D) = "white" {}
+//        [MainColor] _BaseColor("Color", Color) = (1,1,1,1)
 
-        [MainTexture] _BaseMap("Albedo", 2D) = "white" {}
-        [MainColor] _BaseColor("Color", Color) = (1,1,1,1)
+//        _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
 
-        _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
-
-        _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.5
-        _SmoothnessTextureChannel("Smoothness texture channel", Float) = 0
-
-        _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
-        _MetallicGlossMap("Metallic", 2D) = "white" {}
-
-        _SpecColor("Specular", Color) = (0.2, 0.2, 0.2)
-        _SpecGlossMap("Specular", 2D) = "white" {}
+//        _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.5
+//        _SmoothnessTextureChannel("Smoothness texture channel", Float) = 0
+//
+//        _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
+//        _MetallicGlossMap("Metallic", 2D) = "white" {}
+//
+//        _SpecColor("Specular", Color) = (0.2, 0.2, 0.2)
+//        _SpecGlossMap("Specular", 2D) = "white" {}
 
         [ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
         [ToggleOff] _EnvironmentReflections("Environment Reflections", Float) = 1.0
 
-        _BumpScale("Scale", Float) = 1.0
-        _BumpMap("Normal Map", 2D) = "bump" {}
+//        _BumpScale("Scale", Float) = 1.0
+//        _BumpMap("Normal Map", 2D) = "bump" {}
+//
+//        _Parallax("Scale", Range(0.005, 0.08)) = 0.005
+//        _ParallaxMap("Height Map", 2D) = "black" {}
+//
+//        _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
+//        _OcclusionMap("Occlusion", 2D) = "white" {}
+//
+//        [HDR] _EmissionColor("Color", Color) = (0,0,0)
+//        _EmissionMap("Emission", 2D) = "white" {}
 
-        _Parallax("Scale", Range(0.005, 0.08)) = 0.005
-        _ParallaxMap("Height Map", 2D) = "black" {}
-
-        _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
-        _OcclusionMap("Occlusion", 2D) = "white" {}
-
-        [HDR] _EmissionColor("Color", Color) = (0,0,0)
-        _EmissionMap("Emission", 2D) = "white" {}
-
-        _DetailMask("Detail Mask", 2D) = "white" {}
-        _DetailAlbedoMapScale("Scale", Range(0.0, 2.0)) = 1.0
-        _DetailAlbedoMap("Detail Albedo x2", 2D) = "linearGrey" {}
-        _DetailNormalMapScale("Scale", Range(0.0, 2.0)) = 1.0
-        [Normal] _DetailNormalMap("Normal Map", 2D) = "bump" {}
+//        _DetailMask("Detail Mask", 2D) = "white" {}
+//        _DetailAlbedoMapScale("Scale", Range(0.0, 2.0)) = 1.0
+//        _DetailAlbedoMap("Detail Albedo x2", 2D) = "linearGrey" {}
+//        _DetailNormalMapScale("Scale", Range(0.0, 2.0)) = 1.0
+//        [Normal] _DetailNormalMap("Normal Map", 2D) = "bump" {}
 
         // SRP batching compatibility for Clear Coat (Not used in Lit)
-        [HideInInspector] _ClearCoatMask("_ClearCoatMask", Float) = 0.0
-        [HideInInspector] _ClearCoatSmoothness("_ClearCoatSmoothness", Float) = 0.0
+//        [HideInInspector] _ClearCoatMask("_ClearCoatMask", Float) = 0.0
+//        [HideInInspector] _ClearCoatSmoothness("_ClearCoatSmoothness", Float) = 0.0
 
-        // Blending state
-        _Surface("__surface", Float) = 0.0
-        _Blend("__blend", Float) = 0.0
-        _Cull("__cull", Float) = 2.0
-        [ToggleUI] _AlphaClip("__clip", Float) = 0.0
-        [HideInInspector] _SrcBlend("__src", Float) = 1.0
-        [HideInInspector] _DstBlend("__dst", Float) = 0.0
-        [HideInInspector] _SrcBlendAlpha("__srcA", Float) = 1.0
-        [HideInInspector] _DstBlendAlpha("__dstA", Float) = 0.0
-        [HideInInspector] _ZWrite("__zw", Float) = 1.0
-        [HideInInspector] _BlendModePreserveSpecular("_BlendModePreserveSpecular", Float) = 1.0
-        [HideInInspector] _AlphaToMask("__alphaToMask", Float) = 0.0
-        [HideInInspector] _AddPrecomputedVelocity("_AddPrecomputedVelocity", Float) = 0.0
-        [HideInInspector] _XRMotionVectorsPass("_XRMotionVectorsPass", Float) = 1.0
-
-        [ToggleUI] _ReceiveShadows("Receive Shadows", Float) = 1.0
-        // Editmode props
-        _QueueOffset("Queue offset", Float) = 0.0
+//        // Blending state
+//        _Surface("__surface", Float) = 0.0
+//        _Blend("__blend", Float) = 0.0
+//        _Cull("__cull", Float) = 2.0
+//        [ToggleUI] _AlphaClip("__clip", Float) = 0.0
+//        [HideInInspector] _SrcBlend("__src", Float) = 1.0
+//        [HideInInspector] _DstBlend("__dst", Float) = 0.0
+//        [HideInInspector] _SrcBlendAlpha("__srcA", Float) = 1.0
+//        [HideInInspector] _DstBlendAlpha("__dstA", Float) = 0.0
+//        [HideInInspector] _ZWrite("__zw", Float) = 1.0
+//        [HideInInspector] _BlendModePreserveSpecular("_BlendModePreserveSpecular", Float) = 1.0
+//        [HideInInspector] _AlphaToMask("__alphaToMask", Float) = 0.0
+//        [HideInInspector] _AddPrecomputedVelocity("_AddPrecomputedVelocity", Float) = 0.0
+//        [HideInInspector] _XRMotionVectorsPass("_XRMotionVectorsPass", Float) = 1.0
 
         // ObsoleteProperties
         [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
@@ -77,9 +202,6 @@ Shader "URP/Base/S_BaseCharacter"
 
     SubShader
     {
-        // Universal Pipeline tag is required. If Universal render pipeline is not set in the graphics settings
-        // this Subshader will fail. One can add a subshader below or fallback to Standard built-in to make this
-        // material work with both Universal Render Pipeline and Builtin Unity Pipeline
         Tags
         {
             "RenderType" = "Opaque"
@@ -103,10 +225,9 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Render State Commands
-            Blend[_SrcBlend][_DstBlend], [_SrcBlendAlpha][_DstBlendAlpha]
-            ZWrite[_ZWrite]
-            Cull[_Cull]
-            AlphaToMask[_AlphaToMask]
+            Blend[_SrcBlend][_DstBlend]
+            ZWrite[_ZWriteMode]
+            Cull[_CullMode]
 
             HLSLPROGRAM
             #pragma target 2.0
@@ -192,7 +313,7 @@ Shader "URP/Base/S_BaseCharacter"
             ZWrite On
             ZTest LEqual
             ColorMask 0
-            Cull[_Cull]
+            Cull[_CullMode]
 
             HLSLPROGRAM
             #pragma target 2.0
@@ -241,9 +362,9 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Render State Commands
-            ZWrite[_ZWrite]
+            ZWrite[_ZWriteMode]
             ZTest LEqual
-            Cull[_Cull]
+            Cull[_CullMode]
 
             HLSLPROGRAM
             #pragma target 4.5
@@ -330,7 +451,7 @@ Shader "URP/Base/S_BaseCharacter"
             // Render State Commands
             ZWrite On
             ColorMask R
-            Cull[_Cull]
+            Cull[_CullMode]
 
             HLSLPROGRAM
             #pragma target 2.0
@@ -373,7 +494,7 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Render State Commands
             ZWrite On
-            Cull[_Cull]
+            Cull[_CullMode]
 
             HLSLPROGRAM
             #pragma target 2.0
@@ -453,42 +574,6 @@ Shader "URP/Base/S_BaseCharacter"
 
         Pass
         {
-            Name "Universal2D"
-            Tags
-            {
-                "LightMode" = "Universal2D"
-            }
-
-            // -------------------------------------
-            // Render State Commands
-            Blend[_SrcBlend][_DstBlend]
-            ZWrite[_ZWrite]
-            Cull[_Cull]
-
-            HLSLPROGRAM
-            #pragma target 2.0
-
-            // -------------------------------------
-            // Shader Stages
-            #pragma vertex vert
-            #pragma fragment frag
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
-
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
-
-            // -------------------------------------
-            // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
-            ENDHLSL
-        }
-
-        Pass
-        {
             Name "MotionVectors"
             Tags { "LightMode" = "MotionVectors" }
             ColorMask RG
@@ -505,5 +590,5 @@ Shader "URP/Base/S_BaseCharacter"
     }
 
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
-    CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.LitShader"
+    CustomEditor "LWGUI.LWGUI"
 }
