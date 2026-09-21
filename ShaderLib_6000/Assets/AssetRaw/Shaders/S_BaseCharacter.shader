@@ -209,14 +209,17 @@ Shader "URP/Base/S_BaseCharacter"
             "UniversalMaterialType" = "Lit"
             "IgnoreProjector" = "True"
         }
+        
+        HLSLINCLUDE
+        #include "Input/SIH_StylizedCharacterInput.hlsl"
+        ENDHLSL
+
         LOD 300
 
         // ------------------------------------------------------------------
-        //  Forward pass. Shades all light in a single pass. GI + emission + Fog
+        //  Forward pass
         Pass
         {
-            // Lightmode matches the ShaderPassName set in UniversalRenderPipeline.cs. SRPDefaultUnlit and passes with
-            // no LightMode tag are also rendered by Universal Render Pipeline
             Name "ForwardLit"
             Tags
             {
@@ -240,19 +243,19 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _NORMALMAP
-            #pragma shader_feature_local _PARALLAXMAP
+            // #pragma shader_feature_local _PARALLAXMAP
             #pragma shader_feature_local _RECEIVE_SHADOWS_OFF
-            #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
+            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
             #pragma shader_feature_local_fragment _SURFACE_TYPE_TRANSPARENT
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _ _ALPHAPREMULTIPLY_ON _ALPHAMODULATE_ON
             #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature_local_fragment _OCCLUSIONMAP
+            // #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
+            // #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+            // #pragma shader_feature_local_fragment _OCCLUSIONMAP
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
-            #pragma shader_feature_local_fragment _SPECULAR_SETUP
+            // #pragma shader_feature_local_fragment _SPECULAR_SETUP
 
             // -------------------------------------
             // Universal Pipeline keywords
@@ -293,9 +296,8 @@ Shader "URP/Base/S_BaseCharacter"
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitForwardPass.hlsl"
             ENDHLSL
         }
@@ -345,7 +347,6 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
             ENDHLSL
         }
@@ -429,11 +430,10 @@ Shader "URP/Base/S_BaseCharacter"
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitGBufferPass.hlsl"
             #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferOutputFormat.hlsl"
             ENDHLSL
@@ -477,7 +477,6 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
             ENDHLSL
         }
@@ -507,14 +506,14 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _NORMALMAP
-            #pragma shader_feature_local _PARALLAXMAP
-            #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
+            // #pragma shader_feature_local _PARALLAXMAP
+            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
             #pragma shader_feature_local _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+            // #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
             // -------------------------------------
             // Unity defined keywords
-            #pragma multi_compile _ LOD_FADE_CROSSFADE
+            // #pragma multi_compile _ LOD_FADE_CROSSFADE
 
             // -------------------------------------
             // Universal Pipeline keywords
@@ -523,11 +522,10 @@ Shader "URP/Base/S_BaseCharacter"
             //--------------------------------------
             // GPU Instancing
             #pragma multi_compile_instancing
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitDepthNormalsPass.hlsl"
             ENDHLSL
         }
@@ -555,18 +553,17 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Material Keywords
-            #pragma shader_feature_local_fragment _SPECULAR_SETUP
+            // #pragma shader_feature_local_fragment _SPECULAR_SETUP
             #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
+            // #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
             #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
-            #pragma shader_feature_local_fragment _SPECGLOSSMAP
+            // #pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
+            // #pragma shader_feature_local_fragment _SPECGLOSSMAP
             #pragma shader_feature EDITOR_VISUALIZATION
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
 
             ENDHLSL
@@ -580,10 +577,8 @@ Shader "URP/Base/S_BaseCharacter"
 
             HLSLPROGRAM
             #pragma shader_feature_local _ALPHATEST_ON
-            #pragma multi_compile _ LOD_FADE_CROSSFADE
             #pragma shader_feature_local_vertex _ADD_PRECOMPUTED_VELOCITY
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
             #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ObjectMotionVectors.hlsl"
             ENDHLSL
         }
