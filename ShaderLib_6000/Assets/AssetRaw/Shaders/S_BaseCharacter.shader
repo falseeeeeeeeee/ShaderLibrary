@@ -16,13 +16,13 @@ Shader "URP/Base/S_BaseCharacter"
         // Metallic & Roughness & Occlusion, Normal
         [Sub(BaseGroup)] _SpecularColor ("Specular Color", Color) = (1.0, 1.0, 1.0, 1.0)
         [Tex(BaseGroup)] _MROMap ("MRO Map", 2D) = "white" {}
-        [Sub(BaseGroup)] _Metallic ("Metallic", Range(0.0, 1.0)) = 0.0
+        [Sub(BaseGroup)] _Metallic ("Metallic", Range(0.0, 1.0)) = 1.0
         [Sub(BaseGroup)] _Roughness ("Roughness", Range(0.0, 1.0)) = 1.0
         [Sub(BaseGroup)] _Occlusion ("Occlusion", Range(0.0, 2.0)) = 1.0
-        [Tex(BaseGroup, _BumpScale)] _BumpMap("Normal Map", 2D) = "bump" {}
+        [SubToggle(BaseGroup, _NORMALMAP)] _NormalMapToggle ("Use Normal Map", Int) = 1
+        [ShowIf(_NormalMapToggle, Equal, 1)][Tex(BaseGroup, _BumpScale)] _BumpMap("Normal Map", 2D) = "bump" {}
         [HideInInspector] _BumpScale("Scale", Float) = 1.0
         [Sub(BaseGroup)] _BaseMapST ("Tile & Offset", Vector) = (1.0, 1.0, 0.0, 0.0)
-        
         
         // -------------------------------------------------------------------------------------------------------------
         // Emission
@@ -298,7 +298,7 @@ Shader "URP/Base/S_BaseCharacter"
             #pragma instancing_options renderinglayer
             // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitForwardPass.hlsl"
+            #include "Pass/SIH_StylizedLitForwardPass.hlsl"
             ENDHLSL
         }
 
