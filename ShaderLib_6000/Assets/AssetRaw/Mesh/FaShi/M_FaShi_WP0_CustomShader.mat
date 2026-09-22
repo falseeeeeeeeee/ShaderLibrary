@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHATEST_ON
+  - _EMISSION
   - _NORMALMAP
   m_InvalidKeywords:
   - _EMISSIONBREATHERANDOMPOSITION_ON
@@ -23,7 +23,7 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -121,14 +121,14 @@ Material:
     - _AlphaClip: 0
     - _AlphaDither: 0
     - _AlphaDitherSwitch: 1
-    - _AlphaTest: 1
+    - _AlphaTest: 0
     - _AlphaToMask: 0
     - _AttackSwitch: 0
     - _BaseGroup: 0
     - _BaseMap2Switch: 0
     - _BaseMap2Toggle: 0
     - _Blend: 0
-    - _BlendMode: 1
+    - _BlendMode: 2
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
     - _BumpScale: 1
@@ -146,12 +146,12 @@ Material:
     - _DistortMapBStrength: 1
     - _DistortMapGStrength: 1
     - _DistortMapRStrength: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _DstBlendAlpha: 0
     - _DynamicGroup: 0
     - _EmissionBreathe: 0
     - _EmissionBreatheRandomPosition: 1
-    - _EmissionGroup: 0
+    - _EmissionGroup: 1
     - _EmissionMap2Switch: 0
     - _EmissionMap2Toggle: 0
     - _EmissionScan: 0
@@ -185,7 +185,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _StateSwitch: 0
     - _Surface: 0
@@ -199,7 +199,7 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZTestMode: 4
     - _ZWrite: 1
-    - _ZWriteMode: 1
+    - _ZWriteMode: 0
     m_Colors:
     - _AttackColor: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

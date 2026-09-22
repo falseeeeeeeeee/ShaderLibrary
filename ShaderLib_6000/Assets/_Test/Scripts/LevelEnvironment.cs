@@ -5,65 +5,61 @@ using UnityEngine.Rendering;
 [ExecuteAlways]
 public class LevelEnvironment : MonoBehaviour
 {
-    private static readonly List<LevelEnvironment> ActiveEnvironments = new();
-    private static          int                    enableOrder;
+    static readonly List<LevelEnvironment> Active = new();
+    static int order;
 
-    [Header("Environment")] [SerializeField]
-    private Material skyboxMaterial;
+    [SerializeField, Range(0f, 8f)] float ambientIntensity = 1f;
+    [SerializeField] Material skyboxMaterial;
+    [SerializeField] Light directionalLight;
+    [SerializeField] ReflectionProbe reflectionProbe;
 
-    [SerializeField, Min(0f)] private float ambientIntensity = 1f;
-    [SerializeField]          private Light sun;
+    int currentOrder;
 
-    private int currentOrder;
-
-    private void OnEnable()
+    void OnEnable()
     {
-        if (!ActiveEnvironments.Contains(this))
-            ActiveEnvironments.Add(this);
+        if (!Active.Contains(this))
+            Active.Add(this);
 
-        currentOrder = ++enableOrder;
+        currentOrder = ++order;
         Apply();
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        ActiveEnvironments.Remove(this);
+        Active.Remove(this);
 
-        // 当前环境被关闭后，恢复到最后启用的其他环境
-        LevelEnvironment latest = GetLatestActive();
+        LevelEnvironment latest = GetLatest();
+
         if (latest != null)
             latest.Apply();
     }
 
     public void Apply()
     {
-        if (skyboxMaterial == null)
+        if (skyboxMaterial == null) 
             return;
 
-        RenderSettings.skybox = skyboxMaterial;
-        RenderSettings.sun    = sun;
-
+        RenderSettings.skybox           = skyboxMaterial;
+        RenderSettings.sun              = directionalLight;
         RenderSettings.ambientMode      = AmbientMode.Skybox;
         RenderSettings.ambientIntensity = ambientIntensity;
 
-        // 更新天空盒对应的环境光照
+        if (reflectionProbe != null)
+            reflectionProbe.RenderProbe();
+
         DynamicGI.UpdateEnvironment();
     }
 
-    private static LevelEnvironment GetLatestActive()
+    static LevelEnvironment GetLatest()
     {
-        LevelEnvironment latest      = null;
-        int              latestOrder = int.MinValue;
+        LevelEnvironment latest = null;
 
-        foreach (var environment in ActiveEnvironments)
+        foreach (LevelEnvironment environment in Active)
         {
-            if (environment == null || !environment.isActiveAndEnabled)
-                continue;
-
-            if (environment.currentOrder > latestOrder)
+            if (environment != null && environment.isActiveAndEnabled && 
+                (latest == null || environment.currentOrder > latest.currentOrder))
             {
-                latest      = environment;
-                latestOrder = environment.currentOrder;
+                latest = environment;
             }
         }
 
