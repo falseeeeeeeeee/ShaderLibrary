@@ -4,7 +4,6 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 #include "./SIH_StylizedSurfaceInput.hlsl"
-// #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ParallaxMapping.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/DebugMipmapStreamingMacros.hlsl"
 
@@ -86,9 +85,9 @@ inline void InitializeStandardLitSurfaceData(float2 uv, out SurfaceData outSurfa
     outSurfaceData.albedo = albedoAlpha.rgb * _BaseColor.rgb;
 
     half3 mro = SampleMetallicRoughnessOcclusion(uv);
-    outSurfaceData.metallic = mro.r;
+    outSurfaceData.metallic   = mro.r;
     outSurfaceData.smoothness = mro.g;
-    outSurfaceData.occlusion = mro.b;
+    outSurfaceData.occlusion  = mro.b;
     
     outSurfaceData.specular = half3(0.0, 0.0, 0.0);
     outSurfaceData.normalTS = SampleNormal(uv, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
