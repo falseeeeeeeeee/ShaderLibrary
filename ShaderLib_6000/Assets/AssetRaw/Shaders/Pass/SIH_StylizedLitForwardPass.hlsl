@@ -1,7 +1,7 @@
 #ifndef STYLIZED_FORWARD_LIT_PASS_INCLUDED
 #define STYLIZED_FORWARD_LIT_PASS_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+#include "./Include/SIH_StylizedLighting.hlsl"
 
 #if defined(_NORMALMAP)
 #define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
@@ -237,7 +237,7 @@ void LitPassFragment(Varyings input
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _BlendMode > 1.0);
 
-    outColor = color;
+    // outColor = float4(1,0,0,1);
 
 #ifdef _WRITE_RENDERING_LAYERS
     outRenderingLayers = EncodeMeshRenderingLayer();
