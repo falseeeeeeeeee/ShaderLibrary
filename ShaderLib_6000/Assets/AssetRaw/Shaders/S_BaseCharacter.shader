@@ -336,7 +336,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+            #include "Pass/SIH_StylizedShadowCasterPass.hlsl"
             ENDHLSL
         }
 
