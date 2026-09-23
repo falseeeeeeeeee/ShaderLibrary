@@ -245,19 +245,11 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _NORMALMAP
-            // #pragma shader_feature_local _PARALLAXMAP
-            #pragma shader_feature_local _RECEIVE_SHADOWS_OFF
-            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
-            #pragma shader_feature_local_fragment _SURFACE_TYPE_TRANSPARENT
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _ _ALPHAPREMULTIPLY_ON _ALPHAMODULATE_ON
             #pragma shader_feature_local_fragment _EMISSION
-            // #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-            // #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            // #pragma shader_feature_local_fragment _OCCLUSIONMAP
+            #pragma shader_feature_local _RECEIVE_SHADOWS_OFF
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
-            // #pragma shader_feature_local_fragment _SPECULAR_SETUP
 
             // -------------------------------------
             // Universal Pipeline keywords
@@ -332,7 +324,6 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
             //--------------------------------------
             // GPU Instancing
@@ -340,13 +331,7 @@ Shader "URP/Base/S_BaseCharacter"
             #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             // -------------------------------------
-            // Universal Pipeline keywords
-
-            // -------------------------------------
             // Unity defined keywords
-            #pragma multi_compile _ LOD_FADE_CROSSFADE
-
-            // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
             // -------------------------------------
