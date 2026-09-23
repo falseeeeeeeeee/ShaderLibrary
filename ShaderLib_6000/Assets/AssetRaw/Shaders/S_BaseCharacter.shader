@@ -366,7 +366,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Shader Stages
-            #pragma vertex LitGBufferPassVertex
+            #pragma vertex LitPassVertex            // 使用LitPassVertex，是因为和Forward Pass的顶点处理共用 PassTypes
             #pragma fragment LitGBufferPassFragment
 
             // -------------------------------------
@@ -415,7 +415,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitGBufferPass.hlsl"
+            #include "Pass/SIH_StylizedLitGBufferPass.hlsl"
             #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferOutputFormat.hlsl"
             ENDHLSL
         }

@@ -1,5 +1,5 @@
-#ifndef UNIVERSAL_SHADOW_CASTER_PASS_INCLUDED
-#define UNIVERSAL_SHADOW_CASTER_PASS_INCLUDED
+#ifndef STYLIZED_SHADOW_CASTER_PASS_INCLUDED
+#define STYLIZED_SHADOW_CASTER_PASS_INCLUDED
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
