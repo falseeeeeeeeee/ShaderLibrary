@@ -102,7 +102,11 @@ Shader "URP/Base/S_BaseCharacter"
         [Sub(SettingGroup)][ShowIf(_AlphaTest, Equal, 1)] _Cutoff ("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
         [SubToggle(SettingGroup, _ALPHADITHER_ON)] _AlphaDither ("Alpha Dither", Int) = 0
         [Sub(SettingGroup)][ShowIf(_AlphaDither, Equal, 1)] _AlphaDitherSwitch ("Alpha Dither Switch", Range(0.0, 1.0)) = 1.0
-    
+        // System
+        [SubTitle(SettingGroup, System, 22)]
+        [KWEnum(SettingGroup, Off, _SPECULARHIGHLIGHTS_OFF, On, _)] _SpecularHighlights("Specular Highlights", Float) = 1
+        [KWEnum(SettingGroup, Off, _ENVIRONMENTREFLECTIONS_OFF, On, _)] _EnvironmentReflections("Environment Reflections", Float) = 1
+        
         // -------------------------------------------------------------------------------------------------------------
         // State
         [Main(DynamicGroup, _, on, off)] _DynamicGroup ("Dynamic Group", Float) = 0
@@ -148,8 +152,6 @@ Shader "URP/Base/S_BaseCharacter"
 //        _SpecColor("Specular", Color) = (0.2, 0.2, 0.2)
 //        _SpecGlossMap("Specular", 2D) = "white" {}
 
-        [ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
-        [ToggleOff] _EnvironmentReflections("Environment Reflections", Float) = 1.0
 
 //        _BumpScale("Scale", Float) = 1.0
 //        _BumpMap("Normal Map", 2D) = "bump" {}
@@ -217,7 +219,7 @@ Shader "URP/Base/S_BaseCharacter"
         LOD 300
 
         // ------------------------------------------------------------------
-        //  Forward pass
+        // Forward Pass. 前向渲染用（半透明物体）
         Pass
         {
             Name "ForwardLit"
@@ -296,12 +298,14 @@ Shader "URP/Base/S_BaseCharacter"
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             #include "Pass/SIH_StylizedLitForwardPass.hlsl"
             ENDHLSL
         }
 
+        // ------------------------------------------------------------------
+        // Shadow Pass. 阴影投射
         Pass
         {
             Name "ShadowCaster"
@@ -351,10 +355,10 @@ Shader "URP/Base/S_BaseCharacter"
             ENDHLSL
         }
 
+        // ------------------------------------------------------------------
+        // GBuffer Pass. 延迟渲染用
         Pass
         {
-            // Lightmode matches the ShaderPassName set in UniversalRenderPipeline.cs. SRPDefaultUnlit and passes with
-            // no LightMode tag are also rendered by Universal Render Pipeline
             Name "GBuffer"
             Tags
             {
@@ -430,7 +434,7 @@ Shader "URP/Base/S_BaseCharacter"
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             // -------------------------------------
             // Includes
@@ -522,7 +526,7 @@ Shader "URP/Base/S_BaseCharacter"
             //--------------------------------------
             // GPU Instancing
             #pragma multi_compile_instancing
-            // #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
             // -------------------------------------
             // Includes

@@ -237,6 +237,7 @@ void LitPassFragment(Varyings input
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _BlendMode > 1.0);
 
+    outColor = color;
     // outColor = float4(1,0,0,1);
 
 #ifdef _WRITE_RENDERING_LAYERS
