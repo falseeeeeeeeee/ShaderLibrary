@@ -296,55 +296,7 @@ Shader "URP/Base/S_BaseCharacter"
             ENDHLSL
         }
 
-        // ------------------------------------------------------------------
-        // Shadow Pass. 阴影投射
-        Pass
-        {
-            Name "ShadowCaster"
-            Tags
-            {
-                "LightMode" = "ShadowCaster"
-            }
-
-            // -------------------------------------
-            // Render State Commands
-            ZWrite On
-            ZTest LEqual
-            ColorMask 0
-            Cull[_CullMode]
-
-            HLSLPROGRAM
-            #pragma target 2.0
-
-            // -------------------------------------
-            // Shader Stages
-            #pragma vertex ShadowPassVertex
-            #pragma fragment ShadowPassFragment
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature_local _ALPHATEST_ON
-
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
-
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
-
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma multi_compile _ LOD_FADE_CROSSFADE
-
-            // -------------------------------------
-            // Includes
-            #include "Pass/SIH_StylizedShadowCasterPass.hlsl"
-            ENDHLSL
-        }
-
-        // ------------------------------------------------------------------
+        // --------------------------------------------------------------------
         // GBuffer Pass. 延迟渲染用
         Pass
         {
@@ -420,6 +372,56 @@ Shader "URP/Base/S_BaseCharacter"
             ENDHLSL
         }
 
+        // --------------------------------------------------------------------
+        // Shadow Pass. 阴影投射，绘制到unity_ShadowmapTexture
+        Pass
+        {
+            Name "ShadowCaster"
+            Tags
+            {
+                "LightMode" = "ShadowCaster"
+            }
+
+            // -------------------------------------
+            // Render State Commands
+            ZWrite On
+            ZTest LEqual
+            ColorMask 0
+            Cull[_CullMode]
+
+            HLSLPROGRAM
+            #pragma target 2.0
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex ShadowPassVertex
+            #pragma fragment ShadowPassFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local _ALPHATEST_ON
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
+
+            // -------------------------------------
+            // Includes
+            #include "Pass/SIH_StylizedShadowCasterPass.hlsl"
+            ENDHLSL
+        }
+
+        // --------------------------------------------------------------------
+        // DepthOnly Pass. 深度渲染用，绘制到_CameraDepthTexture
         Pass
         {
             Name "DepthOnly"
@@ -445,7 +447,6 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
             // -------------------------------------
             // Unity defined keywords
@@ -458,11 +459,12 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            #include "Pass/SIH_StylizedDepthOnlyPass.hlsl"
             ENDHLSL
         }
 
-        // This pass is used when drawing to a _CameraNormalsTexture texture
+        // --------------------------------------------------------------------
+        // DepthNormals Pass. 深度法线渲染用，绘制到_CameraNormalsTexture
         Pass
         {
             Name "DepthNormals"
@@ -487,10 +489,7 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma shader_feature_local _NORMALMAP
-            // #pragma shader_feature_local _PARALLAXMAP
-            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
             #pragma shader_feature_local _ALPHATEST_ON
-            // #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
             // -------------------------------------
             // Unity defined keywords
@@ -507,11 +506,12 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitDepthNormalsPass.hlsl"
+            #include "Pass/SIH_StylizedLitDepthNormalsPass.hlsl"
             ENDHLSL
         }
 
-        // This pass it not used during regular rendering, only for lightmap baking.
+        // --------------------------------------------------------------------
+        // Meta Pass. 烘焙光照贴图用，绘制到unity_Lightmaps和unity_LightmapsInd
         Pass
         {
             Name "Meta"
@@ -534,13 +534,8 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Material Keywords
-            // #pragma shader_feature_local_fragment _SPECULAR_SETUP
             #pragma shader_feature_local_fragment _EMISSION
-            // #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
             #pragma shader_feature_local_fragment _ALPHATEST_ON
-            // #pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            // #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
-            // #pragma shader_feature_local_fragment _SPECGLOSSMAP
             #pragma shader_feature EDITOR_VISUALIZATION
 
             // -------------------------------------
@@ -550,6 +545,8 @@ Shader "URP/Base/S_BaseCharacter"
             ENDHLSL
         }
 
+        // ---------------------------------------------------------------------
+        // MotionVectors Pass. 运动矢量渲染用，绘制到_CameraMotionVectorsTexture
         Pass
         {
             Name "MotionVectors"
