@@ -3,6 +3,9 @@
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
+#if defined(LOD_FADE_CROSSFADE)
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
+#endif
 
 float3 _LightDirection;
 float3 _LightPosition;
@@ -61,6 +64,12 @@ half4 ShadowPassFragment(Varyings input) : SV_TARGET
     #if defined(_ALPHATEST_ON)
         Alpha(SampleAlbedoAlpha(input.uv, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap)).a, _BaseColor, _Cutoff);
     #endif
+    
+    
+    #if defined(LOD_FADE_CROSSFADE)
+    LODFadeCrossFade(input.positionCS);
+    #endif
+
 
     return 0;
 }

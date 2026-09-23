@@ -335,6 +335,10 @@ Shader "URP/Base/S_BaseCharacter"
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
             // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
+
+            // -------------------------------------
             // Includes
             #include "Pass/SIH_StylizedShadowCasterPass.hlsl"
             ENDHLSL
@@ -358,10 +362,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             HLSLPROGRAM
             #pragma target 4.5
-
-            // Deferred Rendering Path does not support the OpenGL-based graphics API:
-            // Desktop OpenGL, OpenGL ES 3.0, WebGL 2.0.
-            #pragma exclude_renderers gles3 glcore
+            #pragma exclude_renderers gles3 glcore  // 延迟渲染不支持的平台将排除，退回去使用Forward Pass
 
             // -------------------------------------
             // Shader Stages
@@ -372,24 +373,15 @@ Shader "URP/Base/S_BaseCharacter"
             // Material Keywords
             #pragma shader_feature_local _NORMALMAP
             #pragma shader_feature_local_fragment _ALPHATEST_ON
-            //#pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
             #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature_local_fragment _OCCLUSIONMAP
-            #pragma shader_feature_local _PARALLAXMAP
-            #pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
 
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
-            #pragma shader_feature_local_fragment _SPECULAR_SETUP
             #pragma shader_feature_local _RECEIVE_SHADOWS_OFF
 
             // -------------------------------------
             // Universal Pipeline keywords
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
-            //#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            //#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
             #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
             #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
             #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
@@ -502,7 +494,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             // -------------------------------------
             // Unity defined keywords
-            // #pragma multi_compile _ LOD_FADE_CROSSFADE
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
 
             // -------------------------------------
             // Universal Pipeline keywords
@@ -566,6 +558,7 @@ Shader "URP/Base/S_BaseCharacter"
 
             HLSLPROGRAM
             #pragma shader_feature_local _ALPHATEST_ON
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
             #pragma shader_feature_local_vertex _ADD_PRECOMPUTED_VELOCITY
 
             #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ObjectMotionVectors.hlsl"

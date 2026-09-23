@@ -2,6 +2,9 @@
 #define STYLIZED_FORWARD_LIT_PASS_INCLUDED
 
 #include "./Include/SIH_StylizedLighting.hlsl"
+#if defined(LOD_FADE_CROSSFADE)
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
+#endif
 
 #if defined(_NORMALMAP)
 #define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
@@ -214,6 +217,11 @@ void LitPassFragment(Varyings input
     // 初始化表面数据：Alpha、Albedo、MRO、Normal、Emission
     SurfaceData surfaceData;
     InitializeStandardLitSurfaceData(input.uv, surfaceData);
+    
+    // LOD 相关
+#ifdef LOD_FADE_CROSSFADE
+    LODFadeCrossFade(input.positionCS);
+#endif
 
     // 初始化结构体顶点输入数据：positionWS、normalWS、viewDirectionWS、normalizedScreenSpaceUV、shadowCoord、fog、vertexLight
     InputData inputData;
