@@ -86,7 +86,7 @@ Shader "URP/Base/S_BaseCharacter"
         // Setting
         [Main(SettingGroup, _, on, off)] _SettingGroup ("Setting Group", Float) = 0
         [SubTitle(SettingGroup, Light)]
-        [SubToggle(SettingGroup, _RECEIVE_SHADOWS_ON)] _ReceiveShadows ("Receive Shadows", Int) = 1.0
+        [KWEnum(SettingGroup, Off, _RECEIVE_SHADOWS_OFF, On, _)] _ReceiveShadows("Receive Shadows", Float) = 1
         [SubEnum(SettingGroup, UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Int) = 2
         [Preset(SettingGroup, LWGUI_BlendModePreset)] _BlendMode ("Blend Mode Preset", Float) = 1
         // Blend Mode

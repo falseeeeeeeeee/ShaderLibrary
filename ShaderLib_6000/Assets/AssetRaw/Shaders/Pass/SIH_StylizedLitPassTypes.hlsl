@@ -115,9 +115,11 @@ void InitializeInputData(Varyings input, half3 normalTS, out InputData inputData
     #endif
 #endif
     
+    // PositionCS
+    inputData.positionCS = input.positionCS;
+    
     // Debug，GBuffer Pass 不需要 Debug 信息
 #if defined(DEBUG_DISPLAY) && !defined(THIS_IS_GBUFFER)
-    inputData.positionCS = input.positionCS;
     #if defined(DYNAMICLIGHTMAP_ON)
     inputData.dynamicLightmapUV = input.dynamicLightmapUV;
     #endif
