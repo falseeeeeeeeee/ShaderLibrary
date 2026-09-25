@@ -1,10 +1,16 @@
-# 【ShaderLibrary_Unity 6000】
+> # 【ShaderLibrary_Unity 6000】
+
+
 
 [TOC]
 
 ------
 
-# 😉约定
+# 00 前言
+
+
+
+
 
 
 
@@ -15,13 +21,9 @@
 
 ------
 
+# 01 渲染相关
 
-
-# 🤡目录
-
-## 渲染相关
-
-### GammaUI
+## 1.1 GammaUI
 
 ![](Source/GammaUI/GammaUIScreen.png)
 
@@ -38,8 +40,12 @@
   
   input.color.rgb = GammaUIEncodeIfActive(input.color.rgb);
   ```
+  
+  
 
-### UI 后处理与场景分离
+
+------
+## 1.2 UI 后处理与场景分离
 
 ![](Source/BlendUILayer/BlendUILayerScreen.png)
 
@@ -57,7 +63,8 @@
     | VolumeMask（后处理应用哪些层）    | Default     | UI        |
 
 
-# UI Camera 堆栈启用 TAA
+------
+## 1.3 UI Camera 堆栈启用 TAA
 
 * 如果直接使用TAA会没效果以及弹警告
   ![](Source/TAASetting/TAASettingScreen.png)
@@ -117,9 +124,25 @@
             && renderer.SupportsMotionVectors();     	    // Motion Vectors implemented
     }
   
-  
 
 
+
+-----
+
+## 1.4  延迟渲染的修改
+
+### 1.4.1 修改集群着色器为自己的（ClusterDeferred）
+
+* 复制 `ClusterDeferred.shader` 和 `ClusterDeferred.hlsl` 至本地，并在 Shader 中修改引用，之后就只修改 hlsl 文件
+* 我存在了 `Assets/Shaders/Deferred` 这个地方，并且文件重命名为
+  * `S_StylizedClusterDeferred.shader`
+  * `SIH_StylizedClusterDeferred.hlsl`
+* 使用  `CustomDeferredSetup.cs` 这个编辑器小工具，将官方的集群着色器改为自己的
+  * 在 Project 里选中自己复制出来的 `S_StylizedClusterDeferred.shader`
+  * 点击标题栏的 `Tool/CustomDeferred/使用选择的 ClusterDeferred Shader`
+  * 修改完成后 git 中的 `UniversalRenderPipelineGlobalSettings.asset` 文件会进行修改，把这个上传，其它同事就会更新到了
+
+### 1.4.2 
 
 
 
@@ -134,7 +157,7 @@
 ------
 
 
-# 🥰巨人的肩膀
+# 10 巨人的肩膀
 
 * UI在线性空间下的Gamma矫正
   * [unity - Rendering transparent UI in Linear Color Space - Game Development Stack Exchange](https://gamedev.stackexchange.com/questions/212135/rendering-transparent-ui-in-linear-color-space)

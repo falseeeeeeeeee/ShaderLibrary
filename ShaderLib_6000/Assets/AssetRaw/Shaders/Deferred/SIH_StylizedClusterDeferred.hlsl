@@ -1,5 +1,5 @@
-#ifndef UNIVERSAL_CLUSTER_DEFERRED
-#define UNIVERSAL_CLUSTER_DEFERRED
+#ifndef SIH_STYLIZED_CLUSTER_DEFERRED
+#define SIH_STYLIZED_CLUSTER_DEFERRED
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferInput.hlsl"
@@ -7,6 +7,11 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/DynamicScaling.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealtimeLights.hlsl"
+
+
+// Test
+#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedGBuffer.hlsl"
+#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedLighting.hlsl"
 
 struct Attributes
 {
@@ -76,6 +81,13 @@ half3 DeferredLightContribution(Light light, InputData inputData, GBufferData gB
         #endif
 
         BRDFData brdfData = GBufferDataToBRDFData(gBufferData);
+        
+        // 自定义标记的光照模型
+        if ((gBufferData.materialFlags & SIH_MATERIAL_FLAG_CEL) != 0u)
+        {
+            return SIH_LightingCelPBR(brdfData, light, inputData.normalWS, inputData.viewDirectionWS, materialSpecularHighlightsOff);
+        }
+        
         return half3(LightingPhysicallyBased(brdfData, light, inputData.normalWS, inputData.viewDirectionWS, materialSpecularHighlightsOff));
     }
     #endif

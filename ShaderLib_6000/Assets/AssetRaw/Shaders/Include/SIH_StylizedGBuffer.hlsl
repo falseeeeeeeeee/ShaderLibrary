@@ -1,0 +1,7 @@
+#ifndef SIH_STYLIZED_GBUFFER_INCLUDED
+#define SIH_STYLIZED_GBUFFER_INCLUDED
+
+// 官方当前使用到 1、2、4、8，这里使用第 5 位
+#define SIH_MATERIAL_FLAG_CEL (1u << 4)
+
+#endif
