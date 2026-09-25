@@ -1,5 +1,5 @@
-#ifndef UNIVERSAL_INPUT_SURFACE_INCLUDED
-#define UNIVERSAL_INPUT_SURFACE_INCLUDED
+#ifndef SIH_STYLIZED_INPUT_SURFACE_INCLUDED
+#define SIH_STYLIZED_INPUT_SURFACE_INCLUDED
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceData.hlsl"

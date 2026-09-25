@@ -1,4 +1,4 @@
-Shader "Hidden/Universal Render Pipeline/ClusterDeferred"
+Shader "Hidden/URP/S_StylizedClusterDeferred"
 {
     Properties {
         _LitStencilRef ("LitStencilRef", Int) = 0

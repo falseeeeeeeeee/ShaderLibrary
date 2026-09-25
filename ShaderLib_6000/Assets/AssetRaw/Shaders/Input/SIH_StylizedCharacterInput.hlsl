@@ -1,5 +1,5 @@
-#ifndef STYLIZED_CHARACTER_INPUT_INCLUDED
-#define STYLIZED_CHARACTER_INPUT_INCLUDED
+#ifndef SIH_STYLIZED_CHARACTER_INPUT_INCLUDED
+#define SIH_STYLIZED_CHARACTER_INPUT_INCLUDED
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
