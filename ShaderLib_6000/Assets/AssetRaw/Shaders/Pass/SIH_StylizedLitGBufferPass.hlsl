@@ -5,6 +5,7 @@
 // 为了与 LitGBufferPass 保持一致，两个文件共用一个引用
 // 引用包含了：结构体输入、结构体输出、顶点函数
 #include "./SIH_StylizedLitPassTypes.hlsl"
+#include "./Include/SIH_StylizedGBuffer.hlsl"       
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferOutput.hlsl"
 
 
@@ -41,22 +42,31 @@ GBufferFragOutput LitGBufferPassFragment(Varyings input)
 
     // 初始化全局光照数据：bakedGI、shadowMask
     InitializeBakedGIData(input, inputData);
+    
+    // ---------------------------------------------------------------------
+    // 简化版的 UniversalFragmentPBR()
 
-    // Stripped down version of UniversalFragmentPBR().
-
-    // in LitForwardPass GlobalIllumination (and temporarily LightingPhysicallyBased) are called inside UniversalFragmentPBR
-    // in Deferred rendering we store the sum of these values (and of emission as well) in the GBuffer
+    // 初始化 BRDF 数据
     BRDFData brdfData;
     InitializeBRDFData(surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.alpha, brdfData);
 
+    // 准备光照信息
     Light mainLight = GetMainLight(inputData.shadowCoord, inputData.positionWS, inputData.shadowMask);
     MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, inputData.shadowMask);
 
+    // 计算全局光照
     half3 color = GlobalIllumination(brdfData, (BRDFData)0, 0,
                                               inputData.bakedGI, surfaceData.occlusion, inputData.positionWS,
                                               inputData.normalWS, inputData.viewDirectionWS, inputData.normalizedScreenSpaceUV);
-    color = float3(1,0,0); // Debug
-    return PackGBuffersBRDFData(brdfData, inputData, surfaceData.smoothness, surfaceData.emission + color, surfaceData.occlusion);
+    
+    // 官方的 GBuffer 输出函数
+    // return PackGBuffersBRDFData(brdfData, inputData, surfaceData.smoothness, surfaceData.emission + color, surfaceData.occlusion);
+    
+    // GPT的 GBuffer 输出函数
+    GBufferFragOutput output = PackGBuffersBRDFData(brdfData, inputData, surfaceData.smoothness, surfaceData.emission + color, surfaceData.occlusion);
+    uint flags = UnpackGBufferMaterialFlags(output.gBuffer0.a);
+    output.gBuffer0.a = PackGBufferMaterialFlags(flags | SIH_MATERIAL_FLAG_CEL);
+    return output;
 }
 
 #endif

@@ -3665,6 +3665,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 401320242}
     m_Modifications:
+    - target: {fileID: 1032109359572826131, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154145292638782429, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2031227634781526309, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3709,6 +3717,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2288844553498053011, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866570869516169411, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_Name
       value: Map_Test_Night
@@ -3716,6 +3728,14 @@ PrefabInstance:
     - target: {fileID: 5866570869516169411, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604809155714948527, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155682070544992741, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

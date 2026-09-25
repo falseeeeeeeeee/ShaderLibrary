@@ -1,5 +1,5 @@
-#ifndef STYLIZED_FORWARD_LIT_PASS_INCLUDED
-#define STYLIZED_FORWARD_LIT_PASS_INCLUDED
+#ifndef SIH_STYLIZED_FORWARD_LIT_PASS_INCLUDED
+#define SIH_STYLIZED_FORWARD_LIT_PASS_INCLUDED
 
 // 为了与 LitGBufferPass 保持一致，两个文件共用一个引用
 // 引用包含了：结构体输入、结构体输出、顶点函数
@@ -48,12 +48,11 @@ void LitPassFragment(Varyings input
     // 初始化全局光照数据：bakedGI、shadowMask
     InitializeBakedGIData(input, inputData);
 
-    half4 color = UniversalFragmentPBR(inputData, surfaceData);
+    half4 color = StylizedFragmentPBR(inputData, surfaceData);
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _BlendMode > 1.0);
 
     outColor = color;
-    // outColor = float4(1,0,0,1);
 
 #ifdef _WRITE_RENDERING_LAYERS
     outRenderingLayers = EncodeMeshRenderingLayer();
