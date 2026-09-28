@@ -12,7 +12,7 @@
 //                        Fragment functions                                 //
 ///////////////////////////////////////////////////////////////////////////////
 
-// Used in Standard (Not Physically Based) shader
+// Used in Standard (Physically Based) shader
 void LitPassFragment(Varyings input
     , out half4 outColor : SV_Target0
 #ifdef _WRITE_RENDERING_LAYERS

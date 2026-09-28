@@ -13,7 +13,7 @@
 //                        Fragment functions                                 //
 ///////////////////////////////////////////////////////////////////////////////
 
-// Used in Standard (Not Physically Based) shader
+// Used in Standard (Physically Based) shader
 GBufferFragOutput LitGBufferPassFragment(Varyings input)
 {
     UNITY_SETUP_INSTANCE_ID(input);
