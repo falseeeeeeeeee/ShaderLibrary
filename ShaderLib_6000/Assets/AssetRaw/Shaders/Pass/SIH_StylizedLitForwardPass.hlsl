@@ -1,15 +1,12 @@
 #ifndef SIH_STYLIZED_FORWARD_LIT_PASS_INCLUDED
 #define SIH_STYLIZED_FORWARD_LIT_PASS_INCLUDED
 
-// 为了与 LitGBufferPass 保持一致，两个文件共用一个引用
-// 引用包含了：结构体输入、结构体输出、顶点函数
+// 为了与 LitGBufferPass.hlsl 保持一致，两个文件共用一个引用，包含了：结构体输入、结构体输出、顶点函数
 #include "./SIH_StylizedLitPassTypes.hlsl"
 
 // 我是一个 CV 酱，CV 本领强
 // 诶呀我的结构体
 // 变呀变漂亮，变呀变漂亮 ~~
-
-// keep this file in sync with LitGBufferPass.hlsl
 
 ///////////////////////////////////////////////////////////////////////////////
 //                        Fragment functions                                 //
@@ -48,6 +45,8 @@ void LitPassFragment(Varyings input
     // 初始化全局光照数据：bakedGI、shadowMask
     InitializeBakedGIData(input, inputData);
 
+    // ---------------------------------------------------------------------
+    // 核心光照计算
     half4 color = StylizedFragmentPBR(inputData, surfaceData);
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _BlendMode > 1.0);

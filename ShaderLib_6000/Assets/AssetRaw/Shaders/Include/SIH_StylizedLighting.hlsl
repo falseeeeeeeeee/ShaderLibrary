@@ -127,7 +127,7 @@ half4 StylizedFragmentPBR(InputData inputData, SurfaceData surfaceData)
     uint meshRenderingLayers = GetMeshRenderingLayer();                                     // 模型渲染层
     Light mainLight = GetMainLight(inputData, shadowMask, aoFactor);                        // 获取主光源
     MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI);                // 通过主光源合并实时GI和烘焙GI
-    LightingData lightingData = CreateLightingData(inputData, surfaceData);
+    LightingData lightingData = CreateLightingData(inputData, surfaceData);                 // 初始化光照数据结构
     
     // 计算全局光照
     lightingData.giColor = GlobalIllumination(brdfData, (BRDFData)0, 0,

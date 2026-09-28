@@ -1,15 +1,13 @@
 #ifndef STYLIZED_LIT_GBUFFER_PASS_INCLUDED
 #define STYLIZED_LIT_GBUFFER_PASS_INCLUDED
-#define THIS_IS_GBUFFER // 这个宏用于标记当前是 GBuffer Pass，方便在Types中做条件编译
+#define THIS_IS_GBUFFER // 这个宏用于标记当前是 GBuffer Pass，方便在 SIH_StylizedLitPassTypes.hlsl 中做条件编译
 
-// 为了与 LitGBufferPass 保持一致，两个文件共用一个引用
-// 引用包含了：结构体输入、结构体输出、顶点函数
+// 为了与 LitGBufferPass.hlsl 保持一致，两个文件共用一个引用，包含了：结构体输入、结构体输出、顶点函数
 #include "./SIH_StylizedLitPassTypes.hlsl"
-#include "./Include/SIH_StylizedGBuffer.hlsl"       
+
+// GBuffer 使用的函数引用
+#include "./Include/SIH_StylizedGBuffer.hlsl"   // 自定义标记的光照模型
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferOutput.hlsl"
-
-
-// keep this file in sync with LitForwardPass.hlsl
 
 ///////////////////////////////////////////////////////////////////////////////
 //                        Fragment functions                                 //
@@ -44,7 +42,8 @@ GBufferFragOutput LitGBufferPassFragment(Varyings input)
     InitializeBakedGIData(input, inputData);
     
     // ---------------------------------------------------------------------
-    // 简化版的 UniversalFragmentPBR()
+    // 核心光照计算
+    // 简化版的 UniversalFragmentPBR()，自定义的为 StylizedFragmentPBR()
 
     // 初始化 BRDF 数据
     BRDFData brdfData;
@@ -59,13 +58,12 @@ GBufferFragOutput LitGBufferPassFragment(Varyings input)
                                               inputData.bakedGI, surfaceData.occlusion, inputData.positionWS,
                                               inputData.normalWS, inputData.viewDirectionWS, inputData.normalizedScreenSpaceUV);
     
+    // ---------------------------------------------------------------------
     // 官方的 GBuffer 输出函数
-    // return PackGBuffersBRDFData(brdfData, inputData, surfaceData.smoothness, surfaceData.emission + color, surfaceData.occlusion);
-    
-    // GPT的 GBuffer 输出函数
     GBufferFragOutput output = PackGBuffersBRDFData(brdfData, inputData, surfaceData.smoothness, surfaceData.emission + color, surfaceData.occlusion);
-    uint flags = UnpackGBufferMaterialFlags(output.gBuffer0.a);
-    output.gBuffer0.a = PackGBufferMaterialFlags(flags | SIH_MATERIAL_FLAG_CEL);
+    // 自定义标记的光照模型
+    output.gBuffer0.a = PackGBufferMaterialFlags(UnpackGBufferMaterialFlags(output.gBuffer0.a) | kMaterialFlagStylizedLighting);
+    
     return output;
 }
 

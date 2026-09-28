@@ -83,7 +83,7 @@ half3 DeferredLightContribution(Light light, InputData inputData, GBufferData gB
         BRDFData brdfData = GBufferDataToBRDFData(gBufferData);
         
         // 自定义标记的光照模型
-        if ((gBufferData.materialFlags & SIH_MATERIAL_FLAG_CEL) != 0u)
+        if ((gBufferData.materialFlags & kMaterialFlagStylizedLighting) != 0u)
         {
             return StylizedLightingPhysicallyBased(brdfData, light, inputData.normalWS, inputData.viewDirectionWS, materialSpecularHighlightsOff);
         }
