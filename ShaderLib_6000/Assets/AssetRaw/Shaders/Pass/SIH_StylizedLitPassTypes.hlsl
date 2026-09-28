@@ -14,8 +14,6 @@
 #define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
 #endif
 
-// keep this file in sync with LitGBufferPass.hlsl
-
 // 结构体输入
 struct Attributes
 {
@@ -137,18 +135,18 @@ void InitializeInputData(Varyings input, half3 normalTS, out InputData inputData
 // 初始化全局光照数据
 void InitializeBakedGIData(Varyings input, inout InputData inputData)
 {
-    #if defined(_SCREEN_SPACE_IRRADIANCE)
+#if defined(_SCREEN_SPACE_IRRADIANCE)
     inputData.bakedGI = SAMPLE_GI(_ScreenSpaceIrradiance, input.positionCS.xy);
-    #elif defined(DYNAMICLIGHTMAP_ON)
+#elif defined(DYNAMICLIGHTMAP_ON)
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV, input.vertexSH, inputData.normalWS);
     inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
-    #elif !defined(LIGHTMAP_ON) && (defined(PROBE_VOLUMES_L1) || defined(PROBE_VOLUMES_L2))
+#elif !defined(LIGHTMAP_ON) && (defined(PROBE_VOLUMES_L1) || defined(PROBE_VOLUMES_L2))
     inputData.bakedGI = SAMPLE_GI(input.vertexSH, GetAbsolutePositionWS(inputData.positionWS), inputData.normalWS, 
                         inputData.viewDirectionWS, input.positionCS.xy, input.probeOcclusion, inputData.shadowMask);
-    #else
+#else
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.vertexSH, inputData.normalWS);
     inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
-    #endif
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -214,6 +212,5 @@ Varyings LitPassVertex(Attributes input)
     output.positionCS = vertexInput.positionCS;
     return output;
 }
-
 
 #endif
