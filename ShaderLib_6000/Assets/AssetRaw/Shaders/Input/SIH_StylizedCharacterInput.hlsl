@@ -53,8 +53,8 @@ CBUFFER_START(UnityPerMaterial)
     // half _FrozenSwitch;
     // half _WaterSwitch;
     // half _TouchSwitch;
-    // half _ToughnessSwitch;
-    // half _OutlineSize;
+    half _ToughnessSwitch;
+    half _OutlineSize;
     // half _LocalBrightnessSwitch;
     // half _GlobalIntensityParamOn;
 UNITY_TEXTURE_STREAMING_DEBUG_VARS;
@@ -75,6 +75,8 @@ UNITY_DOTS_INSTANCING_START(MaterialPropertyMetadata)
     UNITY_DOTS_INSTANCED_PROP(float , _BumpScale)
     UNITY_DOTS_INSTANCED_PROP(float , _Cutoff)
     UNITY_DOTS_INSTANCED_PROP(float , _BlendMode)
+    UNITY_DOTS_INSTANCED_PROP(float , _ToughnessSwitch)
+    UNITY_DOTS_INSTANCED_PROP(float , _OutlineSize)
 UNITY_DOTS_INSTANCING_END(MaterialPropertyMetadata)
 
 // 2、DOTS 实例化属性缓存
@@ -88,6 +90,8 @@ static float  unity_DOTS_Sampled_Occlusion;
 static float  unity_DOTS_Sampled_BumpScale;
 static float  unity_DOTS_Sampled_Cutoff;
 static float  unity_DOTS_Sampled_BlendMode;
+static float  unity_DOTS_Sampled_ToughnessSwitch;
+static float  unity_DOTS_Sampled_OutlineSize;
 
 // 3、DOTS 实例化属性缓存初始化
 void SetupDOTSLitMaterialPropertyCaches()
@@ -102,6 +106,8 @@ void SetupDOTSLitMaterialPropertyCaches()
     unity_DOTS_Sampled_BumpScale            = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float , _BumpScale);
     unity_DOTS_Sampled_Cutoff               = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float , _Cutoff);
     unity_DOTS_Sampled_BlendMode            = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float , _BlendMode);
+    unity_DOTS_Sampled_ToughnessSwitch      = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float , _ToughnessSwitch);
+    unity_DOTS_Sampled_OutlineSize          = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float , _OutlineSize);
 }
 
 #undef UNITY_SETUP_DOTS_MATERIAL_PROPERTY_CACHES
@@ -112,13 +118,14 @@ void SetupDOTSLitMaterialPropertyCaches()
 #define _BaseColor              unity_DOTS_Sampled_BaseColor
 #define _SpecularColor          unity_DOTS_Sampled_SpecularColor
 #define _EmissionColor          unity_DOTS_Sampled_EmissionColor
-
 #define _Metallic               unity_DOTS_Sampled_Metallic
 #define _Roughness              unity_DOTS_Sampled_Roughness
 #define _Occlusion              unity_DOTS_Sampled_Occlusion
 #define _BumpScale              unity_DOTS_Sampled_BumpScale
 #define _Cutoff                 unity_DOTS_Sampled_Cutoff
 #define _BlendMode              unity_DOTS_Sampled_BlendMode
+#define _ToughnessSwitch        unity_DOTS_Sampled_ToughnessSwitch
+#define _OutlineSize            unity_DOTS_Sampled_OutlineSize
 
 #endif
 

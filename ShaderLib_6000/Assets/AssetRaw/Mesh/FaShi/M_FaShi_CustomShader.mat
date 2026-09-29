@@ -27,12 +27,12 @@ Material:
   m_ValidKeywords:
   - _EMISSION
   - _NORMALMAP
+  - _OUTLINE_ON
+  - _TOUGHNESS_ON
   m_InvalidKeywords:
   - _EMISSIONBREATHERANDOMPOSITION_ON
   - _GLOBALINTENSITYPARAMON_ON
-  - _OUTLINE_ON
   - _RECEIVE_SHADOWS_ON
-  - _TOUGHNESS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -138,7 +138,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LocalBrightnessSwitch: 0
+    - _LocalBrightnessSwitch: 1
     - _MatcapBlendMode: 0
     - _MatcapGroup: 0
     - _MatcapParam: 1
@@ -157,7 +157,7 @@ Material:
     - _ThumpSwitch: 0
     - _TouchSwitch: 0
     - _Toughness: 1
-    - _ToughnessSwitch: 0
+    - _ToughnessSwitch: 1
     - _WaterSwitch: 0
     - _ZTestMode: 4
     - _ZWriteMode: 1

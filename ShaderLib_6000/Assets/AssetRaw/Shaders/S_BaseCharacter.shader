@@ -223,16 +223,22 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "ForwardLit"
-            Tags
-            {
-                "LightMode" = "UniversalForward"
-            }
+            Tags { "LightMode" = "UniversalForward" }
 
             // -------------------------------------
             // Render State Commands
             Blend[_SrcBlend][_DstBlend]
             ZWrite[_ZWriteMode]
             Cull[_CullMode]
+            
+            // -------------------------------------
+            // Stencil，让角色使用层级 1，给Toughness做遮罩
+            Stencil
+            {
+                Ref 1
+                Comp Always
+                Pass Replace
+            }
 
             HLSLPROGRAM
             #pragma target 2.0
@@ -301,16 +307,22 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "GBuffer"
-            Tags
-            {
-                "LightMode" = "UniversalGBuffer"
-            }
+            Tags{ "LightMode" = "UniversalGBuffer" }
 
             // -------------------------------------
             // Render State Commands
             ZWrite[_ZWriteMode]
             ZTest LEqual
             Cull[_CullMode]
+            
+            // -------------------------------------
+            // Stencil，让角色使用层级 1，给Toughness做遮罩
+            Stencil
+            {
+                Ref 1
+                Comp Always
+                Pass Replace
+            }
 
             HLSLPROGRAM
             #pragma target 4.5
@@ -377,10 +389,7 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "ShadowCaster"
-            Tags
-            {
-                "LightMode" = "ShadowCaster"
-            }
+            Tags { "LightMode" = "ShadowCaster" }
 
             // -------------------------------------
             // Render State Commands
@@ -425,10 +434,7 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "DepthOnly"
-            Tags
-            {
-                "LightMode" = "DepthOnly"
-            }
+            Tags { "LightMode" = "DepthOnly" }
 
             // -------------------------------------
             // Render State Commands
@@ -468,10 +474,7 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "DepthNormals"
-            Tags
-            {
-                "LightMode" = "DepthNormals"
-            }
+            Tags { "LightMode" = "DepthNormals" }
 
             // -------------------------------------
             // Render State Commands
@@ -515,10 +518,7 @@ Shader "URP/Base/S_BaseCharacter"
         Pass
         {
             Name "Meta"
-            Tags
-            {
-                "LightMode" = "Meta"
-            }
+            Tags { "LightMode" = "Meta" }
 
             // -------------------------------------
             // Render State Commands
@@ -542,6 +542,99 @@ Shader "URP/Base/S_BaseCharacter"
             // Includes
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
 
+            ENDHLSL
+        }
+
+        // ---------------------------------------------------------------------
+        // Ouline Pass. 需要在 RenderFeature 增加 LightMode = Outline
+        Pass
+        {
+            Name "Outline"
+            Tags { "LightMode" = "Outline" }
+            
+            // -------------------------------------
+            // Render State Commands
+            Cull Front
+            ZWrite On
+            ZTest LEqual
+            Blend One Zero
+
+            HLSLPROGRAM
+            #pragma target 3.5
+            
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex OutlinePassVertex
+            #pragma fragment OutlinePassFragment
+            
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _OUTLINE_ON
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            
+            // -------------------------------------
+            // Includes
+            #include "Pass/SIH_StylizedOutlinePass.hlsl"
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "Toughness"
+            Tags { "LightMode" = "Toughness" }
+            
+            // -------------------------------------
+            // Render State Commands
+            Cull Front
+            ZWrite On
+            ZTest LEqual
+            Blend One Zero
+            
+            // -------------------------------------
+            // Stencil，角色使用层级 1， 绘制Toughness
+            Stencil
+            {
+                Ref 1
+                ReadMask 1
+                WriteMask 0
+                Comp NotEqual
+                Pass Keep
+            }
+            
+            HLSLPROGRAM
+            #pragma target 3.5
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex ToughnessPassVertex
+            #pragma fragment ToughnessPassFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma multi_compile _ _TOUGHNESS_ON
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Includes
+            #include "Pass/SIH_StylizedToughnessPass.hlsl"
             ENDHLSL
         }
 
