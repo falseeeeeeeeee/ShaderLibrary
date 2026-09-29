@@ -3721,6 +3721,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4004701759551531568, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405582966333456307, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866570869516169411, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_Name
       value: Map_Test_Night

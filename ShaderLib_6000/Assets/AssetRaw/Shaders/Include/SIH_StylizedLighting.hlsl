@@ -143,11 +143,11 @@ half4 StylizedFragmentPBR(InputData inputData, SurfaceData surfaceData)
     }
 
     // ---------------------------------------------------------------------
-    // 点光源光照（集群光照、像素光照、顶点光照）
+    // 计算点光源光照（集群光照、像素光照、顶点光照）
     #if defined(_ADDITIONAL_LIGHTS)
     uint pixelLightCount = GetAdditionalLightsCount();
 
-    // 点光源光照（集群光照）
+    // 计算点光源光照（集群光照）
     #if USE_CLUSTER_LIGHT_LOOP
     [loop] for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
     {

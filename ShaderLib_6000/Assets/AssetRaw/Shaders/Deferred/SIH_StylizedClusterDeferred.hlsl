@@ -1,6 +1,7 @@
 #ifndef SIH_STYLIZED_CLUSTER_DEFERRED
 #define SIH_STYLIZED_CLUSTER_DEFERRED
 
+// 官方引用
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GBufferInput.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
@@ -8,11 +9,11 @@
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/DynamicScaling.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealtimeLights.hlsl"
 
+// 自定义引用
+#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedGBuffer.hlsl"     // 自定义材质标记
+#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedLighting.hlsl"    // 自定义光照
 
-// Test
-#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedGBuffer.hlsl"
-#include "Assets/AssetRaw/Shaders/Include/SIH_StylizedLighting.hlsl"
-
+// 结构体输入
 struct Attributes
 {
     float4 positionOS : POSITION;
@@ -20,6 +21,7 @@ struct Attributes
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
+// 结构体输出
 struct Varyings
 {
     float4 positionCS : SV_POSITION;
@@ -28,6 +30,7 @@ struct Varyings
     UNITY_VERTEX_OUTPUT_STEREO
 };
 
+// 初始化结构体顶点输入数据（全屏渲染）
 Varyings VertexFullScreen(Attributes input)
 {
     Varyings output = (Varyings)0;
@@ -36,30 +39,34 @@ Varyings VertexFullScreen(Attributes input)
     UNITY_TRANSFER_INSTANCE_ID(input, output);
     UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+    // 顶点位置
     float3 positionOS = input.positionOS.xyz;
     output.positionCS = float4(positionOS.xy, UNITY_RAW_FAR_CLIP_VALUE, 1.0); // Force triangle to be on zfar
 
+    // 屏幕坐标
     output.screenUV = output.positionCS.xyw;
     #if UNITY_UV_STARTS_AT_TOP
     output.screenUV.xy = output.screenUV.xy * float2(0.5, -0.5) + 0.5 * output.screenUV.z;
     #else
     output.screenUV.xy = output.screenUV.xy * 0.5 + 0.5 * output.screenUV.z;
     #endif
-
     output.screenUV.xy = DynamicScalingApplyScaleBias(output.screenUV.xy, float4(_RTHandleScale.xy, 0.0f, 0.0f));
 
     return output;
 }
 
-float4x4 _ScreenToWorld[2];
+float4x4 _ScreenToWorld[2]; // 屏幕坐标到世界坐标矩阵
 
+// 光照贡献函数，起到一个筛选作用，区分 _SIMPLELIT 和 _LIT，自定义光照模型添加到 _LIT 分支中的处理
 half3 DeferredLightContribution(Light light, InputData inputData, GBufferData gBufferData)
 {
+    // 光照层筛选
     #if defined(_LIGHT_LAYERS)
     UNITY_BRANCH if (!IsMatchingLightLayer(light.layerMask, gBufferData.meshRenderingLayers))
         return half3(0.0, 0.0, 0.0);
     #endif
 
+    // 光照模型区分
     #if defined(_SIMPLELIT)
     {
         SurfaceData surfaceData = GBufferDataToSurfaceData(gBufferData);
@@ -80,6 +87,7 @@ half3 DeferredLightContribution(Light light, InputData inputData, GBufferData gB
             bool materialSpecularHighlightsOff = (gBufferData.materialFlags & kMaterialFlagSpecularHighlightsOff);
         #endif
 
+        // 初始化 BRDF 数据
         BRDFData brdfData = GBufferDataToBRDFData(gBufferData);
         
         // 自定义标记的光照模型
@@ -95,13 +103,16 @@ half3 DeferredLightContribution(Light light, InputData inputData, GBufferData gB
     return half3(0.0, 0.0, 0.0);
 }
 
+// 延迟渲染集群光照
+// 前向渲染的光照在 StylizedFragmentPBR 中计算
+// 延迟渲染的光照在这里进行全屏集群计算
 half4 DeferredShadingClustered(Varyings input) : SV_Target
 {
     UNITY_SETUP_INSTANCE_ID(input);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
 
+    // 屏幕坐标
     float2 screen_uv = (input.screenUV.xy / input.screenUV.z);
-
     #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
     float2 undistorted_screen_uv = screen_uv;
     UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
@@ -110,11 +121,12 @@ half4 DeferredShadingClustered(Varyings input) : SV_Target
     }
     #endif
 
+    // 解包 G-Buffer 数据
     GBufferData gBufferData = UnpackGBuffers(input.positionCS.xy);
-
     half3 color = 0.0;
     half alpha = 1.0;
 
+    // 其次裁剪空间坐标
     #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
     UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
     {
@@ -122,27 +134,26 @@ half4 DeferredShadingClustered(Varyings input) : SV_Target
     }
     #endif
 
+    // 世界坐标
     float4 posWS = mul(_ScreenToWorld[SLICE_ARRAY_INDEX], float4(input.positionCS.xy, gBufferData.depth, 1.0));
     posWS.xyz *= rcp(posWS.w);
 
+    // 输入数据
     InputData inputData = (InputData)0;
-
     inputData.positionWS = posWS.xyz;
     inputData.normalWS = gBufferData.normalWS;
     inputData.viewDirectionWS = GetWorldSpaceNormalizeViewDir(posWS.xyz);
     inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(input.positionCS);
 
+    // 环境光遮蔽
     AmbientOcclusionFactor aoFactor = GetScreenSpaceAmbientOcclusion(screen_uv);
-
     #if defined(_SCREEN_SPACE_OCCLUSION)
-        // What we want is really to apply the minimum occlusion value between the baked occlusion from surfaceDataOcclusion and real-time occlusion from SSAO.
-        // But we already applied the baked occlusion during gbuffer pass, so we have to cancel it out here.
-        // We must also avoid divide-by-0 that the reciprocal can generate.
         half surfaceDataOcclusion = gBufferData.occlusion;
         half occlusion = aoFactor.indirectAmbientOcclusion < surfaceDataOcclusion ? aoFactor.indirectAmbientOcclusion * rcp(surfaceDataOcclusion) : 1.0;
         alpha = occlusion;
     #endif
 
+    // ---------------------------------------------------------------------
     // Main light
     Light mainLight = GetMainLight();
     mainLight.distanceAttenuation = 1.0;
@@ -158,20 +169,20 @@ half4 DeferredShadingClustered(Varyings input) : SV_Target
         #endif
         mainLight.shadowAttenuation = MainLightShadow(shadowCoord, posWS.xyz, gBufferData.shadowMask, _MainLightOcclusionProbes);
     }
-
+    
     #if defined(_LIGHT_COOKIES)
         half3 cookieColor = SampleMainLightCookie(posWS.xyz);
         mainLight.color *= half3(cookieColor);
     #endif
-
+    
     #if defined(_SCREEN_SPACE_OCCLUSION)
         mainLight.shadowAttenuation *= aoFactor.directAmbientOcclusion;
     #endif
-
+    
     color += DeferredLightContribution(mainLight, inputData, gBufferData);
 
-    // Additional light loop
-    // We do additional directional lights last because otherwise FXC complains...
+    // ---------------------------------------------------------------------
+    // Add light
     uint pixelLightCount = GetAdditionalLightsCount();
     LIGHT_LOOP_BEGIN(pixelLightCount)
         Light light = GetAdditionalLight(lightIndex, inputData, gBufferData.shadowMask, aoFactor);
