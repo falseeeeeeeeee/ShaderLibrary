@@ -14,14 +14,14 @@ Material:
   m_ValidKeywords:
   - _EMISSION
   - _NORMALMAP
+  - _OUTLINE_ON
+  - _TOUGHNESS_ON
   m_InvalidKeywords:
   - _EMISSIONBREATHERANDOMPOSITION_ON
   - _ENVIRONMENTREFLECTIONS_ON
   - _GLOBALINTENSITYPARAMON_ON
-  - _OUTLINE_ON
   - _RECEIVE_SHADOWS_ON
   - _SPECULARHIGHLIGHTS_ON
-  - _TOUGHNESS_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -201,7 +201,7 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZTestMode: 4
     - _ZWrite: 1
-    - _ZWriteMode: 0
+    - _ZWriteMode: 1
     m_Colors:
     - _AttackColor: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

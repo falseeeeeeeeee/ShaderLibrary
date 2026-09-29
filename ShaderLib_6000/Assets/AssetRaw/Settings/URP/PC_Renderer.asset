@@ -52,9 +52,9 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: -8625372716517699057}
-  - {fileID: 8695712353513290393}
-  - {fileID: 6936884436139178164}
-  m_RendererFeatureMap: 0fd29da836854c8899ba224c5060ad78b4f80238a4c34460
+  - {fileID: 735001001000000101}
+  - {fileID: 735001001000000103}
+  m_RendererFeatureMap: 0fd29da836854c88655a2926843f330a675a2926843f330a
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
---- !u!114 &6936884436139178164
+--- !u!114 &735001001000000101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,18 +93,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: OutlineTransparent
+  m_Name: OutlineOpaques
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.RenderObjects
   m_Active: 1
   settings:
-    passTag: OutlineTransparent
-    Event: 500
+    passTag: OutlineOpaques
+    Event: 300
     filterSettings:
-      RenderQueueType: 1
+      RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 1
+        m_Bits: 2048
       PassNames:
+      - CharacterMask
       - Outline
       - Toughness
     overrideMaterial: {fileID: 0}
@@ -127,7 +128,7 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
---- !u!114 &8695712353513290393
+--- !u!114 &735001001000000103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,20 +138,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: OutlineOpaques
+  m_Name: OutlineTransparent
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.RenderObjects
   m_Active: 1
   settings:
-    passTag: OutlineOpaques
-    Event: 300
+    passTag: OutlineTransparent
+    Event: 500
     filterSettings:
-      RenderQueueType: 0
+      RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 2048
+        m_Bits: 1
       PassNames:
-      - Outline
-      - Toughness
+      - CharacterMask
+      - OutlineTransparent
+      - ToughnessTransparent
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
     overrideShader: {fileID: 0}

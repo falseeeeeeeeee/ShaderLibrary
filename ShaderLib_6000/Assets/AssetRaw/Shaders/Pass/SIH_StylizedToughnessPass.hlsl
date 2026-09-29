@@ -7,10 +7,14 @@ ShellVaryings ToughnessPassVertex(ShellAttributes input)
 {
     UNITY_SETUP_INSTANCE_ID(input);
 
-    // Preserve MDS2's width ratios (0.01 / 0.006 and 0.03 / 0.006),
-    // expressed in pixels instead of the old world-space/FOV magic scales.
-    float width = _ToughnessSwitch < 0.05h ? 0.0 :
-        lerp(_OutlineSize * (5.0 / 3.0), 5.0, saturate(_ToughnessSwitch));
+    // Screen-space pixels, matching Outline. Toughness is an EXTRA width.
+    const float kToughnessMaxWidth = 5.0;
+    float outlineWidth = 0.0;
+#if defined(_OUTLINE_ON)
+    outlineWidth = max((float)_OutlineSize, 0.0);
+#endif
+    float toughnessWidth = saturate((float)_ToughnessSwitch) * kToughnessMaxWidth;
+    float width = outlineWidth + toughnessWidth;
     return ShellPassVertex(input, width);
 }
 
@@ -23,7 +27,7 @@ half4 ToughnessPassFragment(ShellVaryings input) : SV_Target
     clip(-1.0);
     return 0;
 #else
-    clip(_ToughnessSwitch - 0.05h);
+    clip(_ToughnessSwitch - 1e-5);
     half4 baseMap = SampleShellBaseMap(input);
     half3 colorA = half3(1.0h, 1.0h, 1.0h);
     half3 colorB = lerp(baseMap.rgb, half3(1.0h, 0.75h, 0.75h), 0.5h);

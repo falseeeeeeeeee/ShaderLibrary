@@ -231,15 +231,6 @@ Shader "URP/Base/S_BaseCharacter"
             ZWrite[_ZWriteMode]
             Cull[_CullMode]
             
-            // -------------------------------------
-            // Stencil，让角色使用层级 1，给Toughness做遮罩
-            Stencil
-            {
-                Ref 1
-                Comp Always
-                Pass Replace
-            }
-
             HLSLPROGRAM
             #pragma target 2.0
 
@@ -314,15 +305,6 @@ Shader "URP/Base/S_BaseCharacter"
             ZWrite[_ZWriteMode]
             ZTest LEqual
             Cull[_CullMode]
-            
-            // -------------------------------------
-            // Stencil，让角色使用层级 1，给Toughness做遮罩
-            Stencil
-            {
-                Ref 1
-                Comp Always
-                Pass Replace
-            }
 
             HLSLPROGRAM
             #pragma target 4.5
@@ -546,7 +528,60 @@ Shader "URP/Base/S_BaseCharacter"
         }
 
         // ---------------------------------------------------------------------
-        // Ouline Pass. 需要在 RenderFeature 增加 LightMode = Outline
+        // CharacterMask Pass. 需要在 RenderFeature 增加 LightMode = CharacterMask
+        // 用于绘制角色的遮罩，给Toughness做遮罩，让Toughness拥有外轮廓
+        Pass
+        {
+            Name "CharacterMask"
+            Tags { "LightMode" = "CharacterMask" }
+            
+            // -------------------------------------
+            // Render State Commands
+            Cull [_CullMode]
+            ZWrite Off
+            ZTest LEqual
+            ColorMask 0
+            
+            // -------------------------------------
+            // Stencil，角色使用层级 1，绘制角色轮廓遮罩
+            Stencil
+            {
+                Ref 1
+                ReadMask 1
+                WriteMask 1
+                Comp Always
+                Pass Replace
+            }
+            
+            HLSLPROGRAM
+            #pragma target 3.5
+            
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex CharacterMaskPassVertex
+            #pragma fragment CharacterMaskPassFragment
+            
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local _ALPHATEST_ON
+            
+           // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            
+            // -------------------------------------
+            // Includes
+            #include "Pass/SIH_StylizedCharacterMaskPass.hlsl"
+            ENDHLSL
+        }
+
+        // ---------------------------------------------------------------------
+        // Outline Pass. 需要在 RenderFeature 增加 LightMode = Outline
         Pass
         {
             Name "Outline"
@@ -558,6 +593,17 @@ Shader "URP/Base/S_BaseCharacter"
             ZWrite On
             ZTest LEqual
             Blend One Zero
+            
+            // -------------------------------------
+            // Stencil，角色使用层级 1，绘制角色轮廓遮罩
+            Stencil
+            {
+                Ref 1
+                ReadMask 1
+                WriteMask 1
+                Comp Always
+                Pass Replace
+            }
 
             HLSLPROGRAM
             #pragma target 3.5
@@ -587,6 +633,8 @@ Shader "URP/Base/S_BaseCharacter"
             ENDHLSL
         }
 
+        // ---------------------------------------------------------------------
+        // Toughness Pass. 需要在 RenderFeature 增加 LightMode = Toughness
         Pass
         {
             Name "Toughness"
@@ -621,6 +669,7 @@ Shader "URP/Base/S_BaseCharacter"
             // -------------------------------------
             // Material Keywords
             #pragma multi_compile _ _TOUGHNESS_ON
+            #pragma shader_feature_local_vertex _OUTLINE_ON
             #pragma shader_feature_local_fragment _ALPHATEST_ON
 
             // -------------------------------------
