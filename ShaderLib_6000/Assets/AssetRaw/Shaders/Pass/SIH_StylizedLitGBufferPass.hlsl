@@ -1,5 +1,5 @@
-#ifndef STYLIZED_LIT_GBUFFER_PASS_INCLUDED
-#define STYLIZED_LIT_GBUFFER_PASS_INCLUDED
+#ifndef SIH_STYLIZED_LIT_GBUFFER_PASS_INCLUDED
+#define SIH_STYLIZED_LIT_GBUFFER_PASS_INCLUDED
 #define THIS_IS_GBUFFER // 这个宏用于标记当前是 GBuffer Pass，方便在 SIH_StylizedLitPassTypes.hlsl 中做条件编译
 
 // 为了与 LitGBufferPass.hlsl 保持一致，两个文件共用一个引用，包含了：结构体输入、结构体输出、顶点函数
