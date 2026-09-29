@@ -1,6 +1,23 @@
 #ifndef STYLIZED_OUTLINE_PASS_TYPES_INCLUDED
 #define STYLIZED_OUTLINE_PASS_TYPES_INCLUDED
 
+// ------------------------------------------------------------------
+// 在这里一次性调整基础大小；单位是参考分辨率下的像素。
+// 实际宽度随渲染画面高度缩放，1080p 与 4K 保持相同的画面占比。
+#define OUTLINE_REFERENCE_HEIGHT 1080.0 // 调整参数时所用的参考画面高度。
+#define OUTLINE_BASE_WIDTH       2.0    // 描边基础宽度，再乘材质 _OutlineSize。
+#define TOUGHNESS_BASE_WIDTH     4.0    // 描边外额外增加的最大宽度，再乘 _ToughnessSwitch。
+
+float GetOutlineWidth()
+{
+    return max((float)_OutlineSize, 0.0) * max(OUTLINE_BASE_WIDTH, 0.0);
+}
+
+float GetToughnessWidth()
+{
+    return saturate((float)_ToughnessSwitch) * max(TOUGHNESS_BASE_WIDTH, 0.0);
+}
+
 // 这个文件包含了用于 Outline Pass 和 Toughness Pass 的通用的结构体定义和函数声明
 
 #if defined(LOD_FADE_CROSSFADE)
@@ -59,8 +76,8 @@ float2 GetPerspectiveShellDirection(float4 positionCS, float4 normalCS)
 {
     return normalCS.xy * positionCS.w - positionCS.xy * normalCS.w;
 }
-// 获取壳体在 HClip 空间的位置
-float4 GetShellPositionHClip(float3 positionWS, float3 normalWS, float widthPixels)
+// 获取壳体在 HClip 空间的位置；传入参考分辨率下的像素宽度。
+float4 GetShellPositionHClip(float3 positionWS, float3 normalWS, float widthAtReferencePixels)
 {
     float4 positionCS = TransformWorldToHClip(positionWS);
     float4 normalCS = mul(GetWorldToHClipMatrix(), float4(normalWS, 0.0));
@@ -75,7 +92,11 @@ float4 GetShellPositionHClip(float3 positionWS, float3 normalWS, float widthPixe
     float2 screenSize = max(GetScaledScreenParams().xy, float2(1.0, 1.0));
     float2 directionPixels = directionCS * screenSize;
     directionPixels *= rsqrt(max(dot(directionPixels, directionPixels), 1e-8));
-    float2 offsetNDC = directionPixels * (2.0 * max(widthPixels, 0.0) / screenSize);
+    
+    // 根据实际渲染高度进行缩放，包括 URP 渲染缩放。放大后，轮廓保持显示图像的相同比例。
+    float resolutionScale = screenSize.y / max(OUTLINE_REFERENCE_HEIGHT, 1.0);
+    float widthPixels = max(widthAtReferencePixels, 0.0) * resolutionScale;
+    float2 offsetNDC = directionPixels * (2.0 * widthPixels / screenSize);
 
     // 透视投影使用 clip.w 来保持后除法宽度稳定；正交投影的 clip.w 是 1。保持深度和 reversed-Z 规范。
     positionCS.xy += offsetNDC * positionCS.w;
@@ -86,7 +107,7 @@ float4 GetShellPositionHClip(float3 positionWS, float3 normalWS, float widthPixe
 //                         Vertex functions                                  //
 ///////////////////////////////////////////////////////////////////////////////
 
-ShellVaryings ShellPassVertex(ShellAttributes input, float widthPixels)
+ShellVaryings ShellPassVertex(ShellAttributes input, float widthAtReferencePixels)
 {
     ShellVaryings output = (ShellVaryings)0;
     UNITY_SETUP_INSTANCE_ID(input);
@@ -95,7 +116,7 @@ ShellVaryings ShellPassVertex(ShellAttributes input, float widthPixels)
 
     output.uv.xy = TRANSFORM_TEX(input.texcoord, _BaseMap);
     output.uv.z = input.texcoord1.y;
-    output.positionCS = GetShellPositionHClip(TransformObjectToWorld(input.positionOS.xyz), GetShellNormalWS(input), widthPixels);
+    output.positionCS = GetShellPositionHClip(TransformObjectToWorld(input.positionOS.xyz), GetShellNormalWS(input), widthAtReferencePixels);
     return output;
 }
 

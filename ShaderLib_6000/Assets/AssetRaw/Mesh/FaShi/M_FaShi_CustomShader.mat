@@ -138,7 +138,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LocalBrightnessSwitch: 1
+    - _LocalBrightnessSwitch: 0
     - _MatcapBlendMode: 0
     - _MatcapGroup: 0
     - _MatcapParam: 1
@@ -157,7 +157,7 @@ Material:
     - _ThumpSwitch: 0
     - _TouchSwitch: 0
     - _Toughness: 1
-    - _ToughnessSwitch: 1
+    - _ToughnessSwitch: 0
     - _WaterSwitch: 0
     - _ZTestMode: 4
     - _ZWriteMode: 1

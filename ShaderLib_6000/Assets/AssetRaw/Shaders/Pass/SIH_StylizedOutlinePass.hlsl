@@ -6,7 +6,7 @@
 ShellVaryings OutlinePassVertex(ShellAttributes input)
 {
     UNITY_SETUP_INSTANCE_ID(input);
-    return ShellPassVertex(input, _OutlineSize);
+    return ShellPassVertex(input, GetOutlineWidth());
 }
 
 half4 OutlinePassFragment(ShellVaryings input) : SV_Target
@@ -19,9 +19,9 @@ half4 OutlinePassFragment(ShellVaryings input) : SV_Target
     return 0;
 #else
     // Zero width must not leave a back-face color or depth contribution.
-    clip(_OutlineSize - 1e-5);
+    clip(GetOutlineWidth() - 1e-5);
     half4 baseMap = SampleShellBaseMap(input);
-    half3 color = lerp(baseMap.rgb, half3(0.025h, 0.025h, 0.025h), 0.85h);
+    half3 color = lerp(baseMap.rgb, half3(0.025h, 0.025h, 0.025h), 0.9h);
     return half4(color, baseMap.a);
 #endif
 }
