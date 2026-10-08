@@ -19,12 +19,12 @@ MonoBehaviour:
     AfterOpaque: 1
     Source: 1
     NormalSamples: 1
-    Intensity: 2
+    Intensity: 5
     DirectLightingStrength: 0.25
-    Radius: 0.2
+    Radius: 0.1
     Samples: 0
     BlurQuality: 0
-    Falloff: 100
+    Falloff: 50
     SampleCount: -1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -51,10 +51,10 @@ MonoBehaviour:
     probeSamplingDebugTexture: {fileID: 2800000, guid: 24ec0e140fb444a44ab96ee80844e18e, type: 3}
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
-  - {fileID: -8625372716517699057}
   - {fileID: 735001001000000101}
   - {fileID: 735001001000000103}
-  m_RendererFeatureMap: 0fd29da836854c88655a2926843f330a675a2926843f330a
+  - {fileID: -8625372716517699057}
+  m_RendererFeatureMap: 655a2926843f330a675a2926843f330a0fd29da836854c88
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -148,11 +148,11 @@ MonoBehaviour:
       RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 1
+        m_Bits: 2048
       PassNames:
       - CharacterMask
-      - OutlineTransparent
-      - ToughnessTransparent
+      - Outline
+      - Toughness
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
     overrideShader: {fileID: 0}

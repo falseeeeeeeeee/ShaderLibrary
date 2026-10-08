@@ -27,12 +27,12 @@ Material:
   m_ValidKeywords:
   - _ALPHATEST_ON
   - _NORMALMAP
+  - _OUTLINE_ON
+  - _TOUGHNESS_ON
   m_InvalidKeywords:
   - _EMISSIONBREATHERANDOMPOSITION_ON
   - _GLOBALINTENSITYPARAMON_ON
-  - _OUTLINE_ON
   - _RECEIVE_SHADOWS_ON
-  - _TOUGHNESS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
