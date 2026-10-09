@@ -3629,91 +3629,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704995516}
   m_CullTransparentMesh: 1
---- !u!1 &1736115819
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1736115820}
-  - component: {fileID: 1736115821}
-  m_Layer: 0
-  m_Name: Debug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1736115820
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736115819}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1736115821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736115819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2f01df2e2abd847aed143d6b4f1c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StylizedLightingDebug
-  settings:
-    celEnabled: 1
-    celStrength: 0.85
-    celShadowThreshold: 0.3
-    celLightThreshold: 0.72
-    celSoftness: 0.045
-    celShadowLevel: 0.12
-    celMidLevel: 0.55
-    celShadowTint: {r: 0.65, g: 0.72, b: 1, a: 1}
-    celMidTint: {r: 1, g: 0.93, b: 0.88, a: 1}
-    celLightTint: {r: 1, g: 0.98, b: 0.92, a: 1}
-    diffuseWrap: 0.08
-    terminatorEnabled: 1
-    terminatorWidth: 0.12
-    terminatorStrength: 0.16
-    terminatorTint: {r: 1, g: 0.3, b: 0.1, a: 1}
-    specularEnabled: 1
-    specularCelBlend: 0.55
-    specularThreshold: 0.35
-    specularSoftness: 0.07
-    specularIntensity: 1
-    specularPeakLimit: 12
-    rimEnabled: 1
-    rimWidth: 0.32
-    rimSoftness: 0.09
-    rimIntensity: 1.1
-    rimCoreWidth: 0.14
-    rimCoreSoftness: 0.035
-    rimCoreIntensity: 2.8
-    rimDirectionBias: 0
-    rimDirectionSoftness: 0.25
-    rimBacklightBoost: 0.5
-    rimMaterialTint: 0.2
-    rimTint: {r: 1, g: 1, b: 1, a: 1}
-    backlightEnabled: 0
-    backlightIntensity: 0.35
-    backlightTint: {r: 1, g: 0.45, b: 0.25, a: 1}
-    indirectTintEnabled: 1
-    indirectTintStrength: 0.3
-    indirectUpTint: {r: 0.9, g: 0.96, b: 1, a: 1}
-    indirectDownTint: {r: 0.72, g: 0.68, b: 0.85, a: 1}
 --- !u!1 &1740725764
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,10 +4217,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 401320242}
     m_Modifications:
-    - target: {fileID: 1032109359572826131, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1154145292638782429, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4350,22 +4261,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2093715737752803412, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2288844553498053011, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004701759551531568, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5405582966333456307, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5866570869516169411, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_Name
       value: Map_Test_Night
@@ -4377,18 +4272,6 @@ PrefabInstance:
     - target: {fileID: 8604809155714948527, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155682070544992741, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.256
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155682070544992741, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.675
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155682070544992741, guid: 17f20072e8840be4a8f916b0c083b64c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.92
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4477,4 +4360,3 @@ SceneRoots:
   - {fileID: 868738558}
   - {fileID: 1616365239}
   - {fileID: 1245429527}
-  - {fileID: 1736115820}

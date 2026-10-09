@@ -54,9 +54,7 @@ GBufferFragOutput LitGBufferPassFragment(Varyings input)
     MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, inputData.shadowMask);
 
     // 计算全局光照
-    half3 color = GlobalIllumination(brdfData, (BRDFData)0, 0,
-                                              inputData.bakedGI, surfaceData.occlusion, inputData.positionWS,
-                                              inputData.normalWS, inputData.viewDirectionWS, inputData.normalizedScreenSpaceUV);
+    half3 color = StylizedGlobalIllumination(brdfData, inputData.bakedGI, surfaceData.occlusion, inputData.positionWS, inputData.normalWS, inputData.viewDirectionWS, inputData.normalizedScreenSpaceUV);
     
     // ---------------------------------------------------------------------
     // 官方的 GBuffer 输出函数
