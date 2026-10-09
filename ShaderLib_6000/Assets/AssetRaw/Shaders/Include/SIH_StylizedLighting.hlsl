@@ -39,6 +39,13 @@
 #define CP_RIM_BACKLIGHT_BOOST     4.00h   // 近似 SSS 背光渐变遮罩强度
 #define CP_RIM_MATERIAL_TINT       0.70h   // 0 = 仅灯光色；增加后混入材质反射色
 
+// Rim 边缘光独立调色
+#define CP_RIM_COLOR_STRENGTH      1.00h   // 0 = 原灯光色，1 = 完整艺术化调色
+#define CP_RIM_COLOR_SATURATION    2.50h   // 1 = 原饱和度；增大强调彩灯颜色
+#define CP_RIM_TEMPERATURE_RANGE   0.10h   // 越小，越容易把轻微冷暖推向下方色板
+#define CP_RIM_WARM_TINT           half3(1.00h, 0.28h, 0.055h) // 暖光亮边：橙色
+#define CP_RIM_COOL_TINT           half3(0.055h, 0.28h, 1.00h) // 冷光亮边：蓝色
+
 // BackLight 背光
 #define CP_BACKLIGHT_INTENSITY     0.5h        // 背光强度
 
@@ -108,12 +115,30 @@ half3 StylizedLighting_Rim(BRDFData brdfData, half3 normalWS, half3 lightDirecti
     // 灯光侧面方向遮罩
     half LdotV = dot(lightDirectionWS, viewDirectionWS);                     // 把光源方向投影到视平面。不要先乘 sideMask，否则侧后光的边缘容易消失
     half3 lateralLight = lightDirectionWS - viewDirectionWS * LdotV;         // 不归一化投影方向，避免光源恰好位于相机轴线上时除零或左右翻转
-    half sideMask = dot(normalWS, lateralLight) + CP_RIM_DIRECTION_BIAS;    // 灯光与视角成侧面夹角时呈现的遮罩，增加偏移让遮罩不至于全部显示
+    half sideMask = dot(normalWS, lateralLight) + CP_RIM_DIRECTION_BIAS;     // 灯光与视角成侧面夹角时呈现的遮罩，增加偏移让遮罩不至于全部显示
     half directionMask = Custom_SoftStep(0.0h, CP_RIM_DIRECTION_SOFTNESS, sideMask);   // 硬化遮罩
-    half backlightBoost = 1.0h + saturate(-LdotV) * CP_RIM_BACKLIGHT_BOOST; // SSS 渐变效果
+    half backlightBoost = 1.0h + saturate(-LdotV) * CP_RIM_BACKLIGHT_BOOST;  // SSS 渐变效果
     half3 materialTint = lerp(half3(1.0h, 1.0h, 1.0h), brdfData.specular, saturate(CP_RIM_MATERIAL_TINT));
     
     return (broad * CP_RIM_INTENSITY + core * CP_RIM_CORE_INTENSITY) * directionMask * backlightBoost * materialTint;
+}
+
+// ----------------------------------------------------------------------------
+// 边缘光颜色函数：亮边颜色保留灯光最大通道强度，增强色彩；弱冷暖映射到橙/蓝色板。中性白光不会凭空判定日夜；已经鲜艳的彩灯减少色板重映射。
+half3 StylizedLighting_RimColor(half3 lightColor)
+{
+    float3 rgb = max((float3)lightColor, 0.0);
+    float peak = max(rgb.r, max(rgb.g, rgb.b));
+    float3 hue = rgb / max(peak, 0.00001);
+    float temperature = hue.r - hue.b;
+    float saturation = 1.0 - min(hue.r, min(hue.g, hue.b));
+    float paletteWeight = saturate(abs(temperature) / max((float)CP_RIM_TEMPERATURE_RANGE, 0.0001)) * (1.0 - smoothstep(0.25, 0.65, saturation));
+    float3 palette = lerp((float3)CP_RIM_COOL_TINT, (float3)CP_RIM_WARM_TINT, step(0.0, temperature));
+    float gray = dot(hue, float3(0.2126, 0.7152, 0.0722));
+    float3 artistic = saturate(lerp(gray.xxx, hue, max((float)CP_RIM_COLOR_SATURATION, 0.0)));
+    artistic = lerp(artistic, max(palette, 0.0), paletteWeight);
+    artistic /= max(max(artistic.r, max(artistic.g, artistic.b)), 0.00001);
+    return (half3)(lerp(hue, artistic, saturate(CP_RIM_COLOR_STRENGTH)) * peak);
 }
 
 // ----------------------------------------------------------------------------
@@ -132,17 +157,22 @@ half3 StylizedLighting_BackLight(BRDFData brdfData, half3 normalWS, half3 lightD
 // 前向渲染直接光照，含 Diffuse、Specular、Rim、Backlight
 half3 StylizedLightingPhysicallyBased(BRDFData brdfData, half3 lightColor, half3 lightDirectionWS, float lightAttenuation, half3 normalWS, half3 viewDirectionWS, bool specularHighlightsOff)
 {
+    // Diffuse
     half3 lighting = StylizedLighting_Diffuse(brdfData, dot(normalWS, lightDirectionWS));
+    // Specular
     #ifndef _SPECULARHIGHLIGHTS_OFF
     [branch] if (!specularHighlightsOff)
     {
         lighting += StylizedLighting_Specular(brdfData, normalWS, lightDirectionWS, viewDirectionWS);
     }
     #endif
-    lighting += StylizedLighting_Rim(brdfData, normalWS, lightDirectionWS, viewDirectionWS);
+    // BackLight
     lighting += StylizedLighting_BackLight(brdfData, normalWS, lightDirectionWS, viewDirectionWS);
+    // Rim
+    half3 rim = StylizedLighting_Rim(brdfData, normalWS, lightDirectionWS, viewDirectionWS);
+    half3 rimColor = StylizedLighting_RimColor(lightColor);
     
-    return lighting * (lightColor * lightAttenuation);
+    return (lighting * lightColor + rim * rimColor) * lightAttenuation;
 }
 
 // 延迟渲染用此函数，与上方函数区别是 distanceAttenuation * shadowAttenuation，只乘一次。
