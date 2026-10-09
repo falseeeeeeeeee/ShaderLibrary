@@ -5,8 +5,8 @@
 // 在这里一次性调整基础大小；单位是参考分辨率下的像素。
 // 实际宽度随渲染画面高度缩放，1080p 与 4K 保持相同的画面占比。
 #define OUTLINE_REFERENCE_HEIGHT 1080.0 // 调整参数时所用的参考画面高度。
-#define OUTLINE_BASE_WIDTH       2.0    // 描边基础宽度，再乘材质 _OutlineSize。
-#define TOUGHNESS_BASE_WIDTH     4.0    // 描边外额外增加的最大宽度，再乘 _ToughnessSwitch。
+#define OUTLINE_BASE_WIDTH       1.0    // 描边基础宽度，再乘材质 _OutlineSize。
+#define TOUGHNESS_BASE_WIDTH     2.0    // 描边外额外增加的最大宽度，再乘 _ToughnessSwitch。
 
 float GetOutlineWidth()
 {
