@@ -49,6 +49,8 @@
 // BackLight 背光
 #define CP_BACKLIGHT_INTENSITY     0.5h        // 背光强度
 
+#define CP_ORTHO_REFLECTION_SPREAD  float2(0.35, 0.20) // 横向/纵向展开；(0, 0) 恢复原视线
+
 
 // ----------------------------------------------------------------------------
 // 软阈值函数
@@ -186,6 +188,14 @@ half3 StylizedLightingPhysicallyBased(BRDFData brdfData, Light light, half3 norm
 // 自定义 GI 混合；保留官方反射探针、AO、Environment Reflections 开关、Debug
 half3 StylizedGlobalIllumination(BRDFData brdfData, half3 bakedGI, half occlusion, float3 positionWS, half3 normalWS, half3 viewDirectionWS, float2 normalizedScreenSpaceUV)
 {
+    // 正交相机的环境镜面反射，正交时按屏幕覆盖范围产生角度变化，透视时保持原视线
+    if (!IsPerspectiveProjection())
+    {
+        float2 positionVS = TransformWorldToView(positionWS).xy;
+        float2 slope = positionVS * abs(UNITY_MATRIX_P._m11) * float2(0.35, 0.20);  // P[1][1] 的绝对值为正交半高度的倒数；横纵共用它以保留纵横比。(0, 0) 恢复原视线
+        viewDirectionWS =  SafeNormalize(viewDirectionWS - UNITY_MATRIX_V[0].xyz * slope.x - UNITY_MATRIX_V[1].xyz * slope.y);  // V[0]/V[1] 是相机世界空间的右/上方向；视线从表面指向相机，因此取负偏移。
+    }
+    
     return GlobalIllumination(brdfData, (BRDFData)0, 0, bakedGI, occlusion, positionWS, normalWS, viewDirectionWS, normalizedScreenSpaceUV);
 }
 
